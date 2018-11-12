@@ -1,0 +1,18 @@
+awards_custom_text:
+  version: 1.x
+  js:
+    js/dynamic_text.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+awards_custom_text_views_admin:
+  version: 1.x
+  css:
+    component:
+      css/views_admin.css: {}
+  js:
+    js/views_admin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - core/jquery.ui.accordion

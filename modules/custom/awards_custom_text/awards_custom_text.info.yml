@@ -1,0 +1,10 @@
+# Package info
+name: Awards4U Custom Text Module
+description: Custom Code for the Custom Text Entry Forms
+type: module
+core: 8.x
+package: Awards4U
+
+# Dependencies
+dependencies:
+

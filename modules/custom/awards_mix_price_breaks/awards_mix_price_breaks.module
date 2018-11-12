@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains awards_mix_price_breaks.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function awards_mix_price_breaks_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the awards_mix_price_breaks module.
+    case 'help.page.awards_mix_price_breaks':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Awards 4U Custom Price Breaks Module.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function awards_mix_price_breaks_theme() {
+  return array(
+      'awards_mix_price_breaks_formatter' => array(
+          'variables' => array('threshold' => NULL, 'price' => NULL, 'sku' => NULL),
+          'template' => 'field--awards-mix-price-breaks-formatter',
+      ),
+  );
+}

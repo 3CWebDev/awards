@@ -1,0 +1,36 @@
+# Migration configuration for news content.
+id: awards_catalog
+label: Awards4U Catalog
+migration_tags:
+  - CSV
+migration_group: awards
+source:
+  keys:
+    - Terms
+  plugin: awards_catalog
+  path: modules/custom/awards_product_importer/assets/csv/categories.csv
+  header_row_count: 1
+  column_names:
+    -
+      Terms: 'Terms'
+    -
+      Image: 'Image'
+destination:
+    plugin: entity:taxonomy_term
+process:
+  vid:
+    plugin: default_value
+    default_value: catalog_category
+  name: name
+  description: description
+  parent: parent
+  field_category_image:
+    plugin: iterator
+    source: Images
+    process:
+      uri: uri
+      title: title
+      alt: alt
+  field_catalog_id:
+    id
+  changed: timestamp

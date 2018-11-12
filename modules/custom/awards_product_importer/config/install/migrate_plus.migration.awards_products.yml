@@ -1,0 +1,58 @@
+# Migration configuration for products.
+id: awards_products
+status: true
+label: Awards4U Products
+migration_tags:
+  - CSV
+migration_group: awards
+source:
+  plugin: awards_products
+  path: modules/custom/awards_product_importer/assets/csv/products.csv
+  header_row_count: 1
+  keys:
+    - 'SKU'
+process:
+  title: 'Product Name'
+  type:
+    plugin: default_value
+    default_value: default
+  stores:
+    plugin: explode
+    source: StoreID
+    delimiter: ','
+  variations/target_id:
+    -
+      plugin: migration
+      migration: awards_products_variation
+      source: product_variations
+    -
+      plugin: skip_on_empty
+      method: row
+  body/value:
+    plugin: default_value
+    default_value: ''
+  'body/format':
+    plugin: default_value
+    default_value: 'full_html'
+  'field_prod_category': tid
+  'field_product_base_image/target_id':
+    plugin: migration
+    migration: awards_products_variation_photos
+    source: Product Image
+    no_stub: true
+  'field_product_base_image/alt': Product Name
+  field_product_base_price: Price
+  field_product_meta_tags: metatags
+  field_allow_image_upload: allow_image_upload
+  field_number_of_lines: No Of Lines
+  field_drop_shi/country_code: Country
+  field_drop_shi/address_line1: Street
+  field_drop_shi/address_line1: ""
+  field_drop_shi/locality: City
+  field_drop_shi/administrative_area: State
+  field_drop_shi/postal_code: Zipcode
+destination:
+  plugin: 'entity:commerce_product'
+migration_dependencies:
+  required:
+    - migrate_plus.migration.awards_products_variation

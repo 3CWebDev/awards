@@ -1,0 +1,6 @@
+services:
+  awards_mix_price_breaks.qty_mix_price_resolver:
+    class: Drupal\awards_mix_price_breaks\Resolvers\QtyMixPriceResolver
+    arguments: ['@request_stack']
+    tags:
+      - { name: commerce_price.price_resolver, priority: 700 }

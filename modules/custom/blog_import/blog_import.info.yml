@@ -1,0 +1,14 @@
+# Package info
+name: Awards4U Blog Importer
+description: Imports old blog posts from D7 Awards4U site
+type: module
+core: 8.x
+package: Awards4U
+
+# Dependencies
+dependencies:
+  - migrate
+  - migrate_source_csv
+  - migrate_plus
+  - migrate_tools
+  - node

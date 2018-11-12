@@ -1,0 +1,14 @@
+# Package info
+name: Awards4U Taxonomy Data
+description: Imports taxonomy terms to the related vocab for use with products and images
+type: module
+core: 8.x
+package: Awards4U
+
+# Dependencies
+dependencies:
+  - migrate
+  - migrate_source_csv
+  - migrate_plus
+  - migrate_tools
+  - taxonomy

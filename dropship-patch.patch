@@ -1,0 +1,45 @@
+diff --git a/src/UPSShipment.php b/src/UPSShipment.php
+index 3a75baa..769db08 100755
+--- a/src/UPSShipment.php
++++ b/src/UPSShipment.php
+@@ -52,10 +52,39 @@ class UPSShipment extends UPSEntity implements UPSShipmentInterface {
+    */
+   public function getShipment(ShipmentInterface $shipment, ShippingMethodInterface $shipping_method) {
+     $this->shipment = $shipment;
++
++    $order = \Drupal\commerce_order\Entity\Order::load($shipment->getOrderId());
++
++
+     $this->shipping_method = $shipping_method;
+     $api_shipment = new APIShipment();
++
++
++
+     $this->setShipTo($api_shipment);
+-    $this->setShipFrom($api_shipment);
++
++    foreach ($order->getItems() as $key => $item) {
++      $purchased_entity = $item->getPurchasedEntity();
++      $product = $purchased_entity->product_id->entity;
++      if (!$product->get('field_drop_shi')->isEmpty()) {
++        $drop_ship_address = $product->field_drop_shi->getValue();
++
++        $from_address = new Address();
++        $from_address->setAddressLine1($drop_ship_address[0]['address_line1']);
++        $from_address->setAddressLine2($drop_ship_address[0]['address_line2']);
++        $from_address->setCity($drop_ship_address[0]['locality']);
++        $from_address->setCountryCode($drop_ship_address[0]['country_code']);
++        $from_address->setStateProvinceCode($drop_ship_address[0]['administrative_area']);
++        $from_address->setPostalCode($drop_ship_address[0]['postal_code']);
++        $ship_from = new ShipFrom();
++        $ship_from->setAddress($from_address);
++        $api_shipment->setShipFrom($ship_from);
++        break;
++      }else{
++        $this->setShipFrom($api_shipment);
++      }
++    }
++
+     $this->setPackage($api_shipment);
+     return $api_shipment;
+   }

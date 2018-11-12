@@ -1,0 +1,81 @@
+id: awards_products_variation
+status: true
+migration_group: awards
+migration_tags:
+  - CSV
+source:
+  plugin: awards_products_variation
+  path: modules/custom/awards_product_importer/assets/csv/products.csv
+  header_row_count: 1
+  keys:
+    - 'Product SKU'
+process:
+  field_prod_title: 'Product Name'
+  title: 'Product Name'
+  sku: 'Product SKU'
+  'field_prod_variation_description/value': 'Product Description'
+  'field_prod_variation_description/format':
+    plugin: default_value
+    default_value: 'full_html'
+  type:
+    plugin: default_value
+    default_value: default
+  price/number: Price
+  price/currency_code:
+    plugin: default_value
+    default_value: USD
+  weight/number:
+    -
+      plugin: default_value
+      source: Weight
+      default_value: lb
+  weight/unit:
+    -
+      plugin: default_value
+      source: WeightUnit
+      default_value: lb
+  dimensions/width:
+    plugin: default_value
+    default_value: 6
+  dimensions/height:
+    plugin: default_value
+    default_value: 6
+  dimensions/length:
+    plugin: default_value
+    default_value: 6
+  dimensions/unit:
+    plugin: default_value
+    default_value: in
+  'field_product_image/target_id':
+    plugin: migration
+    migration: awards_products_variation_photos
+    source: Product Image
+    no_stub: true
+  'field_product_image/alt': Product Name
+  #field_base_sku: Product SKU
+  field_base_sku: SKU
+  field_prod_var_size:
+    plugin: entity_generate
+    source: var_size
+    value_key: name
+    bundle: product_sizes
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_prod_var_price_break:
+    plugin: iterator
+    source: Discounts
+    process:
+      price: price
+      threshold: threshold
+  field_mix_match_items:
+    plugin: iterator
+    source: MixMatch
+    process:
+      sku: sku
+      price: price
+      threshold: threshold
+  field_setup_fee: Setup
+destination:
+  plugin: 'entity:commerce_product_variation'
+migration_dependencies: {  }
+

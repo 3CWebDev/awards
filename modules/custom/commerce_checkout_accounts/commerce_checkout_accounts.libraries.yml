@@ -1,0 +1,4 @@
+commerce-checkout-accounts:
+  version: 1.x
+  js:
+    js/commerce-checkout-accounts.js: {}

@@ -1,0 +1,77 @@
+<?php
+
+use Drupal\paragraphs\Entity\Paragraph;
+
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+
+/**
+ * Implements hook_preprocess_commerce_order().
+ */
+function awards_custom_text_preprocess_commerce_order(&$variables) {
+  /** @var Drupal\commerce_order\Entity\OrderInterface $order */
+  $order = $variables['order_entity'];
+  $order_extra_info = $order->get('field_order_special_instructions')->getString();
+  if (!empty($summary)) {
+    $variables['order']['order_extra_info'] = [
+        '#markup' => $order_extra_info,
+    ];
+  }
+}
+/**
+ * Create a New Paragraph and attach it to its order_item
+ * @param object $order_item
+ * @param array $values
+ * @param bool $is_new
+ *
+ */
+function awards_custom_text_create_paragraph($order_item, $values, $is_new) {
+
+  $qty = $values['qty'];
+  $paragraphs = array();
+
+  // https://drupal.stackexchange.com/questions/223792/set-value-of-list-field-of-a-node-with-multiple-values
+  for ($x = 1; $x <= $qty; $x++) {
+
+    if ($is_new){
+      $paragraph = Paragraph::create(['type' => 'engraving_text',]);
+      $paragraph->isNew();
+    }else{
+      $target_id = $order_item->get('field_item_custom_text')->getValue();
+      $paragraph = \Drupal\paragraphs\Entity\Paragraph::load($target_id[$x-1]['target_id']);
+    }
+
+    for ($y = 1; $y <= 20; $y++) { // TODO: set max count #
+      if (isset($values[$x][$y])){
+        $value = $values[$x][$y]['text'];
+        if (empty($value)){
+          $value = '<br />';
+        }
+        $paragraph->field_prod_engraving_text[$y-1] = ['value' => $value];
+      }
+    }
+
+    $paragraph->save();
+
+    $paragraphs[] = array(
+        'target_id' => $paragraph->id(),
+        'target_revision_id' => $paragraph->getRevisionId(),
+    );
+  }
+
+  $order_item->set('field_item_custom_text', $paragraphs);
+  $order_item->save();
+
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function awards_custom_text_preprocess_views_view(&$vars) {
+  $vars['#cache']['contexts'][] = 'route';
+  if ($vars['view_array']['#name'] == 'commerce_order_item_table') {
+    $vars['#attached']['library'][] = 'awards_custom_text/awards_custom_text_views_admin';
+  }
+}

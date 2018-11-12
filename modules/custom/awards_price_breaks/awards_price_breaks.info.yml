@@ -1,0 +1,8 @@
+name: 'Awards 4U Price Breaks'
+type: module
+description: 'Custom module to handle quantity price breaks.'
+core: 8.x
+package: 'Awards4U'
+
+dependencies:
+  - commerce_price

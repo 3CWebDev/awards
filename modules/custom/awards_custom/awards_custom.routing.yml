@@ -1,0 +1,7 @@
+awards_custom.settings:
+  path: '/admin/commerce/config/store/settings'
+  defaults:
+    _form: '\Drupal\awards_custom\Form\storeSettingsForm'
+    _title: 'Store Settings'
+  requirements:
+    _permission: 'administer commerce_order'

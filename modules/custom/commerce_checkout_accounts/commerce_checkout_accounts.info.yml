@@ -1,0 +1,10 @@
+# Package info
+name: Commerce Checkout Accounts
+description: Handles options for creating a new account, logging into an existing account, or checking out as a guest.
+type: module
+core: 8.x
+package: Commerce (contrib)
+
+dependencies:
+  - commerce:commerce
+  - commerce:commerce_checkout

@@ -1,0 +1,15 @@
+name: Awards4U CSV Products Importer
+type: module
+description: Migrate Importer Utilities for CSV Files
+core: 8.x
+package: Custom
+
+dependencies:
+  - file
+  - image
+  - commerce_store
+  - commerce_shipping
+  - commerce_product
+  - migrate
+  - migrate_plus
+  - migrate_source_csv

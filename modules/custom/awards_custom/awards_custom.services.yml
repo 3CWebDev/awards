@@ -1,0 +1,15 @@
+services:
+  awards_custom:
+    class: '\Drupal\awards_custom\EventSubscriber\OrderItemMatcherListener'
+    tags:
+      - { name: 'event_subscriber' }
+  awards_custom.custom_cart_event_subscriber:
+    class: Drupal\awards_custom\EventSubscriber\CustomCartEventSubscriber
+    arguments: ['@request_stack']
+    tags:
+      - { name: event_subscriber }
+  awards_custom.order_complete:
+    class: Drupal\awards_custom\EventSubscriber\OrderCompleteSubscriber
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

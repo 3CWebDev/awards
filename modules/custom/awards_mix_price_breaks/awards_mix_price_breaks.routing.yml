@@ -1,0 +1,7 @@
+awards_mix_price_breaks.my_page:
+  path: '/test'
+  defaults:
+    _controller: '\Drupal\awards_mix_price_breaks\Controller\ExampleController::myPage'
+    _title: 'My first page in D8'
+  requirements:
+    _permission: 'access content'

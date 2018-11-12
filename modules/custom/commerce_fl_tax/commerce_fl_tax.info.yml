@@ -1,0 +1,11 @@
+# Package info
+name: Awards4U Florida Sales Tax
+description: Calculates FL Sales Tax
+type: module
+core: 8.x
+package: Awards4U
+
+dependencies:
+  - commerce:commerce
+  - commerce:commerce_checkout
+  - commerce:commerce_tax

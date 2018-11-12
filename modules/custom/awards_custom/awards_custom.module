@@ -1,0 +1,334 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+/*
+function awards_custom_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context){
+
+}*/
+
+
+function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+
+  // Hide username field and populate it with the email field during validation
+  if ($form_id == 'user_register_form'){
+    $form['account']['name']['#access'] = FALSE;
+    $form['account']['name']['#required'] = FALSE;
+    array_unshift($form['#validate'] , 'awards_custom_validate_registration');
+  }
+
+  if ($form_id == 'commerce_checkout_flow_custom_checkout_flow' && isset($form['shipping_information'])){
+
+    //$form['shipping_information']['need_by_date_checkout_pane'] = $form['need_by_date_checkout_pane'];
+    //$form['need_by_date_checkout_pane']['order_date_needed']['widget']['#access'] = FALSE;
+    $form['#cache'] = ['max-age' => 0];
+    $entity = \Drupal::service('entity_type.manager')->getStorage('commerce_order')->create(array(
+            'type' => 'default'
+        )
+    );
+
+    //Get the EntityFormDisplay (i.e. the default Form Display) of this content type
+    $entity_form_display = \Drupal::service('entity_type.manager')->getStorage('entity_form_display')
+        ->load('commerce_order.default.default');
+
+    //Get the body field widget and add it to the form
+    if ($widget = $entity_form_display->getRenderer('field_order_date_needed')) { //Returns the widget class
+      $items = $entity->get('field_order_date_needed'); //Returns the FieldItemsList interface
+      $items->filterEmptyItems();
+
+      $form['shipping_information']['order_date_needed'] = $widget->form($items, $form, $form_state); //Builds the widget form and attach it to your form
+      $form['shipping_information']['order_date_needed']['#access'] = $items->access('edit');
+      $form['shipping_information']['order_date_needed']['#weight'] = 0;
+      $form['#validate'][] = 'awards_custom_validate_need_by_date';
+      $form['actions']['next']['#submit'][] = 'awards_custom_submit_need_by_date';
+
+    }
+
+    $request = \Drupal::request();
+    $current_path = $request->getPathInfo();
+    $path_args = explode('/', $current_path);
+    $order_id = $path_args[2];
+    $order = \Drupal\commerce_order\Entity\Order::load($order_id);
+    $order_date_needed = $order->get('field_order_date_needed')->getString();
+
+    $form['shipping_information']['order_date_needed']['widget'][0]['value']['#required'] = TRUE;
+    $form['shipping_information']['order_date_needed']['widget'][0]['value']['#default_value'] = (isset($order_date_needed) ? $order_date_needed : '');
+    $form['shipping_information']['order_date_needed']['widget'][0]['value']['#description'] = '<p><strong>NOTE:</strong> All orders require a minimum of 5 days for production and shipping, except "Ship Today" items.</p>';
+    $form['shipping_information']['disclaimer'] = array(
+        '#markup' => '<p class="disclaimer">We will contact you before your order ships.</p>',
+    );
+  }elseif($form_id == 'commerce_checkout_flow_custom_checkout_flow' && $form['#step_id'] == 'review'){
+
+    $request = \Drupal::request();
+    $current_path = $request->getPathInfo();
+    $path_args = explode('/', $current_path);
+    if ($path_args[3] != 'complete'){
+      $order_id = $path_args[2];
+      $order = \Drupal\commerce_order\Entity\Order::load($order_id);
+      $order_date_needed = $order->get('field_order_date_needed')->getString();
+      $order_date_needed = strtotime($order_date_needed);
+      $order_date_needed = date('n/j/Y',$order_date_needed);
+      $form['review']['shipping_information']['summary']['need_by_date']['summary']['#markup'] = '<div class="field--label">Need by Date</div><div class="field--item">' . $order_date_needed . '</div>';
+    }
+
+  }
+
+  if ($form_id == 'commerce_product_default_edit_form'){
+    //$form['variations']['widget']['#required'] = 0;
+  }
+
+  if (strpos($form_id, 'commerce_order_item_add_to_cart_form') !== FALSE){
+
+    //\Drupal::logger('$form_id')->notice($form_id);
+    //dpm($form);
+    $storage = $form_state->getStorage();
+
+    // Change Drop-down to radio selectors
+    if (isset($form['purchased_entity']['widget'][0]['variation']['#options'])){
+      $form['purchased_entity']['widget'][0]['variation']['#title'] = 'Select Type';
+      //$form['purchased_entity']['widget'][0]['variation']['#type'] = 'radios';
+    }
+
+
+    /*
+     * Image Upload Logic
+     * The image field is part of the product entity and we remove it if it is not set to active for this product
+    */
+    if ($storage['product']->hasField('field_allow_image_upload') && $storage['product']->get('field_allow_image_upload')->getString() == 1){
+
+      // Image/logo upload logic
+      if (isset($form['field_order_item_logo']['widget'])){
+        $form['field_order_item_logo']['widget']['#required'] = TRUE;
+        unset($form['field_order_item_logo']['widget']['#options']['_none']);
+
+        $form['field_logo_is_on_file']['widget'][0]['value']['#title'] = 'Enter the name of the logo we have on file';
+
+        $form['field_order_item_stock_image']['widget']['#states'] =  array(
+            'visible' => array(
+                ':input[name="field_order_item_logo"]' => array('value' => 'stock_logo'),
+            ),
+
+        );
+        $form['#validate'][] = 'awards_custom_validate_image_fields';
+
+        $form['field_custom_prod_image']['#states'] =  array(
+            'visible' => array(
+                ':input[name="field_order_item_logo"]' => array('value' => 'custom_logo'),
+            ),
+            'required' => array(
+                ':input[name="field_order_item_logo"]' => array('value' => 'custom_logo'),
+            ),
+        );
+
+        $form['field_logo_is_on_file']['#states'] =  array(
+            'visible' => array(
+                ':input[name="field_order_item_logo"]' => array('value' => 'logo_on_file'),
+            ),
+            'required' => array(
+                ':input[name="field_order_item_logo"]' => array('value' => 'logo_on_file'),
+            ),
+        );
+      }
+    }else{
+
+      // Remove image field
+      unset($form['field_order_item_logo']['widget']);
+      unset($form['field_order_item_stock_image']['widget']);
+      unset($form['field_custom_prod_image']);
+      unset($form['field_logo_is_on_file']);
+    }
+
+    // Remove the custom text field from the add to cart form
+    if (isset($form['field_item_custom_text'])){
+        //unset($form['field_item_custom_text']);
+        $form['field_item_custom_text']['#access'] = FALSE;
+    }
+    if (isset($form['field_prod_custom_text'])){
+      //unset($form['field_item_custom_text']);
+      $form['field_prod_custom_text']['#access'] = FALSE;
+    }
+
+  }
+}
+
+
+function awards_custom_validate_registration(array &$form, FormStateInterface $form_state){
+  $values = $form_state->getValues();
+  $form_state->setValue('name', array($values['mail']));
+}
+
+function awards_custom_validate_need_by_date(array &$form, FormStateInterface $form_state){
+
+  $values = $form_state->getValues();
+
+  // Obtain and parse shipping method
+  if (!isset($values['shipping_information']['shipments'][0]['shipping_method'][0])){
+    return;
+  }
+  $shipping_method = $values['shipping_information']['shipments'][0]['shipping_method'][0];
+  $shipping_method = explode("--", $shipping_method);
+
+  // Set the default day limit
+  $config = \Drupal::config('awards_custom.settings');
+  $production_days = $config->get('awards_custom_product_days');
+
+  if (!is_numeric($production_days)){
+    $production_days = 5;
+  }
+
+  $day_limit = 1; // DEFAULT
+
+  // Is this a UPS Method? (#3 is UPS)
+  if ($shipping_method[0] == 3){
+    switch ($shipping_method[1]){
+      case '01':
+        // Next Day Air +1
+        break;
+      case '02':
+        // Second Day Air +2
+        $day_limit = 2;
+        break;
+      case '03':
+        // UPS Ground +1
+        $day_limit = 2;
+        break;
+      case '12':
+        // UPS Three-Day Select +3
+        $day_limit = 3;
+        break;
+    }
+  }
+
+  // Is this a Lafayette Store Pickup PICKUP Method? (#4 is Lafayette Store Pickup)
+  if ($shipping_method[0] == 4){
+    $day_limit = 0;
+  }
+  // Is this a Market Street Store Pickup Store Pickup PICKUP Method? (#5 is Market Street Store Pickup Store Pickup)
+  if ($shipping_method[0] == 5){
+    $day_limit = 0;
+  }
+
+  // Is this a Expedited Service - We Will Call You With A Quote? (#6 is Expedited Service - We Will Call You With A Quote)
+  if ($shipping_method[0] == 6){
+    $day_limit = 0;
+  }
+
+  $day_limit = $production_days + $day_limit;
+
+  $need_by_date = $values['field_order_date_needed'][0]['value'];
+
+  $number_of_working_days = awards_custom_calc_number_of_working_days(date('Y-m-d'), $need_by_date);
+
+  if ($number_of_working_days < $day_limit){
+    $form_state->setErrorByName('order_date_needed', t('Date Needed must be at least ' . $day_limit . ' business days from today. If needed sooner, please select "Expedited Service" below and we will contact you with options and charges.'));
+  }
+
+}
+
+// Save Need by Date to Order object
+function awards_custom_submit_need_by_date(array &$form, FormStateInterface $form_state){
+  $request = \Drupal::request();
+  $current_path = $request->getPathInfo();
+  $path_args = explode('/', $current_path);
+  $order_id = $path_args[2];
+  $order = \Drupal\commerce_order\Entity\Order::load($order_id);
+
+  $values = $form_state->getValues();
+  $need_by_date = $values['field_order_date_needed'][0]['value'];
+
+  $order->set('field_order_date_needed', $need_by_date);
+  $order->save();
+
+}
+
+
+function awards_custom_validate_image_fields(array &$form, FormStateInterface $form_state) {
+
+    $values = $form_state->getValues();
+
+    switch ($values['field_order_item_logo'][0]['value']){
+      case 'custom_logo':
+        if (empty($values['field_custom_prod_image'][0]['fids'])){
+          $form_state->setErrorByName('field_custom_prod_image', t('Please upload your custom image.'));
+        }
+        break;
+      case 'stock_logo':
+        if (empty($values['field_order_item_stock_image'][0]['target_id'])){
+          $form_state->setErrorByName('field_custom_prod_image', t('Please select your stock image.'));
+        }
+        break;
+      case 'logo_on_file':
+        if (empty($values['field_logo_is_on_file'][0]['value'])){
+          $form_state->setErrorByName('field_logo_is_on_file', t('Please enter the name of logo on file.'));
+        }
+        break;
+    }
+
+}
+
+//The function returns the no. of business days between two dates and it skips the holidays
+function awards_custom_calc_number_of_working_days($startDate, $endDate, $holidays = array()){
+
+  // Perform strtotime calculations just once
+  $endDate = strtotime($endDate);
+  $startDate = strtotime($startDate);
+
+  //The total number of days between the two dates. We compute the no. of seconds and divide it to 60*60*24
+  //We add one to inlude both dates in the interval.
+  $days = ($endDate - $startDate) / 86400 + 1;
+
+  $no_full_weeks = floor($days / 7);
+  $no_remaining_days = fmod($days, 7);
+
+  //It will return 1 if it's Monday,.. ,7 for Sunday
+  $the_first_day_of_week = date("N", $startDate);
+  $the_last_day_of_week = date("N", $endDate);
+
+  //---->The two can be equal in leap years when february has 29 days, the equal sign is added here
+  //In the first case the whole interval is within a week, in the second case the interval falls in two weeks.
+  if ($the_first_day_of_week <= $the_last_day_of_week) {
+    if ($the_first_day_of_week <= 6 && 6 <= $the_last_day_of_week) $no_remaining_days--;
+    if ($the_first_day_of_week <= 7 && 7 <= $the_last_day_of_week) $no_remaining_days--;
+  }
+  else {
+    // (edit by Tokes to fix an edge case where the start day was a Sunday
+    // and the end day was NOT a Saturday)
+
+    // the day of the week for start is later than the day of the week for end
+    if ($the_first_day_of_week == 7) {
+      // if the start date is a Sunday, then we definitely subtract 1 day
+      $no_remaining_days--;
+
+      if ($the_last_day_of_week == 6) {
+        // if the end date is a Saturday, then we subtract another day
+        $no_remaining_days--;
+      }
+    }
+    else {
+      // the start date was a Saturday (or earlier), and the end date was (Mon..Fri)
+      // so we skip an entire weekend and subtract 2 days
+      $no_remaining_days -= 2;
+    }
+  }
+
+  //The no. of business days is: (number of weeks between the two dates) * (5 working days) + the remainder
+  //---->february in none leap years gave a remainder of 0 but still calculated weekends between first and last day, this is one way to fix it
+  $workingDays = $no_full_weeks * 5;
+  if ($no_remaining_days > 0 )
+  {
+    $workingDays += $no_remaining_days;
+  }
+
+  //We subtract the holidays
+  foreach($holidays as $holiday){
+    $time_stamp=strtotime($holiday);
+    //If the holiday doesn't fall in weekend
+    if ($startDate <= $time_stamp && $time_stamp <= $endDate && date("N",$time_stamp) != 6 && date("N",$time_stamp) != 7)
+      $workingDays--;
+  }
+
+  return $workingDays;
+}

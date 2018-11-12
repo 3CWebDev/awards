@@ -1,0 +1,6 @@
+catalog_import.admin_settings_form_link:
+  title: Catalog Import settings
+  description: 'Configure Catalog Import'
+  route_name: catalog_import.admin_settings_form
+  parent: system.admin_config
+  weight: 99

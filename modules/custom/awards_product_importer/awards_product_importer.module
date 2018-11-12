@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains awards_product_importer.module.
+ */
+
+/**
+ * Implements hook_migration_plugins_alter().
+ */
+function awards_product_importer_migration_plugins_alter(&$definitions) {
+  $config = \Drupal::service('config.factory')->getEditable('awards_product_importer.settings');
+
+  $products_path = implode('/', [
+    \Drupal::service('file_system')->realpath(file_default_scheme() . "://"),
+    $config->get('integration_path'),
+    $config->get('products_integration_file')
+  ]);
+
+  $categories_path = implode('/', [
+    \Drupal::service('file_system')->realpath(file_default_scheme() . "://"),
+    $config->get('integration_path'),
+    $config->get('categories_integration_file')
+  ]);
+
+  $definitions['awards_products']['source']['path'] = $products_path;
+  $definitions['awards_catalog']['source']['path'] = $categories_path;
+}
+
+
+
+/**
+ * Utility: find term by name and vid.
+ * @param null $name
+ *  Term name
+ * @param null $vid
+ *  Term vid
+ * @return int
+ *  Term id or 0 if none.
+ */
+function getTidByName($name = NULL, $vid = NULL) {
+  $properties = [];
+  if (!empty($name)) {
+    $properties['name'] = $name;
+  }
+  if (!empty($vid)) {
+    $properties['vid'] = $vid;
+  }
+  $terms = \Drupal::entityManager()->getStorage('taxonomy_term')->loadByProperties($properties);
+
+  $tids = array();
+  foreach ($terms as $term){
+    $tids[] = $term->id();
+  }
+
+  return $tids;
+}

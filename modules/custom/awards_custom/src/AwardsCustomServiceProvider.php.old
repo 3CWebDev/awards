@@ -1,0 +1,23 @@
+<?Php
+namespace Drupal\awards_custom;
+
+use Drupal\awards_custom\EventSubscriber\CartEventSubscriber;
+use Drupal\Core\DependencyInjection\ContainerBuilder;
+use Drupal\Core\DependencyInjection\ServiceProviderBase;
+use Symfony\Component\DependencyInjection\Reference;
+
+class AwardsCustomServiceProvider extends ServiceProviderBase {
+
+  public function alter(ContainerBuilder $container) {
+    $container
+        ->getDefinition('commerce_cart.cart_subscriber')
+        ->setClass(CartEventSubscriber::class)
+        ->setArguments([
+            new Reference('string_translation'),
+            new Reference('commerce_cart.cart_provider'),
+            // Add new services when needed.
+            ]
+        );
+  }
+
+}

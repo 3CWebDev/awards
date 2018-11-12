@@ -1,0 +1,10 @@
+# Package info
+name: Awards4U Custom Code (general)
+description: Custom Code (general)
+type: module
+core: 8.x
+package: Awards4U
+
+# Dependencies
+dependencies: 
+
