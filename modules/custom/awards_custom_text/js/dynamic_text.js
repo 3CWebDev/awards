@@ -36,7 +36,7 @@
         }
     })
 
-    $('select[name=template]').change(function() {
+    $(document).on('change','select[name=template]',function(){
         tid = this.value;
 
         // Start ajax request
@@ -56,9 +56,7 @@
                 customTextPreview();
             }
         });
-    })
-
-
+    });
 
     function customTextPreview(){
         var lines = new Array();

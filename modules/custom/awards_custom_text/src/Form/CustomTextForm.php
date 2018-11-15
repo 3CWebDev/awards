@@ -143,20 +143,17 @@ class CustomTextForm extends FormBase {
     // Medallion Logic
     if ($medallion){
 
-      $output = '';
+      $medallion_output = '<legend><span class="fieldset-legend js-form-required form-required">Select Ribbon</span>  </legend>';
 
       $image_info = $product->field_product_base_image->getValue();
       if (isset($image_info[0]['target_id'])){
         $fid = $image_info[0]['target_id'];
         $file = File::load($fid);
         $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
-        $output = '<div class="medallion-image"><img src="' . $image_uri . '" /></div><div class="ribbon-sample"></div>';
+        $medallion_output .= '<div class="ribbon-sample"></div><div class="medallion-image"><img src="' . $image_uri . '" /></div>';
       }
 
-      $form['medallion'] = array(
-        '#markup' => $output,
-        '#weight' => -3,
-      );
+
 
 
       $vid = 'ribbons';
@@ -175,10 +172,11 @@ class CustomTextForm extends FormBase {
 
       $form['ribbon'] = array(
         '#type' => 'radios',
-        '#title' => t('Select Ribbon'),
+        //'#title' => t(''),
         '#options' => $options,
-        '#weight' => -4,
+        '#weight' => -3,
         '#required' => TRUE,
+        '#prefix' => $medallion_output,
         '#default_value' => $order_item->field_ribbon->getString(),
       );
 
@@ -207,24 +205,56 @@ class CustomTextForm extends FormBase {
       );
 
       // Text Template Options
-      $categories = $product->field_prod_category->getValue();
-      if (isset($categories[0])){
+      $template_categories = $product->field_prod_category->getValue();
 
-        $options = awards_custom_text_get_templates($categories, $num_lines);
+      if (isset($template_categories[0])){
+
+        $template_types = awards_custom_text_get_template_categories($template_categories, $num_lines);
+
+        $selected = ($form_state->hasValue('template_type')) ? $form_state->getValue('template_type'): key($template_types);
+
+        $form['template_type'] = array(
+          '#type' => 'select',
+          '#title' => 'Template Category',
+          '#options' => $template_types,
+          '#weight' => -1,
+          '#states' => array(
+            'visible' => array(
+              ':input[name="order_type"]' => array('value' => '1'),
+            ),
+          ),
+          '#default_value' => $selected,
+          '#ajax' => array(
+            //'callback' => 'awards_custom_text_dropdown_callback',
+            'callback' => 'Drupal\awards_custom_text\Form\CustomTextForm::callback',
+            'wrapper' => 'dropdown-second-replace',
+            'progress' => array(
+              'type' => 'throbber',
+            ),
+          ),
+
+        );
+
         if (count($options) > 1){
           $form['template'] = array(
-              '#type' => 'select',
-              '#title' => 'Template Examples',
-              '#options' => $options,
-              '#weight' => -1,
-              '#states' => array(
-                  'visible' => array(
-                      ':input[name="order_type"]' => array('value' => '1'),
-                  ),
+            '#type' => 'select',
+            '#title' => 'Template Examples',
+            '#options' => awards_custom_text_get_templates($categories, $num_lines, $selected),
+            '#weight' => 0,
+            '#states' => array(
+              'visible' => array(
+                ':input[name="order_type"]' => array('value' => '1'),
               ),
-
+              'invisible' => array(
+                ':input[name="template_type"]' => array('value' => '0'),
+              ),
+            ),
+            '#prefix' => '<div id="dropdown-second-replace">',
+            '#suffix' => '</div>',
           );
+
         }
+
       }
 
       $form[$x]["#tree"] = TRUE;
@@ -376,9 +406,44 @@ class CustomTextForm extends FormBase {
     $response = new RedirectResponse('/cart', 302);
     $response->send();
   }
+
+  public function callback(array &$form, FormStateInterface $form_state) : array {
+    return $form['template'];
+  }
 }
 
-function awards_custom_text_get_templates($categories, $num_lines){
+function awards_custom_text_get_template_categories($categories, $num_lines){
+  $options = array();
+  $options[0] = '-select a template type-';
+
+  foreach ($categories as $key => $category){
+    $target_id = $category['target_id'];
+
+    $templates = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties([
+      'field_template_product_category' => $target_id,
+    ]);
+
+    foreach($templates as $template){
+
+      $target_ids = $template->field_template_text->getValue();
+      foreach($target_ids as $key => $target_id){
+
+        $paragraph = \Drupal\paragraphs\Entity\Paragraph::load($target_id['target_id']);
+        $count = count($paragraph->get('field_template_engraving_text')->getValue());
+
+        if ($count <= $num_lines){
+          if ($template_type = $template->field_text_templates_type->getString())
+          $options[$template_type] = $template_type;
+        }
+      }
+    }
+  }
+
+  return $options;
+}
+
+function awards_custom_text_get_templates($categories, $num_lines, $selected){
+
   $options = array();
   $options[0] = '-select a template-';
 
@@ -390,6 +455,7 @@ function awards_custom_text_get_templates($categories, $num_lines){
     // Find Templates with matching categories
     $templates = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties([
         'field_template_product_category' => $target_id,
+         'field_text_templates_type' => $selected,
     ]);
 
     foreach($templates as $template){
@@ -399,6 +465,7 @@ function awards_custom_text_get_templates($categories, $num_lines){
 
         $paragraph = \Drupal\paragraphs\Entity\Paragraph::load($target_id['target_id']);
         $count = count($paragraph->get('field_template_engraving_text')->getValue());
+        
         if ($count <= $num_lines){
           $options[$target_id['target_id']] = $template->name->getString();
         }
@@ -408,3 +475,4 @@ function awards_custom_text_get_templates($categories, $num_lines){
 
   return $options;
 }
+
