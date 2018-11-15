@@ -11,7 +11,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 class ViewCustomTextController extends ControllerBase {
 
   /**
-   * Returns a simple page.
+   * Returns a page displaying the custom text that was entered.
    *
    * @return array
    *   A simple renderable array.
@@ -19,6 +19,7 @@ class ViewCustomTextController extends ControllerBase {
   public function ViewCustomText($order_item_id) {
 
     $order_item = \Drupal\commerce_order\Entity\OrderItem::load($order_item_id);
+
     if ($order_item->field_custom_text_entered->getString() == 1){
       $custom_texts = $order_item->field_item_custom_text->getValue();
       foreach ($custom_texts as $key => $custom_text){

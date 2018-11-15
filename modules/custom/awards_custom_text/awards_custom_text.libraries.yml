@@ -2,6 +2,7 @@ awards_custom_text:
   version: 1.x
   js:
     js/dynamic_text.js: {}
+    js/ribbon_selector.js: {}
   dependencies:
     - core/jquery
     - core/drupalSettings

@@ -7,7 +7,7 @@
 /profiles/contrib/
 /libraries/
 /private/
-
+/private:/
 # Ignore sensitive information
 /sites/*/settings.php
 /sites/*/settings.local.php

@@ -12,7 +12,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\UrlHelper;
 //use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
+use Drupal\image\Entity\ImageStyle;
+use Drupal\file\Entity\File;
 
 /**
  * Contribute form.
@@ -33,10 +34,18 @@ class CustomTextForm extends FormBase {
     $product = \Drupal\commerce_product\Entity\Product::load($product_id);
 
     $categories = $product->field_prod_category->getValue(0);
+
+    $medallion = FALSE;
     $category_classes = array();
+
     foreach ($categories as $key => $category){
       $term = \Drupal\taxonomy\Entity\Term::load($category['target_id'])->name->value;
       $category_classes[] = preg_replace('@[^a-z0-9-]+@','-', strtolower($term));
+
+      // Does this product belong to the medallion category?
+      if ($category['target_id'] == 408 || $category['target_id'] == 619){
+        $medallion = TRUE;
+      }
     }
 
     $num_lines = $product->field_number_of_lines->getString();
@@ -101,6 +110,7 @@ class CustomTextForm extends FormBase {
     $form['#attached']['library'][] = 'awards_custom_text/awards_custom_text'; // Custom JS
     $form['#attached']['drupalSettings']['awards_custom']['awards_custom'] ['qty'] = $qty; // send variable to JS
 
+
     $options = array(
         1 => 'New Order',
         2 => "Repeat Order",
@@ -109,12 +119,13 @@ class CustomTextForm extends FormBase {
         '#type' => 'radios',
         '#title' => 'Order Type',
         '#options' => $options,
-        '#weight' => -2,
+        '#weight' => -6,
         '#default_value' => ($order_item->field_repeat_order->getString() ? $order_item->field_repeat_order->getString() : 1),
     );
 
     $form['repeat_order_info'] = array(
         '#type' => 'textarea',
+        '#weight' => -5,
         '#title' => 'Repeat Order Information',
         '#description' => '<p>We will use your most recent design layout. Please provide any names, dates or other information that should change from the previous layout.</p>',
         '#default_value' => $order_item->field_repeat_order_description->getString(),
@@ -128,6 +139,51 @@ class CustomTextForm extends FormBase {
         ),
 
     );
+
+    // Medallion Logic
+    if ($medallion){
+
+      $output = '';
+
+      $image_info = $product->field_product_base_image->getValue();
+      if (isset($image_info[0]['target_id'])){
+        $fid = $image_info[0]['target_id'];
+        $file = File::load($fid);
+        $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
+        $output = '<div class="medallion-image"><img src="' . $image_uri . '" /></div><div class="ribbon-sample"></div>';
+      }
+
+      $form['medallion'] = array(
+        '#markup' => $output,
+        '#weight' => -3,
+      );
+
+
+      $vid = 'ribbons';
+      $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+
+      $options = array();
+
+      foreach ($terms as $term) {
+        $fid = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid)->get('field_ribbon_image')->getValue()[0]['target_id'];
+        $file = File::load($fid);
+        $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
+        $output = '<span class="ribbon-image" id="id-' . $term->tid . '"><img src="' . $image_uri . '" alt="' . $term->name . '"/></span>';
+        $options[$term->tid] = $output;
+
+      }
+
+      $form['ribbon'] = array(
+        '#type' => 'radios',
+        '#title' => t('Select Ribbon'),
+        '#options' => $options,
+        '#weight' => -4,
+        '#required' => TRUE,
+        '#default_value' => $order_item->field_ribbon->getString(),
+      );
+
+    }
+
 
     for ($x = 1; $x <= $qty; $x++) {
 
@@ -289,6 +345,7 @@ class CustomTextForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+
     // Save values to order item and update
     $values = $form_state->getValues();
 
@@ -309,6 +366,10 @@ class CustomTextForm extends FormBase {
     }else{
       // Repeat order type
       $order_item->set('field_repeat_order_description', $values['repeat_order_info']);
+    }
+
+    if (isset($values['ribbon'])){
+      $order_item->field_ribbon->target_id = $values['ribbon'];
     }
 
     $order_item->save();

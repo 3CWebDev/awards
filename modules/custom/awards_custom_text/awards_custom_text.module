@@ -12,6 +12,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
  */
 function awards_custom_text_preprocess_commerce_order(&$variables) {
   /** @var Drupal\commerce_order\Entity\OrderInterface $order */
+  
   $order = $variables['order_entity'];
   $order_extra_info = $order->get('field_order_special_instructions')->getString();
   if (!empty($summary)) {

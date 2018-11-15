@@ -55,7 +55,9 @@ class CustomCartEventSubscriber implements EventSubscriberInterface {
     $product = \Drupal\commerce_product\Entity\Product::load($product_id);
 
     /* Check if cart item contains custom text option and, if so, has the text been entered?*/
+
     if (isset($product->field_number_of_lines)){
+
       $number_of_lines = $product->field_number_of_lines->getString();
       if (is_numeric($number_of_lines)){
         $order_item = $event->getOrderItem();

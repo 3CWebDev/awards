@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "cf890f6b7bfec234bb66a6ec77a0c5e8",
@@ -178,7 +178,7 @@
                 "testing",
                 "web"
             ],
-            "time": "2018-01-07T17:25:05+00:00"
+            "time": "2018-01-07 17:25:05"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -1634,7 +1634,7 @@
                 "issues": "https://www.drupal.org/project/issues/backup_migrate",
                 "slack": "https://drupal.slack.com/messages/C7C4M4QJV/details/"
             },
-            "time": "2018-10-26T19:29:18+00:00"
+            "time": "2018-10-26 19:29:18"
         },
         {
             "name": "drupal/better_exposed_filters",
@@ -2420,24 +2420,24 @@
                 "source": "http://cgit.drupalcode.org/commerce_abandoned_carts",
                 "issues": "https://www.drupal.org/project/issues/commerce_abandoned_carts"
             },
-            "time": "2018-08-29T10:00:37+00:00"
+            "time": "2018-08-29 10:00:37"
         },
         {
             "name": "drupal/commerce_authnet",
-            "version": "1.0.0-rc2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/commerce_authnet",
-                "reference": "8.x-1.0-rc2"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce_authnet-8.x-1.0-rc2.zip",
-                "reference": "8.x-1.0-rc2",
-                "shasum": "0a28ace2c37b9a135e428e629cc666288c15aa8b"
+                "url": "https://ftp.drupal.org/files/projects/commerce_authnet-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "490452c9d576714bd2dbe1e9d677c16f1cc82893"
             },
             "require": {
-                "commerceguys/authnet": "^v1.0.0-rc4",
+                "commerceguys/authnet": "^1.1.1",
                 "drupal/commerce": "~2.0",
                 "drupal/commerce_payment": "*",
                 "drupal/core": "~8.5",
@@ -2449,11 +2449,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc2",
-                    "datestamp": "1532108281",
+                    "version": "8.x-1.0",
+                    "datestamp": "1540836781",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -2552,7 +2552,7 @@
                 "source": "http://cgit.drupalcode.org/commerce_avatax",
                 "issues": "http://drupal.org/project/issues/commerce_avatax"
             },
-            "time": "2018-08-14T15:14:54+00:00"
+            "time": "2018-08-14 15:14:54"
         },
         {
             "name": "drupal/commerce_cart",
@@ -3162,7 +3162,7 @@
                 "source": "http://cgit.drupalcode.org/commerce_ups",
                 "issues": "https://www.drupal.org/project/issues/commerce_ups"
             },
-            "time": "2018-09-13T18:37:46+00:00"
+            "time": "2018-09-13 18:37:46"
         },
         {
             "name": "drupal/commerce_variation_cart_form",
@@ -3264,7 +3264,7 @@
                 "source": "https://github.com/drugan/commerce_xquantity",
                 "issues": "https://github.com/drugan/commerce_xquantity/issues"
             },
-            "time": "2018-03-18T15:24:03+00:00"
+            "time": "2018-03-18 15:24:03"
         },
         {
             "name": "drupal/conditional_fields",
@@ -3322,7 +3322,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/conditional_fields"
             },
-            "time": "2018-07-03T23:30:03+00:00"
+            "time": "2018-07-03 23:30:03"
         },
         {
             "name": "drupal/config_devel",
@@ -3704,16 +3704,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.6.2",
+            "version": "8.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "356292934802bb1aecc478e88a3cba77442d7c62"
+                "reference": "9e9a1dd9e280ebaf10622217e54448b529167965"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/356292934802bb1aecc478e88a3cba77442d7c62",
-                "reference": "356292934802bb1aecc478e88a3cba77442d7c62",
+                "url": "https://api.github.com/repos/drupal/core/zipball/9e9a1dd9e280ebaf10622217e54448b529167965",
+                "reference": "9e9a1dd9e280ebaf10622217e54448b529167965",
                 "shasum": ""
             },
             "require": {
@@ -3879,7 +3879,7 @@
                 "jcalderonzumba/gastonjs": "^1.0.2",
                 "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
                 "mikey179/vfsstream": "^1.2",
-                "phpspec/prophecy": "^1.4",
+                "phpspec/prophecy": "^1.7",
                 "phpunit/phpunit": "^4.8.35 || ^6.5",
                 "symfony/css-selector": "^3.4.0",
                 "symfony/debug": "^3.4.0",
@@ -3938,7 +3938,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2018-10-17T22:19:50+00:00"
+            "time": "2018-11-07T14:45:40+00:00"
         },
         {
             "name": "drupal/csv_serialization",
@@ -5262,7 +5262,7 @@
                 "issues": "http://drupal.org/project/issues/libraries",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2017-03-15T17:04:08+00:00"
+            "time": "2017-03-15 17:04:08"
         },
         {
             "name": "drupal/libraries_ui",
@@ -5575,7 +5575,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/masonry"
             },
-            "time": "2017-08-11T16:29:20+00:00"
+            "time": "2017-08-11 16:29:20"
         },
         {
             "name": "drupal/masonry_views",
@@ -5618,7 +5618,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/masonry_views"
             },
-            "time": "2017-08-11T17:13:56+00:00"
+            "time": "2017-08-11 17:13:56"
         },
         {
             "name": "drupal/menu_link_attributes",
@@ -5972,7 +5972,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/mimemail"
             },
-            "time": "2018-09-12T19:16:13+00:00"
+            "time": "2018-09-12 19:16:13"
         },
         {
             "name": "drupal/module_filter",
@@ -6265,7 +6265,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/path_redirect_import"
             },
-            "time": "2017-01-26T16:55:12+00:00"
+            "time": "2017-01-26 16:55:12"
         },
         {
             "name": "drupal/pathauto",
@@ -6330,17 +6330,17 @@
         },
         {
             "name": "drupal/physical",
-            "version": "1.0.0-rc3",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/physical",
-                "reference": "8.x-1.0-rc3"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/physical-8.x-1.0-rc3.zip",
-                "reference": "8.x-1.0-rc3",
-                "shasum": "5d2e4325b72d66ed8671b4a72fd1a731d4548143"
+                "url": "https://ftp.drupal.org/files/projects/physical-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "e5296be60a66bfe10b796dcb90973bafc4823f51"
             },
             "require": {
                 "drupal/core": "*"
@@ -6351,11 +6351,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc3",
-                    "datestamp": "1491902043",
+                    "version": "8.x-1.0",
+                    "datestamp": "1541601481",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -7262,7 +7262,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/swiftmailer"
             },
-            "time": "2018-06-05T08:56:33+00:00"
+            "time": "2018-06-05 08:56:33"
         },
         {
             "name": "drupal/token",
@@ -7556,7 +7556,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/views_data_export"
             },
-            "time": "2018-09-18T16:43:33+00:00"
+            "time": "2018-09-18 16:43:33"
         },
         {
             "name": "drupal/webform",
