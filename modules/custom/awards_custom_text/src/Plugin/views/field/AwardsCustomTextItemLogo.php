@@ -47,7 +47,7 @@ class AwardsCustomTextItemLogo extends FieldPluginBase {
           $user = \Drupal::currentUser();
           if ($user->hasPermission('administer commerce_order')){
             $output .= '<p>Name: <a href="/taxonomy/term/' . $term->tid->getString() . '">' . $term->name->getString() . '</a></p>';
-            $output .= '<p>Download: <a target="_blank" href="' . $url .'">download</a></p>';
+            $output .= '<p><a target="_blank" href="' . $url .'">download</a></p>';
           }else{
 
             $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
@@ -59,18 +59,36 @@ class AwardsCustomTextItemLogo extends FieldPluginBase {
           return check_markup($output, 'full_html');
           break;
         case 'custom_logo':
+
+          if (strpos($order_item->field_custom_prod_image->entity->getMimeType(), 'image') !== false) {
+            $is_image = TRUE;
+          }else{
+            $is_image = FALSE;
+          }
+
           $output = '<p>Custom logo</p>';
 
-          $url = file_create_url($order_item->field_custom_prod_image->entity->getFileUri());
+          if ($is_image){
+            $url = file_create_url($order_item->field_custom_prod_image->entity->getFileUri());
+            $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
+            $image_url = $style->buildUrl($order_item->field_custom_prod_image->entity->getFileUri());
 
-          $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
-          $image_url = $style->buildUrl($order_item->field_custom_prod_image->entity->getFileUri());
+            $output .= '<p><a target="_blank" target="_blank" href="' . $url .'"><img src="' . $image_url . '" /></a></p>';
+            $user = \Drupal::currentUser();
+            if ($user->hasPermission('administer commerce_order')) {
+              $output .= '<p><a target="_blank" href="' . $url . '">download</a></p>';
+            }
+          }else{
+            $user = \Drupal::currentUser();
+            if ($user->hasPermission('administer commerce_order')) {
+              $url = file_create_url($order_item->field_custom_prod_image->entity->getFileUri());
+              $output = '<p><a target="_blank" href="' . $url . '">download</a></p>';
+            }else{
+              $output = $order_item->field_custom_prod_image->entity->getFilename();
+            }
 
-          $output .= '<p><a target="_blank" target="_blank" href="' . $url .'"><img src="' . $image_url . '" /></a></p>';
-          $user = \Drupal::currentUser();
-          if ($user->hasPermission('administer commerce_order')) {
-            $output .= '<p>Download: <a target="_blank" href="' . $url . '">download</a></p>';
           }
+
           return check_markup($output, 'full_html');
           break;
         case 'logo_on_file':

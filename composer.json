@@ -81,7 +81,9 @@
         "drupal/super_login": "^1.0",
         "drupal/commerce_abandoned_carts": "1.x-dev",
         "drupal/recaptcha": "^2.3",
-        "drupal/commerce_ups": "3.x-dev"
+        "drupal/commerce_ups": "3.x-dev",
+        "drupal/facets_pretty_paths": "^1.0@beta",
+        "drupal/draggableviews": "^1.2"
     },   
     "minimum-stability": "dev",
     "prefer-stable": true,

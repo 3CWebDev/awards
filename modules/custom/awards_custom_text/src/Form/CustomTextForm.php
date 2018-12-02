@@ -210,50 +210,52 @@ class CustomTextForm extends FormBase {
       if (isset($template_categories[0])){
 
         $template_types = awards_custom_text_get_template_categories($template_categories, $num_lines);
+        if (count($template_types) > 1){
+          $selected = ($form_state->hasValue('template_type')) ? $form_state->getValue('template_type'): key($template_types);
 
-        $selected = ($form_state->hasValue('template_type')) ? $form_state->getValue('template_type'): key($template_types);
-
-        $form['template_type'] = array(
-          '#type' => 'select',
-          '#title' => 'Template Category',
-          '#options' => $template_types,
-          '#weight' => -1,
-          '#states' => array(
-            'visible' => array(
-              ':input[name="order_type"]' => array('value' => '1'),
-            ),
-          ),
-          '#default_value' => $selected,
-          '#ajax' => array(
-            //'callback' => 'awards_custom_text_dropdown_callback',
-            'callback' => 'Drupal\awards_custom_text\Form\CustomTextForm::callback',
-            'wrapper' => 'dropdown-second-replace',
-            'progress' => array(
-              'type' => 'throbber',
-            ),
-          ),
-
-        );
-
-        if (count($options) > 1){
-          $form['template'] = array(
+          $form['template_type'] = array(
             '#type' => 'select',
-            '#title' => 'Template Examples',
-            '#options' => awards_custom_text_get_templates($categories, $num_lines, $selected),
-            '#weight' => 0,
+            '#title' => 'Template Category',
+            '#options' => $template_types,
+            '#weight' => -1,
             '#states' => array(
               'visible' => array(
                 ':input[name="order_type"]' => array('value' => '1'),
               ),
-              'invisible' => array(
-                ':input[name="template_type"]' => array('value' => '0'),
+            ),
+            '#default_value' => $selected,
+            '#ajax' => array(
+              //'callback' => 'awards_custom_text_dropdown_callback',
+              'callback' => 'Drupal\awards_custom_text\Form\CustomTextForm::callback',
+              'wrapper' => 'dropdown-second-replace',
+              'progress' => array(
+                'type' => 'throbber',
               ),
             ),
-            '#prefix' => '<div id="dropdown-second-replace">',
-            '#suffix' => '</div>',
+
           );
 
+          if (count($options) > 1){
+            $form['template'] = array(
+              '#type' => 'select',
+              '#title' => 'Template Examples',
+              '#options' => awards_custom_text_get_templates($categories, $num_lines, $selected),
+              '#weight' => 0,
+              '#states' => array(
+                'visible' => array(
+                  ':input[name="order_type"]' => array('value' => '1'),
+                ),
+                'invisible' => array(
+                  ':input[name="template_type"]' => array('value' => '0'),
+                ),
+              ),
+              '#prefix' => '<div id="dropdown-second-replace">',
+              '#suffix' => '</div>',
+            );
+
+          }
         }
+
 
       }
 
@@ -465,7 +467,7 @@ function awards_custom_text_get_templates($categories, $num_lines, $selected){
 
         $paragraph = \Drupal\paragraphs\Entity\Paragraph::load($target_id['target_id']);
         $count = count($paragraph->get('field_template_engraving_text')->getValue());
-        
+
         if ($count <= $num_lines){
           $options[$target_id['target_id']] = $template->name->getString();
         }

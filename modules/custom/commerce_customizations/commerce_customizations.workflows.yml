@@ -1,0 +1,32 @@
+commerce_customizations_fulfillment_processing:
+  id: commerce_customizations_fulfillment_processing
+  group: commerce_order
+  label: 'Custom workflow, with processing'
+  states:
+    draft:
+      label: Draft
+    pending:
+      label: Pending
+    processing:
+      label: Processing
+    completed:
+      label: Completed
+    canceled:
+      label: Canceled
+  transitions:
+    place:
+      label: 'Place order'
+      from: [draft]
+      to: pending
+    pending:
+      label: 'To Processing'
+      from: [pending]
+      to: processing
+    process:
+      label: 'To Completed'
+      from: [processing]
+      to: completed
+    cancel:
+      label: 'Cancel order'
+      from: [completed, draft, processing, pending]
+      to:   canceled

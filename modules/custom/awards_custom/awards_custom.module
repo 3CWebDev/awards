@@ -92,7 +92,6 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
       //$form['purchased_entity']['widget'][0]['variation']['#type'] = 'radios';
     }
 
-
     /*
      * Image Upload Logic
      * The image field is part of the product entity and we remove it if it is not set to active for this product
@@ -103,6 +102,12 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
       if (isset($form['field_order_item_logo']['widget'])){
         $form['field_order_item_logo']['widget']['#required'] = TRUE;
         unset($form['field_order_item_logo']['widget']['#options']['_none']);
+
+        // Remove stock logo option for store #1
+        if ($storage['product']->stores->getString() == 1){
+          //stock_logo
+          unset($form['field_order_item_logo']['widget']['#options']['stock_logo']);
+        }
 
         $form['field_logo_is_on_file']['widget'][0]['value']['#title'] = 'Enter the name of the logo we have on file';
 
@@ -214,6 +219,7 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
   // Is this a Expedited Service - We Will Call You With A Quote? (#6 is Expedited Service - We Will Call You With A Quote)
   if ($shipping_method[0] == 6){
     $day_limit = 0;
+    return;
   }
 
   $day_limit = $production_days + $day_limit;
