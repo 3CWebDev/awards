@@ -123,7 +123,10 @@
 				"https://www.drupal.org/files/issues/2018-09-13/commerce_ups-fix_rate_request_weight_unit_handling-2960549-12.patch",
 				"Adds drop ship address functionality to Commerce UPS":
 				"dropship-patch.patch"
-			}			
+			},
+            "drupal/core": {
+               "#states not affecting visibility/requirement of managed_file" : "https://www.drupal.org/files/issues/states_not_affecting-2847425-24.patch"
+            }
         }
     },
     "autoload": {

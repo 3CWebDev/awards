@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\file\Entity\File;
 
+
 /**
  * Contribute form.
  */
@@ -119,13 +120,13 @@ class CustomTextForm extends FormBase {
         '#type' => 'radios',
         '#title' => 'Order Type',
         '#options' => $options,
-        '#weight' => -6,
+        '#weight' => -7,
         '#default_value' => ($order_item->field_repeat_order->getString() ? $order_item->field_repeat_order->getString() : 1),
     );
 
     $form['repeat_order_info'] = array(
         '#type' => 'textarea',
-        '#weight' => -5,
+        '#weight' => -6,
         '#title' => 'Repeat Order Information',
         '#description' => '<p>We will use your most recent design layout. Please provide any names, dates or other information that should change from the previous layout.</p>',
         '#default_value' => $order_item->field_repeat_order_description->getString(),
@@ -152,8 +153,6 @@ class CustomTextForm extends FormBase {
         $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
         $medallion_output .= '<div class="ribbon-sample"></div><div class="medallion-image"><img src="' . $image_uri . '" /></div>';
       }
-
-
 
 
       $vid = 'ribbons';
@@ -193,9 +192,10 @@ class CustomTextForm extends FormBase {
           '#attributes' => array(
               'class' => array('container-inline', 'custom-text-group'),
           ),
-        '#states' => array('visible' => array(
-            ':input[name="order_type"]' => array('value' => '1'),
-        )),
+          '#states' => array('invisible' => array(
+              ':input[name="order_type"]' => array('value' => '1'),
+              ':input[name="text_type"]' => array('value' => '2'),
+          )),
       );
 
       $form[$x]['text_preview'] = array(
@@ -204,7 +204,45 @@ class CustomTextForm extends FormBase {
           '#suffix' => '</div></div>',
       );
 
+
+      // Upload a file for custom text
+
       // Text Template Options
+      $options = array(
+        1 => 'Enter Custom Text Manually',
+        2 => "Upload File Containing Text",
+      );
+
+      $form['text_type'] = array(
+        '#type' => 'radios',
+        '#options' => $options,
+        '#weight' => -6,
+        '#default_value' => ($order_item->field_line_item_text_type->getString() ? $order_item->field_line_item_text_type->getString() : 0),
+      );
+
+      $default = $order_item->field_custom_text_file->getValue();
+      $form['text_file'] = [
+        '#type' => 'managed_file',
+        '#progress_indicator' => 'bar',
+        '#progress_message' => 'uploading file',
+        '#title' => $this->t('Upload File containing text'),
+        '#description' => 'Allowed file types: txt doc docx xls xlsx pdf rtf',
+        '#upload_location' => 'private://custom_text',
+        '#upload_validators'    => [
+          'file_validate_extensions'    => array('txt doc docx xls xlsx pdf rtf'),
+        ],
+        '#weight' => -2,
+        '#states' => array(
+          'visible' => array(
+            ':input[name="text_type"]' => array('value' => '2'),
+          ),
+          'required' => array(
+            ':input[name="text_type"]' => array('value' => '2'),
+          ),
+        ),
+        '#default_value' => ($default ? $default[0] : 0),
+      ];
+
       $template_categories = $product->field_prod_category->getValue();
 
       if (isset($template_categories[0])){
@@ -275,6 +313,12 @@ class CustomTextForm extends FormBase {
                 'line' => $y,
                 'placeholder' => t('Type text here'),
             ),
+            '#states' => array(
+              'visible' => array(
+                ':input[name="text_type"]' => array('value' => '1'),
+              ),
+            ),
+
         );
 
         if ($qty >1 && $x == 1){
@@ -332,7 +376,7 @@ class CustomTextForm extends FormBase {
       if (!$values['agree']){
         $form_state->setErrorByName('agree', t('You must agree to the terms before continuing.'));
       }
-      if ($values['order_type'] == 1){
+      if ($values['order_type'] == 1 && $values['text_type'] == 1){
         $qty = $values['qty'];
         $num_lines = $values['num_lines'];
         for ($x = 1; $x <= $qty; $x++) {
@@ -380,10 +424,27 @@ class CustomTextForm extends FormBase {
 
     // Save values to order item and update
     $values = $form_state->getValues();
-
-
     $order_item_id = $values['order_item_id'];
     $order_item = \Drupal\commerce_order\Entity\OrderItem::load($order_item_id);
+
+
+    $order_item->set('field_line_item_text_type', $values['text_type']);
+    \Drupal::logger('my_module')->notice('1');
+    if ($values['text_type'] == 2){
+      \Drupal::logger('my_module')->notice('2');
+      // Save custom text file
+      \Drupal::logger('my_module')->notice('<pre>' . print_r($values,1) . '</pre>');
+      $form_file = $values['text_file'];
+      if (isset($form_file[0]) && !empty($form_file[0])) {
+        \Drupal::logger('my_module')->notice('3');
+        $file = File::load($form_file[0]);
+        $file->setPermanent();
+        $file->save();
+
+        $order_item->set('field_custom_text_file', $values['text_file']);
+      }
+    }
+
 
     // New order type
     $order_item->set('field_repeat_order', $values['order_type']); // Set the value on the order item
