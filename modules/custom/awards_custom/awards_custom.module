@@ -338,3 +338,28 @@ function awards_custom_calc_number_of_working_days($startDate, $endDate, $holida
 
   return $workingDays;
 }
+
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Redirect to cart/checkout after updating user account
+ */
+function awards_custom_form_user_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  foreach (array_keys($form['actions']) as $action) {
+    if (isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+      $form['actions'][$action]['#submit'][] = '_awards_custom_form_submit';
+    }
+  }
+}
+
+function _awards_custom_form_submit(array $form, FormStateInterface $form_state){
+
+  $all_carts = \Drupal::service('commerce_cart.cart_provider')->getCarts();
+  if (!empty($all_carts)){
+    $form_state->setRedirect('commerce_cart.page');
+  }
+
+
+}

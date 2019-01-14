@@ -291,7 +291,9 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
 
       case 'login':
 
-        $mail_element = $pane_form['returning_customer']['mail'];
+        //$mail_element = $pane_form['returning_customer']['mail'];
+        $mail_element = 'returning_customer][mail';
+        //$password_element = $pane_form['returning_customer']['password'];
         //$username = $values['returning_customer']['name'];
         $mail = $values['returning_customer']['mail'];
         $password = trim($values['returning_customer']['password']);
@@ -324,12 +326,12 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
           return;
         }
         if (!$this->credentialsCheckFlood->isAllowedHost($this->clientIp)) {
-          $form_state->setErrorByName($name_element, $this->t('Too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href=":url">request a new password</a>.', [':url' => Url::fromRoute('user.pass')]));
+          $form_state->setErrorByName($mail_element, $this->t('Too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href=":url">request a new password</a>.', [':url' => Url::fromRoute('user.pass')]));
           $this->credentialsCheckFlood->register($this->clientIp, $username);
           return;
         }
         elseif (!$this->credentialsCheckFlood->isAllowedAccount($this->clientIp, $username)) {
-          $form_state->setErrorByName($name_element, $this->t('Too many failed login attempts for this account. It is temporarily blocked. Try again later or <a href=":url">request a new password</a>.', [':url' => Url::fromRoute('user.pass')]));
+          $form_state->setErrorByName($mail_element, $this->t('Too many failed login attempts for this account. It is temporarily blocked. Try again later or <a href=":url">request a new password</a>.', [':url' => Url::fromRoute('user.pass')]));
           $this->credentialsCheckFlood->register($this->clientIp, $username);
           return;
         }
@@ -337,7 +339,7 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
         $uid = $this->userAuth->authenticate($username, $password);
         if (!$uid) {
           $this->credentialsCheckFlood->register($this->clientIp, $username);
-          $form_state->setError($name_element, $this->t('Unrecognized username or password. <a href=":url">Have you forgotten your password?</a>', [':url' => $password_url]));
+          $form_state->setError($mail_element, $this->t('Unrecognized username or password. <a href=":url">Have you forgotten your password?</a>', [':url' => $password_url]));
         }
         $form_state->set('logged_in_uid', $uid);
         break;
@@ -388,6 +390,8 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
    */
   public function submitPaneForm(array &$pane_form, FormStateInterface $form_state, array &$complete_form) {
     $triggering_element = $form_state->getTriggeringElement();
+    //\Drupal::logger('my_module')->notice($triggering_element['#op']);
+
     switch ($triggering_element['#op']) {
       case 'continue':
         break;

@@ -76,13 +76,13 @@ class AwardsCustomTextItemLogo extends FieldPluginBase {
             $output .= '<p><a target="_blank" target="_blank" href="' . $url .'"><img src="' . $image_url . '" /></a></p>';
             $user = \Drupal::currentUser();
             if ($user->hasPermission('administer commerce_order')) {
-              $output .= '<p><a target="_blank" href="' . $url . '">download</a></p>';
+              $output .= '<p><a target="_blank" href="' . $url . '">Download File</a></p>';
             }
           }else{
             $user = \Drupal::currentUser();
             if ($user->hasPermission('administer commerce_order')) {
               $url = file_create_url($order_item->field_custom_prod_image->entity->getFileUri());
-              $output = '<p><a target="_blank" href="' . $url . '">download</a></p>';
+              $output = '<p><a target="_blank" href="' . $url . '">Download File</a></p>';
             }else{
               $output = $order_item->field_custom_prod_image->entity->getFilename();
             }

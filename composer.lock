@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "37906f95ee1daee4f7bb0afd01db24ee",
+    "content-hash": "4e6dba9674e394b65693f5b63a9deffc",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2047,6 +2047,69 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/ckeditor_font",
                 "issues": "http://drupal.org/project/issues/ckeditor_font"
+            }
+        },
+        {
+            "name": "drupal/collapsiblock",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/collapsiblock",
+                "reference": "8.x-2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/collapsiblock-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "30b5a96f9b9ee08ef89d989a2cb6718120c990dd"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0",
+                    "datestamp": "1528611185",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Darvanen",
+                    "homepage": "https://www.drupal.org/user/1068770"
+                },
+                {
+                    "name": "gagarine",
+                    "homepage": "https://www.drupal.org/user/162439"
+                },
+                {
+                    "name": "j0rd",
+                    "homepage": "https://www.drupal.org/user/61506"
+                },
+                {
+                    "name": "nedjo",
+                    "homepage": "https://www.drupal.org/user/4481"
+                },
+                {
+                    "name": "sonvir249",
+                    "homepage": "https://www.drupal.org/user/3225171"
+                }
+            ],
+            "description": "Makes blocks collapsible.",
+            "homepage": "https://www.drupal.org/project/collapsiblock",
+            "support": {
+                "source": "http://cgit.drupalcode.org/collapsiblock"
             }
         },
         {
@@ -4753,6 +4816,51 @@
             }
         },
         {
+            "name": "drupal/facebook_tracking_pixel",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/facebook_tracking_pixel",
+                "reference": "bcc3ae11b55f5f3580fbaccd60ade7ee25d5c2f7"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.x-dev",
+                    "datestamp": "1542309481",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Perignon",
+                    "homepage": "https://www.drupal.org/user/1547200"
+                },
+                {
+                    "name": "silkogelman",
+                    "homepage": "https://www.drupal.org/user/676938"
+                }
+            ],
+            "homepage": "https://www.drupal.org/project/facebook_tracking_pixel",
+            "support": {
+                "source": "http://cgit.drupalcode.org/facebook_tracking_pixel"
+            },
+            "time": "2018-11-02 22:29:44"
+        },
+        {
             "name": "drupal/facets",
             "version": "1.1.0",
             "source": {
@@ -5052,6 +5160,53 @@
             "support": {
                 "source": "http://git.drupal.org/project/google_analytics.git",
                 "issues": "https://www.drupal.org/project/issues/google_analytics"
+            }
+        },
+        {
+            "name": "drupal/google_tag",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/google_tag",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/google_tag-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "69c434d465ccf7c180c39c3bfba7e1ae34aaaad7"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1534988884",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "solotandem",
+                    "homepage": "https://www.drupal.org/user/240748"
+                }
+            ],
+            "description": "Allows your website analytics to be managed using Google Tag Manager.",
+            "homepage": "https://www.drupal.org/project/google_tag",
+            "support": {
+                "source": "http://cgit.drupalcode.org/google_tag"
             }
         },
         {
@@ -5455,6 +5610,100 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/libraries_ui",
                 "issues": "http://drupal.org/project/issues/libraries_ui"
+            }
+        },
+        {
+            "name": "drupal/link_attributes",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/link_attributes",
+                "reference": "8.x-1.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/link_attributes-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "48c0e6ac2c3f4843372abb394c1aabe380dfa604"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.5",
+                    "datestamp": "1537173781",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "larowlan",
+                    "homepage": "https://www.drupal.org/user/395439"
+                }
+            ],
+            "description": "Provides a widget to allow settings of link attributes for menu links.",
+            "homepage": "https://www.drupal.org/project/link_attributes",
+            "support": {
+                "source": "http://cgit.drupalcode.org/link_attributes"
+            }
+        },
+        {
+            "name": "drupal/link_target",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/link_target",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/link_target-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "0594f15da7752cce4a01fdd9af7e2d56efebf707"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1500901442",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "JacobFrancke",
+                    "homepage": "https://www.drupal.org/user/3267792"
+                }
+            ],
+            "description": "Provide a widget for Link field type which permits to choose target.",
+            "homepage": "https://www.drupal.org/project/link_target",
+            "support": {
+                "source": "http://cgit.drupalcode.org/link_target"
             }
         },
         {
@@ -6220,6 +6469,65 @@
             "homepage": "https://www.drupal.org/project/ng_lightbox",
             "support": {
                 "source": "http://cgit.drupalcode.org/ng_lightbox"
+            }
+        },
+        {
+            "name": "drupal/nocurrent_pass",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/nocurrent_pass",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/nocurrent_pass-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "9ca1380a0d540f2e54333f740074d82c222c2502"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1471977539",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "DarrellDuane",
+                    "homepage": "https://www.drupal.org/user/142816"
+                },
+                {
+                    "name": "david.czinege",
+                    "homepage": "https://www.drupal.org/user/2795337"
+                },
+                {
+                    "name": "earthday47",
+                    "homepage": "https://www.drupal.org/user/605842"
+                },
+                {
+                    "name": "shkiper",
+                    "homepage": "https://www.drupal.org/user/2261152"
+                }
+            ],
+            "description": "Make the \"current password\" requirement on the user edit form optional.",
+            "homepage": "https://www.drupal.org/project/nocurrent_pass",
+            "support": {
+                "source": "http://cgit.drupalcode.org/nocurrent_pass"
             }
         },
         {
@@ -13237,7 +13545,8 @@
         "drupal/commerce_authnet": 10,
         "drupal/commerce_abandoned_carts": 20,
         "drupal/commerce_ups": 20,
-        "drupal/facets_pretty_paths": 10
+        "drupal/facets_pretty_paths": 10,
+        "drupal/facebook_tracking_pixel": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

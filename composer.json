@@ -83,7 +83,13 @@
         "drupal/recaptcha": "^2.3",
         "drupal/commerce_ups": "3.x-dev",
         "drupal/facets_pretty_paths": "^1.0@beta",
-        "drupal/draggableviews": "^1.2"
+        "drupal/draggableviews": "^1.2",
+        "drupal/facebook_tracking_pixel": "1.x-dev",
+        "drupal/google_tag": "^1.1",
+        "drupal/collapsiblock": "^2.0",
+        "drupal/link_target": "^1.2",
+        "drupal/link_attributes": "^1.5",
+        "drupal/nocurrent_pass": "^1.0"
     },   
     "minimum-stability": "dev",
     "prefer-stable": true,

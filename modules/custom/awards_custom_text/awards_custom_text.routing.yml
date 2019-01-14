@@ -2,7 +2,7 @@ awards_custom_text.form:
   path: 'product/{product_id}/{order_item_id}/custom_text'
   defaults:
     _form: '\Drupal\awards_custom_text\Form\CustomTextForm'
-    _title: 'Enter Your Customization'
+    _title: 'Time to Personalize!'
   requirements:
     _permission: 'access content'
 awards_custom_text.ajax:

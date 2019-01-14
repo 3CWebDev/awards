@@ -92,9 +92,28 @@ class CustomTextForm extends FormBase {
       }
     }
 
+    // Load image file
+    $file = FALSE;
+    $image_info = $product->field_product_base_image->getValue();
+    if (isset($image_info[0]['target_id'])) {
+      $fid = $image_info[0]['target_id'];
+      $file = File::load($fid);
+    }
+
     $qty = $order_item->quantity->getString();
 
     $form['#cache']['tags'] = $order_item->getCacheTags();
+
+    if ($file){
+      $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
+      $product_output .= '<div class="product-thumbnail"><img src="' . $image_uri . '" /></div>';
+    }
+    if (!$medallion){
+      $form['product_image'] = array(
+        '#weight' => -200,
+        '#markup' => $product_output,
+      );
+    }
 
     $form['order_item_id'] = array(
         '#type' => 'hidden',
@@ -146,14 +165,11 @@ class CustomTextForm extends FormBase {
 
       $medallion_output = '<legend><span class="fieldset-legend js-form-required form-required">Select Ribbon</span>  </legend>';
 
-      $image_info = $product->field_product_base_image->getValue();
-      if (isset($image_info[0]['target_id'])){
-        $fid = $image_info[0]['target_id'];
-        $file = File::load($fid);
+      // Output image
+      if ($file){
         $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
         $medallion_output .= '<div class="ribbon-sample"></div><div class="medallion-image"><img src="' . $image_uri . '" /></div>';
       }
-
 
       $vid = 'ribbons';
       $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
@@ -162,8 +178,8 @@ class CustomTextForm extends FormBase {
 
       foreach ($terms as $term) {
         $fid = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid)->get('field_ribbon_image')->getValue()[0]['target_id'];
-        $file = File::load($fid);
-        $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
+        $ribbon_file = File::load($fid);
+        $image_uri = ImageStyle::load('product_')->buildUrl($ribbon_file->getFileUri());
         $output = '<span class="ribbon-image" id="id-' . $term->tid . '"><img src="' . $image_uri . '" alt="' . $term->name . '"/></span>';
         $options[$term->tid] = $output;
 
@@ -178,7 +194,6 @@ class CustomTextForm extends FormBase {
         '#prefix' => $medallion_output,
         '#default_value' => $order_item->field_ribbon->getString(),
       );
-
     }
 
 
@@ -192,11 +207,14 @@ class CustomTextForm extends FormBase {
           '#attributes' => array(
               'class' => array('container-inline', 'custom-text-group'),
           ),
-          '#states' => array('invisible' => array(
-              ':input[name="order_type"]' => array('value' => '1'),
-              ':input[name="text_type"]' => array('value' => '2'),
-          )),
+        '#states' => array(
+          'visible' => array(
+            ':input[name="text_type"]' => array('value' => '1'),
+          ),
+        ),
       );
+
+
 
       $form[$x]['text_preview'] = array(
           '#markup' => '',
@@ -329,6 +347,11 @@ class CustomTextForm extends FormBase {
                   'item' => $x,
                   'line' => $y,
               ),
+            '#states' => array(
+              'visible' => array(
+                ':input[name="text_type"]' => array('value' => '1'),
+              ),
+            ),
           );
         }
 
@@ -429,14 +452,14 @@ class CustomTextForm extends FormBase {
 
 
     $order_item->set('field_line_item_text_type', $values['text_type']);
-    \Drupal::logger('my_module')->notice('1');
+
     if ($values['text_type'] == 2){
-      \Drupal::logger('my_module')->notice('2');
+
       // Save custom text file
-      \Drupal::logger('my_module')->notice('<pre>' . print_r($values,1) . '</pre>');
+
       $form_file = $values['text_file'];
       if (isset($form_file[0]) && !empty($form_file[0])) {
-        \Drupal::logger('my_module')->notice('3');
+
         $file = File::load($form_file[0]);
         $file->setPermanent();
         $file->save();
@@ -447,8 +470,6 @@ class CustomTextForm extends FormBase {
 
 
     // New order type
-    $order_item->set('field_repeat_order', $values['order_type']); // Set the value on the order item
-
     if ($values['order_type'] == 1){
       // Save the form values to 'Paragraph' entities and save to the order_item
       $is_new = !$order_item->get('field_custom_text_entered')->getString();
@@ -458,6 +479,7 @@ class CustomTextForm extends FormBase {
 
     }else{
       // Repeat order type
+      $order_item->set('field_repeat_order', TRUE); // Set the value on the order item
       $order_item->set('field_repeat_order_description', $values['repeat_order_info']);
     }
 
