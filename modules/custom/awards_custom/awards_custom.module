@@ -103,10 +103,39 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
         $form['field_order_item_logo']['widget']['#required'] = TRUE;
         unset($form['field_order_item_logo']['widget']['#options']['_none']);
 
+
         // Remove stock logo option for store #1
         if ($storage['product']->stores->getString() == 1){
           //stock_logo
           unset($form['field_order_item_logo']['widget']['#options']['stock_logo']);
+        }
+
+        // Does this product belong to the medallion category?
+        $product_id = $storage['product']->id();
+
+        $product = \Drupal\commerce_product\Entity\Product::load($product_id);
+
+        $categories = $product->field_prod_category->getValue(0);
+
+        $medallion = FALSE;
+        $category_classes = array();
+
+        foreach ($categories as $key => $category){
+          $term = \Drupal\taxonomy\Entity\Term::load($category['target_id'])->name->value;
+          $category_classes[] = preg_replace('@[^a-z0-9-]+@','-', strtolower($term));
+
+          // Does this product belong to the medallion category?
+          if ($category['target_id'] == 408 || $category['target_id'] == 619){
+            $medallion = TRUE;
+            break;
+          }
+        }
+
+        if ($medallion){
+          $form['field_order_item_logo']['widget']['#default_value'] = 'stock_art_as_shown';
+          unset($form['field_order_item_logo']['widget']['#options']['no_logo']);
+        }else{
+          unset($form['field_order_item_logo']['widget']['#options']['stock_art_as_shown']);
         }
 
         $form['field_logo_is_on_file']['widget'][0]['value']['#title'] = 'Enter the name of the logo we have on file';

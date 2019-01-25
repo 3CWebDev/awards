@@ -1,1 +1,7 @@
-<td>{{ threshold }}</td><td> ${{ price }}</td>
+{% if first %}
+    <td>1-{{ threshold }}</td><td> ${{ price }}</td>
+{% elseif  threshold_high %}
+    <td>{{ threshold }}-{{ threshold_high }}</td><td> ${{ price }}</td>
+{% else %}
+    <td>{{ threshold }}+</td><td> ${{ price }}</td>
+{% endif %}

@@ -38,7 +38,7 @@
         "drupal/commerce_avatax": "1.x-dev",
         "drupal/imce": "^1.6",
         "drupal/bootstrap": "^3.7",
-        "drupal/domain_theme_switch": "^1.2",
+c        "drupal/domain_theme_switch": "^1.2",
         "drupal/commerce_shipping": "^2.0@beta",
         "drupal/commerce_purchase_order": "^1.1",
         "drupal/menu_link_attributes": "^1.0",
@@ -89,9 +89,7 @@
         "drupal/collapsiblock": "^2.0",
         "drupal/link_target": "^1.2",
         "drupal/link_attributes": "^1.5",
-        "drupal/nocurrent_pass": "^1.0",
-        "drupal/starrating": "^4.0@alpha",
-        "drupal/reg_confirm_email": "^1.0"
+        "drupal/nocurrent_pass": "^1.0"
     },   
     "minimum-stability": "dev",
     "prefer-stable": true,

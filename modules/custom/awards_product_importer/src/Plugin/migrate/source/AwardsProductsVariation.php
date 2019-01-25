@@ -30,17 +30,19 @@ class AwardsProductsVariation extends CSV{
   public function prepareRow(Row $row)  {
 
     // Qty Discounts
-    $discounts = explode('||', $row->getSourceProperty('Volume Quantity And Price'));
+
+    //$discounts = explode('||', $row->getSourceProperty('Volume Quantity And Price'));
+    $discounts = explode(',', $row->getSourceProperty('Volume Quantity And Price'));
 
     if (isset($discounts[0]) && isset($discounts[0])){
       unset($discounts[0]);
       $discount_array = array();
       foreach($discounts as $discount){
-        $discounts = explode(',', $discount);
+        $discounts = explode('||', $discount);
         if (isset($discounts[0]) && isset($discounts[1])){
           $discount_array[] = array(
-              'threshold' => $discounts[1],
-              'price' => $discounts[0],
+              'threshold' => $discounts[0],
+              'price' => $discounts[1],
           );
         }
       }

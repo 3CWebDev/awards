@@ -29,7 +29,7 @@ function awards_price_breaks_help($route_name, RouteMatchInterface $route_match)
 function awards_price_breaks_theme() {
   return array(
       'awards_price_breaks_formatter' => array(
-          'variables' => array('threshold' => NULL, 'price' => NULL),
+          'variables' => array('first' => NULL, 'threshold' => NULL, 'threshold_high' => NULL, 'price' => NULL),
           'template' => 'field--awards-price-breaks-formatter',
       ),
   );

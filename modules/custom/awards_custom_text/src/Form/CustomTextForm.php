@@ -106,7 +106,7 @@ class CustomTextForm extends FormBase {
 
     if ($file){
       $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
-      $product_output .= '<div class="product-thumbnail"><img src="' . $image_uri . '" /></div>';
+      $product_output = '<div class="product-thumbnail col-xs-12 col-sm-12 col-md-2"><img src="' . $image_uri . '" /></div>';
     }
     if (!$medallion){
       $form['product_image'] = array(
@@ -141,6 +141,7 @@ class CustomTextForm extends FormBase {
         '#options' => $options,
         '#weight' => -7,
         '#default_value' => ($order_item->field_repeat_order->getString() ? $order_item->field_repeat_order->getString() : 1),
+        '#prefix' => '<div class="product-customize col-xs-12 col-sm-12 col-md-10">',
     );
 
     $form['repeat_order_info'] = array(
@@ -233,6 +234,7 @@ class CustomTextForm extends FormBase {
 
       $form['text_type'] = array(
         '#type' => 'radios',
+
         '#options' => $options,
         '#weight' => -6,
         '#default_value' => ($order_item->field_line_item_text_type->getString() ? $order_item->field_line_item_text_type->getString() : 0),
@@ -363,10 +365,12 @@ class CustomTextForm extends FormBase {
     }
 
     $form['agree'] = array(
+        '#prefix' => '</div>',
         '#type' => 'checkbox',
         '#title' => '<p>YES, I HAVE REVIEWED THE SPELLING.</p>',
         '#description' => '<p>Engraving Will Be Centered On Award.</p><p>Awards4U\'s engraving experts will personalize the award with care.</p><p>It will look as good, or better, than the preview.
                             Please note: We cannot engrave emojis.</p>',
+
     );
 
     $form['cancel'] = array(
@@ -395,6 +399,10 @@ class CustomTextForm extends FormBase {
     $trigger = $form_state->getTriggeringElement();
     if ($trigger['#submit'][0] == '::submitForm'){
       $values = $form_state->getValues();
+
+      if ($values['text_type'] === 0){
+        $form_state->setErrorByName('text_type', t('Please select your text entry method.'));
+      }
 
       if (!$values['agree']){
         $form_state->setErrorByName('agree', t('You must agree to the terms before continuing.'));
