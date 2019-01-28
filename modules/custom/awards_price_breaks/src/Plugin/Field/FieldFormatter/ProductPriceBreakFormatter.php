@@ -25,7 +25,8 @@ class ProductPriceBreakFormatter extends FormatterBase {
     $elements = [];
     $entity = $items[0]->getEntity();
     $price_object = $entity->get('price')->getValue();
-    $base_price = round($price_object[0]['number'],2);
+    //$base_price = round($price_object[0]['number'],2);
+    $base_price = number_format($price_object[0]['number'],2);
 
 
 
