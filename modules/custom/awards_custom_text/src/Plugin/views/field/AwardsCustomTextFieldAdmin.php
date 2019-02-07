@@ -36,10 +36,16 @@ class AwardsCustomTextFieldAdmin extends FieldPluginBase {
 
     $custom_text_file = $order_item->field_line_item_text_type->getString();
 
-    if ($custom_text_file == 2){
+    if ($custom_text_file == 2) {
       $url = file_create_url($order_item->field_custom_text_file->entity->getFileUri());
       $output = '<p><a target="_blank" href="' . $url . '">Download File</a></p>';
       return check_markup($output, 'full_html');
+    }elseif($custom_text_file == 3) {
+      $value = '<p>No Text</p>';
+      return check_markup($value, 'full_html');
+    }elseif($custom_text_file == 4) {
+      $value = '<p>Will Send Later</p>';
+      return check_markup($value, 'full_html');
     }else{
       if ($order_item->field_custom_text_entered->getString() == 1){
         $custom_texts = $order_item->field_item_custom_text->getValue();

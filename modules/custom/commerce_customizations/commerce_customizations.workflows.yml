@@ -7,8 +7,6 @@ commerce_customizations_fulfillment_processing:
       label: Draft
     pending:
       label: Pending
-    processing:
-      label: Processing
     completed:
       label: Completed
     canceled:
@@ -19,14 +17,10 @@ commerce_customizations_fulfillment_processing:
       from: [draft]
       to: pending
     pending:
-      label: 'To Processing'
-      from: [pending]
-      to: processing
-    process:
       label: 'To Completed'
-      from: [processing]
+      from: [pending]
       to: completed
     cancel:
       label: 'Cancel order'
-      from: [completed, draft, processing, pending]
+      from: [completed, draft, pending]
       to:   canceled

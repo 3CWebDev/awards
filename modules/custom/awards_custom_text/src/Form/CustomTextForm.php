@@ -216,7 +216,6 @@ class CustomTextForm extends FormBase {
       );
 
 
-
       $form[$x]['text_preview'] = array(
           '#markup' => '',
           '#prefix' => '<div id="text_preview' . $x . '"><div class="' . implode(' ', $category_classes) .'">',
@@ -230,11 +229,12 @@ class CustomTextForm extends FormBase {
       $options = array(
         1 => 'Enter Custom Text Manually',
         2 => "Upload File Containing Text",
+        3 => "No Text",
+        4 => "I'll Send it Later",
       );
 
       $form['text_type'] = array(
         '#type' => 'radios',
-
         '#options' => $options,
         '#weight' => -6,
         '#default_value' => ($order_item->field_line_item_text_type->getString() ? $order_item->field_line_item_text_type->getString() : 0),
@@ -333,6 +333,8 @@ class CustomTextForm extends FormBase {
                 'line' => $y,
                 'placeholder' => t('Type text here'),
             ),
+            '#length' => 64,
+            '#maxlength' => 64,
             '#states' => array(
               'visible' => array(
                 ':input[name="text_type"]' => array('value' => '1'),
@@ -370,7 +372,20 @@ class CustomTextForm extends FormBase {
         '#title' => '<p>YES, I HAVE REVIEWED THE SPELLING.</p>',
         '#description' => '<p>Engraving Will Be Centered On Award.</p><p>Awards4U\'s engraving experts will personalize the award with care.</p><p>It will look as good, or better, than the preview.
                             Please note: We cannot engrave emojis.</p>',
-
+        '#states' => array(
+          'visible' => array(
+            ':input[name="text_type"]' => array(
+              array('value' => t('1')),
+              array('value' => t('2'))
+            ),
+          ),
+          'required' => array(
+            ':input[name="text_type"]' => array(
+              array('value' => t('1')),
+              array('value' => t('2'))
+            ),
+          ),
+        ),
     );
 
     $form['cancel'] = array(
@@ -380,6 +395,7 @@ class CustomTextForm extends FormBase {
         //'#limit_validation_errors' => array(),
         '#submit' => array('::submitFormCancel'),
         '#attributes' => array('onclick' => 'if(!confirm("Are you sure you want to leave this page? Any customizations entered will be lost.")){return false;}'),
+        '#prefix' => '<p>A custom FREE Art Proof will be emailed in 24 - 72 hrs for your review & approval. Our speciality award artists will make it look spectacular! </p>',
     );
 
     $form['submit'] = array(
@@ -404,7 +420,7 @@ class CustomTextForm extends FormBase {
         $form_state->setErrorByName('text_type', t('Please select your text entry method.'));
       }
 
-      if (!$values['agree']){
+      if ($values['text_type'] === 1 || $values['text_type'] === 2 && !$values['agree']){
         $form_state->setErrorByName('agree', t('You must agree to the terms before continuing.'));
       }
       if ($values['order_type'] == 1 && $values['text_type'] == 1){
