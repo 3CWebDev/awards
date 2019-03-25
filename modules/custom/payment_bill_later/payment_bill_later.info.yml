@@ -1,0 +1,8 @@
+name: Commerce Bill Later 2
+type: module
+description: 'Provides payment gateway for Bill Me Later.'
+package: Commerce
+core: 8.x
+dependencies:
+  - commerce:commerce
+  - commerce:commerce_payment

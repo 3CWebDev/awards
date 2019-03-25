@@ -62,10 +62,11 @@ class CustomCartEventSubscriber implements EventSubscriberInterface {
       if (is_numeric($number_of_lines)){
         $order_item = $event->getOrderItem();
         $custom_text_entered = $order_item->field_custom_text_entered->getString();
+
         if ($custom_text_entered != 1){
 
-          drupal_set_message(t('@entity requires engraving customzation.', [
-              '@entity' => $product->title->getString() . ' ' . $purchased_entity->label(),
+          drupal_set_message(t('@entity requires engraving Customization.', [
+              '@entity' => $purchased_entity->label(),
           ]), 'warning');
 
           $url = '/product/' . $product_id . '/' . $order_item->id() . '/custom_text';

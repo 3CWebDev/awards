@@ -316,13 +316,13 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
         }
 
         if (empty($username)) {
-          $form_state->setError($pane_form['returning_customer'], $this->t('2Unrecognized email address or password. <a href=":url">Have you forgotten your password?</a>', [':url' => $password_url]));
+          $form_state->setError($pane_form['returning_customer'], $this->t('Unrecognized email address or password. <a href=":url">Have you forgotten your password?</a>', [':url' => $password_url]));
           return;
         }
         /* End Custom Code */
 
         if (user_is_blocked($username)) {
-          $form_state->setError($mail_element, $this->t('The username %name has not been activated or is blocked.', ['%name' => $username]));
+          $form_state->setErrorByName($mail_element, $this->t('The username %name has not been activated or is blocked.', ['%name' => $username]));
           return;
         }
         if (!$this->credentialsCheckFlood->isAllowedHost($this->clientIp)) {
@@ -339,7 +339,7 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
         $uid = $this->userAuth->authenticate($username, $password);
         if (!$uid) {
           $this->credentialsCheckFlood->register($this->clientIp, $username);
-          $form_state->setError($mail_element, $this->t('Unrecognized username or password. <a href=":url">Have you forgotten your password?</a>', [':url' => $password_url]));
+          $form_state->setErrorByName($mail_element, $this->t('Unrecognized username or password. <a href=":url">Have you forgotten your password?</a>', [':url' => $password_url]));
         }
         $form_state->set('logged_in_uid', $uid);
         break;

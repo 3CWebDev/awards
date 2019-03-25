@@ -1,0 +1,7 @@
+name: 'Awards Tax Exempt Module'
+description: 'Adds ability to not charge tax in Commerce 2 for users designated as tax expempt.'
+package: 'Awards4U'
+type: module
+core: 8.x
+
+

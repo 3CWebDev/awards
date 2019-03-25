@@ -433,6 +433,11 @@ class FloridaTax extends LocalTaxTypeBase {
     $resolved_zones = [];
 
 
+    /*
+    if (\Drupal\user\Entity\User::load(\Drupal::currentUser()->id())->hasRole('tax_exempt')){
+      return $resolved_zones = [];
+    }*/
+
     foreach ($this->getZones() as $zone) {
 
       if ($zone->match($customer_address)) {

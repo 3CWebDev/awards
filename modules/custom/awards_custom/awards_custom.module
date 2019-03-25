@@ -5,10 +5,19 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Implements hook_field_widget_form_alter().
  */
+
 /*
 function awards_custom_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context){
-
+  dpm($context);
+  dpm($element);
+  dpm($form_state);
 }*/
+
+function awards_custom_commerce_checkout_pane_info_alter(array &$panes){
+  //dpm($panes);
+
+  //unset($panes['billing_information']);
+}
 
 
 function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){

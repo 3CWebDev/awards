@@ -93,7 +93,12 @@ class AwardsProductsVariation extends CSV{
           $row->setSourceProperty('var_size', $productSpecificAttribute[1]);
         }
 
-        $attributes =  $title . ' ' . $productSpecificAttribute[0] . ': ' . $productSpecificAttribute[1];
+        if ($productSpecificAttribute[0] == 'Size'){
+          $attributes =  $productSpecificAttribute[1] . ' ' . $title;
+        }else{
+          $attributes =  $productSpecificAttribute[0] . ': ' . $productSpecificAttribute[1] . ' ' . $title;
+        }
+
 
         $row->setSourceProperty('Product Name', $attributes);
       }else{

@@ -105,7 +105,7 @@ class CustomTextForm extends FormBase {
     $form['#cache']['tags'] = $order_item->getCacheTags();
 
     if ($file){
-      $image_uri = ImageStyle::load('product_')->buildUrl($file->getFileUri());
+      $image_uri = ImageStyle::load('product_image')->buildUrl($file->getFileUri());
       $product_output = '<div class="product-thumbnail col-xs-12 col-sm-12 col-md-2"><img src="' . $image_uri . '" /></div>';
     }
     if (!$medallion){

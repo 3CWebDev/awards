@@ -11,9 +11,9 @@
         "drupal/block_class": "^1.0@alpha",
         "drupal/module_filter": "^3.1",
         "drupal/commerce": "~2.0",
-        "drupal/ctools": "^3.0",
+        "drupal/ctools": "^3.2",
         "drupal/honeypot": "^1.29",
-        "drupal/google_analytics": "^2.2",
+        "drupal/google_analytics": "^3",
         "drupal/migrate_plus": "4.0-beta2",
         "drupal/migrate_source_csv": "^2.0",
         "drupal/mailchimp": "^1.5",
@@ -27,7 +27,7 @@
         "drupal/toolbar_themes": "^1.0@alpha",
         "drupal/webform_mailchimp": "^5.3",
         "drupal/search_api": "^1.6",
-        "drupal/facets": "^1.0@beta",
+        "drupal/facets": "^1.3",
         "drupal/libraries": "3.x-dev",
         "drupal/libraries_ui": "^1.0",
         "drupal/improved_multi_select": "^1.3",
@@ -40,7 +40,7 @@
         "drupal/bootstrap": "^3.7",
         "drupal/domain_theme_switch": "^1.2",
         "drupal/commerce_shipping": "^2.0@beta",
-        "drupal/commerce_purchase_order": "^1.1",
+        "drupal/commerce_purchase_order": "1.x-dev",
         "drupal/menu_link_attributes": "^1.0",
         "drupal/superfish": "^1.1",
         "drupal/better_exposed_filters": "^3.0@alpha",
@@ -58,8 +58,8 @@
         "drupal/backup_migrate": "4.x-dev",
         "drupal/paragraphs": "^1.2",
         "drupal/config_update": "^1.5",
-        "drupal/config_devel": "^1.2",
-        "drupal/devel": "^1.2",
+        "drupal/config_devel": "^1",
+        "drupal/devel": "^2.0",
         "drupal/views_bulk_operations": "^2.0",
         "drupal/views_data_export": "1.x-dev",
         "drupal/commerce_variation_cart_form": "^1.0",
@@ -81,7 +81,7 @@
         "drupal/super_login": "^1.0",
         "drupal/commerce_abandoned_carts": "1.x-dev",
         "drupal/recaptcha": "^2.3",
-        "drupal/commerce_ups": "3.x-dev",
+        "drupal/commerce_ups": "^3.0@alpha",
         "drupal/facets_pretty_paths": "^1.0@beta",
         "drupal/draggableviews": "^1.2",
         "drupal/facebook_tracking_pixel": "1.x-dev",
@@ -91,7 +91,9 @@
         "drupal/link_attributes": "^1.5",
         "drupal/nocurrent_pass": "^1.0",
         "drupal/starrating": "^4.0@alpha",
-        "drupal/reg_confirm_email": "^1.0"
+        "drupal/reg_confirm_email": "^1.0",
+        "drupal/quicklink": "^1.0@beta",
+        "drupal/disqus": "^1.0@RC"
     },   
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -116,19 +118,12 @@
             "modules/custom/{$name}": ["type:drupal-custom-module"],
             "themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
-		"patches": {         
-			"drupal/mailchimp": {
-                "WSOD when editing image field settings": "https://www.drupal.org/files/issues/2949234-n4.patch"     
-            },
+		"patches": {         			
 			"drupal/commerce_shipping": {
                 "Auto-recalculate shipping when the address changes": "https://www.drupal.org/files/issues/commerce_shipping-autorecalculate-2849756-45.patch"     
-            },
-			"drupal/single_datetime": {
-                "Add options to use DateTimePicker's minimum and maximum date options": "https://www.drupal.org/files/issues/2018-03-24/add-options-for-min-max-dates-2955784.patch"     
-            },
+            },			
 			"drupal/commerce_ups": {
-				"Weight and Dimensions Validation is necessary":
-				"https://www.drupal.org/files/issues/2018-09-13/commerce_ups-fix_rate_request_weight_unit_handling-2960549-12.patch",
+				"Weight and Dimensions Validation is necessary":				"https://www.drupal.org/files/issues/2018-09-13/commerce_ups-fix_rate_request_weight_unit_handling-2960549-12.patch",
 				"Adds drop ship address functionality to Commerce UPS":
 				"dropship-patch.patch"
 			},

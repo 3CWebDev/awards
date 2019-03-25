@@ -56,83 +56,95 @@ class AwardsProducts extends CSV{
       return FALSE;
     }
 
-    $tids = array();
+
+
     // Categories
-    $categories = explode(',', $row->getSourceProperty('WebCategory'));
-    $vid = $row->getSourceProperty('Vocabulary');
+    $tids = array();
 
-    // If there is only one category then no further processing is needed
+    $categories_groups = explode('||', $row->getSourceProperty('WebCategory'));
 
-    if (count($categories) == 1) {
+    foreach ($categories_groups as $categories_group){
 
-      // Lookup TID from name
-      $tid = getTidByName($categories[0], $vid);
-      $tids[] = $tid[0];
+      $categories = explode(',', $categories_group);
 
-    } elseif (count($categories) == 2) {
-
-      $connection = \Drupal::database();
-
-      // One Parent
       $vid = $row->getSourceProperty('Vocabulary');
-      $terms = getTidByName($categories[1], $vid);
-      $parents = getTidByName($categories[0], $vid);
 
-      foreach ($parents as $parent) {
-        break;
-      }
-      foreach ($terms as $term) {
-        // Look for a match
-        $tid = $connection->query("SELECT entity_id FROM {taxonomy_term__parent} WHERE entity_id = :tid AND parent_target_id = :pid", [':tid' => $term, ':pid' => $parent])->fetchField();
-        if ($tid) {
-          // Found match!
-          $tids[] = $tid;
+      // If there is only one category then no further processing is needed
+
+      if (count($categories) == 1) {
+
+        // Lookup TID from name
+        $tid = getTidByName($categories[0], $vid);
+        $tids[] = $tid[0];
+
+      } elseif (count($categories) == 2) {
+
+        $connection = \Drupal::database();
+
+        // One Parent
+        $vid = $row->getSourceProperty('Vocabulary');
+        $terms = getTidByName($categories[1], $vid);
+        $parents = getTidByName($categories[0], $vid);
+
+        foreach ($parents as $parent) {
+          break;
         }
-      }
-
-    } elseif (count($categories) == 3) {
-
-      $connection = \Drupal::database();
-
-      // Two Parents
-      $vid = $row->getSourceProperty('Vocabulary');
-      $terms = getTidByName($categories[2], $vid);
-      $parents = getTidByName($categories[1], $vid);
-
-      foreach ($parents as $parent) {
-        break;
-      }
-      foreach ($terms as $term) {
-        // Look for a match
-        $tid = $connection->query("SELECT entity_id FROM {taxonomy_term__parent} WHERE entity_id = :tid AND parent_target_id = :pid", [':tid' => $term, ':pid' => $parent])->fetchField();
-        if ($tid) {
-          // Found match!
-          $tids[] = $tid;
+        foreach ($terms as $term) {
+          // Look for a match
+          $tid = $connection->query("SELECT entity_id FROM {taxonomy_term__parent} WHERE entity_id = :tid AND parent_target_id = :pid", [':tid' => $term, ':pid' => $parent])->fetchField();
+          if ($tid) {
+            // Found match!
+            $tids[] = $tid;
+          }
         }
-      }
-    } elseif (count($categories) == 4) {
 
-      $connection = \Drupal::database();
+      } elseif (count($categories) == 3) {
 
-      // Two Parents
-      $vid = $row->getSourceProperty('Vocabulary');
-      $terms = getTidByName($categories[3], $vid);
-      $parents = getTidByName($categories[2], $vid);
+        $connection = \Drupal::database();
 
-      foreach ($parents as $parent) {
-        break;
-      }
-      foreach ($terms as $term) {
-        // Look for a match
-        $tid = $connection->query("SELECT entity_id FROM {taxonomy_term__parent} WHERE entity_id = :tid AND parent_target_id = :pid", [':tid' => $term, ':pid' => $parent])->fetchField();
-        if ($tid) {
-          // Found match!
-          $tids[] = $tid;
+        // Two Parents
+        $vid = $row->getSourceProperty('Vocabulary');
+        $terms = getTidByName($categories[2], $vid);
+        $parents = getTidByName($categories[1], $vid);
+
+        foreach ($parents as $parent) {
+          break;
+        }
+        foreach ($terms as $term) {
+          // Look for a match
+          $tid = $connection->query("SELECT entity_id FROM {taxonomy_term__parent} WHERE entity_id = :tid AND parent_target_id = :pid", [':tid' => $term, ':pid' => $parent])->fetchField();
+          if ($tid) {
+            // Found match!
+            $tids[] = $tid;
+          }
+        }
+      } elseif (count($categories) == 4) {
+
+        $connection = \Drupal::database();
+
+        // Two Parents
+        $vid = $row->getSourceProperty('Vocabulary');
+        $terms = getTidByName($categories[3], $vid);
+        $parents = getTidByName($categories[2], $vid);
+
+        foreach ($parents as $parent) {
+          break;
+        }
+        foreach ($terms as $term) {
+          // Look for a match
+          $tid = $connection->query("SELECT entity_id FROM {taxonomy_term__parent} WHERE entity_id = :tid AND parent_target_id = :pid", [':tid' => $term, ':pid' => $parent])->fetchField();
+          if ($tid) {
+            // Found match!
+            $tids[] = $tid;
+          }
         }
       }
     }
 
+
     // WebCategories2
+
+    /*
     $categories = explode(',', $row->getSourceProperty('WebCategory2'));
     $vid = $row->getSourceProperty('Vocabulary');
 
@@ -206,10 +218,10 @@ class AwardsProducts extends CSV{
         }
       }
     }
+    */
 
-    //$row->setSourceProperty('tid', implode(',',$tids));
     $row->setSourceProperty('tid', $tids);
-    //$row->setSourceProperty('tid', array(591,605));
+
 
 /*
     $address = $row->getSourceProperty('address_line1');

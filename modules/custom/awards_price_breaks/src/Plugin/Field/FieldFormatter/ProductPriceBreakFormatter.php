@@ -23,11 +23,14 @@ class ProductPriceBreakFormatter extends FormatterBase {
 
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
+    if (!method_exists($items[0], 'getEntity')){
+      $element[] = false;
+      return $element;
+    }
     $entity = $items[0]->getEntity();
     $price_object = $entity->get('price')->getValue();
     //$base_price = round($price_object[0]['number'],2);
     $base_price = number_format($price_object[0]['number'],2);
-
 
 
     foreach ($items as $delta => $item) {

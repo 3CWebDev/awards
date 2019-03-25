@@ -1,0 +1,76 @@
+<?php
+
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ *
+ * Append node title to breadcrumb for certain content types and views that are
+ * not in the menu.
+ *
+ * @param \Drupal\Core\Breadcrumb\Breadcrumb $breadcrumb
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ * @param array $context
+ */
+
+function awards_catalog_breadcrumbs_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+
+
+  if ($breadcrumb && !\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $params = \Drupal::routeMatch()->getParameter('commerce_product');
+
+    //product_id
+    //$product = \Drupal\commerce_product\Entity\Product::load($product_id);
+
+    if ($route_match->getRouteName() == 'entity.commerce_product.canonical') {
+
+
+
+      $alias = \Drupal::request()->getpathInfo();
+      $args  = explode('/',$alias);
+
+      if ($args[1] == 'products'){
+
+        $breadcrumb = new Breadcrumb();
+
+        $url = Url::fromUri('internal:/catalog');
+        $breadcrumb->addLink(Link::fromTextAndUrl('Product Catalog', $url));
+
+        $categories = $params->get('field_prod_category')->getValue();
+
+
+        foreach ($categories as $key => $category){
+          $parent = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($category['target_id']);
+          if ($parent) {
+            $parent = reset($parent);
+            $term = Term::load($parent->id());
+            $name = $term->getName();
+            $cat_arg = \Drupal::service('pathauto.alias_cleaner')->cleanString($name);
+            $cat_arg .= '-' . $parent->id();
+            $url = Url::fromUri('internal:/catalog/category/' . $cat_arg);
+            $breadcrumb->addLink(Link::fromTextAndUrl($name, $url));
+          }
+        }
+
+        foreach ($categories as $key => $category){
+
+          $term = Term::load($category['target_id']);
+          $name = $term->getName();
+
+          $cat_arg = \Drupal::service('pathauto.alias_cleaner')->cleanString($name);
+          $cat_arg .= '-' . $category['target_id'];
+
+          $url = Url::fromUri('internal:/catalog/category/' . $cat_arg);
+          $breadcrumb->addLink(Link::fromTextAndUrl($name, $url));
+
+        }
+
+      }
+
+    }
+  }
+}

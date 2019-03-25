@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_form_FORM_ID_alter() for form 'commerce_checkout_flow_multistep_default'.
+ */
+function payment_bill_later_form_commerce_checkout_flow_custom_checkout_flow_alter(&$form, $form_state) {
+
+  //dpm($form);
+  if (isset($form['payment_information']['payment_method']['#options'])){
+    foreach ($form['payment_information']['payment_method']['#options'] as $key => $value){
+      if ($value = 'Custom Manual'){
+        $form['payment_information']['billing_information']['#access'] = FALSE;
+      }
+    }
+  }
+
+}
