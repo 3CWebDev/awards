@@ -35,7 +35,7 @@ class ExemptTaxResolver implements TaxRateResolverInterface
         'default' => TRUE,
       ]
     );
-    dpm($rate);
+    //dpm($rate);
     return $rate;
 
     foreach ($order->shipments as $reference) {
