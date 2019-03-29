@@ -8,10 +8,9 @@ function payment_bill_later_form_commerce_checkout_flow_custom_checkout_flow_alt
   //dpm($form);
   if (isset($form['payment_information']['payment_method']['#options'])){
     foreach ($form['payment_information']['payment_method']['#options'] as $key => $value){
-      if ($value = 'Custom Manual'){
+      if ($value == 'Bill Me Later'){
         $form['payment_information']['billing_information']['#access'] = FALSE;
       }
     }
   }
-
 }
