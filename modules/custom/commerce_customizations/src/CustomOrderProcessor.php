@@ -44,7 +44,7 @@ class CustomOrderProcessor implements OrderProcessorInterface
               'type' => 'custom_adjustment',
               'label' => 'Setup Fee - ' . $product_title,
               'amount' => new Price('+' . $new_adjustment, 'USD'),
-              'included' => TRUE,
+              'included' => FALSE,
             ]);
             $order_item->setAdjustments($adjustments);
             $order_item->save();

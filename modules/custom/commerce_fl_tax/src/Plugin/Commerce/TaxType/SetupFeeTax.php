@@ -42,33 +42,36 @@ class SetupFeeTax extends LocalTaxTypeBase {
 
     //dpm($order->collectAdjustments());
 
-    // First obtain current tax percentage
+    // First obtain current tax rate - if one doesn't exist then exit
     foreach($order->collectAdjustments() as $key => $adjustment){
       if ($adjustment->getType() == 'tax'){
+        //dpm($adjustment);
+
         $percentage = $adjustment->getPercentage();
         $source_id = $adjustment->getSourceId();
-
         $setup_fees = 0;
+
         foreach($order->collectAdjustments() as $key => $adjustment){
-          //dpm($adjustment);
 
           // Get the total setup fee charges
           if ($adjustment->getType() == 'custom_adjustment'){
             $setup_fees += $adjustment->getAmount()->getNumber();
           }
         };
+
         $calculated_tax = $setup_fees * $percentage;
+
         $tax_amount = new \Drupal\commerce_price\Price((string)$calculated_tax, 'USD');
 
         $order->addAdjustment(new Adjustment([
           'type' => 'tax',
           'label' => 'FL Sales Tax',
           'amount' => $tax_amount,
-          //'percentage' => "7.5",
+          //'percentage' => (string)$percentage,
           'source_id' => $source_id,
           'included' => FALSE,
         ]));
-        
+
         break;
       }
     }

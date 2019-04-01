@@ -15,6 +15,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Drupal\commerce_tax\Plugin\Commerce\TaxType\LocalTaxTypeBase;
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\profile\Entity\ProfileInterface;
+use Drupal\commerce_order\Entity\OrderInterface;
 
 /**
  * Provides the County tax type.
@@ -455,5 +456,25 @@ class FloridaTax extends LocalTaxTypeBase {
     }
 
     return $resolved_zones;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function applies(OrderInterface $order) {
+
+    foreach ($order->shipments as $reference) {
+
+      $method_id = $reference->entity->getShippingMethodId();
+
+      // 4 & 5 are the method ID of the two local pickup types
+      if ($method_id == 4 || $method_id == 5){
+        return FALSE;
+      }
+
+    }
+
+    $store = $order->getStore();
+    return $this->matchesAddress($store) || $this->matchesRegistrations($store);
   }
 }
