@@ -23,6 +23,8 @@ class ProductPriceBreakFormatter extends FormatterBase {
 
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
+
+    if (!isset($items[0])) return $elements;
     if (!method_exists($items[0], 'getEntity')){
       $element[] = false;
       return $element;

@@ -129,7 +129,9 @@
 			},
             "drupal/core": {
                "#states not affecting visibility/requirement of managed_file" : "https://www.drupal.org/files/issues/states_not_affecting-2847425-24.patch"
-            }
+            },
+	    "drupal/disqus": {
+	"Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"}
         }
     },
     "autoload": {
