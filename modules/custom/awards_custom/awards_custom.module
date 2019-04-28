@@ -19,6 +19,30 @@ function awards_custom_commerce_checkout_pane_info_alter(array &$panes){
   //unset($panes['billing_information']);
 }
 
+/*
+ * Ajax callback for badage material selector element
+ */
+function awardsSelectChange(array $form, FormStateInterface $form_state){
+
+  // Get selected material type
+  $values = $form_state->getValues();
+  $material = $values['field_material'][0]['value'];
+
+  if ($material == 'Metal'){
+    unset($form['field_corners']['widget']['#options']['Round']);
+  }
+
+  $form_orig = $form;
+  $form = array();
+
+  $form['field_corners'] = $form_orig['field_corners'];
+  $form['field_color'] = $form_orig['field_color'];
+  $form['field_logo_placement'] = $form_orig['field_logo_placement'];
+  $form['field_attach'] = $form_orig['field_attach'];
+
+  return $form;
+}
+
 
 function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
 
@@ -85,20 +109,96 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
   }
 
-  if ($form_id == 'commerce_product_default_edit_form'){
-    //$form['variations']['widget']['#required'] = 0;
-  }
 
   if (strpos($form_id, 'commerce_order_item_add_to_cart_form') !== FALSE){
 
-    //\Drupal::logger('$form_id')->notice($form_id);
-    //dpm($form);
+    $medallion = FALSE;
+    $name_plate = FALSE;
+
+    // Does this product belong to the medallion category?
     $storage = $form_state->getStorage();
+    $product_id = $storage['product']->id();
+    $product = \Drupal\commerce_product\Entity\Product::load($product_id);
+    $categories = $product->field_prod_category->getValue(0);
+
+    //$category_classes = array();
+
+    foreach ($categories as $key => $category){
+      //$term = \Drupal\taxonomy\Entity\Term::load($category['target_id'])->name->value;
+      //$category_classes[] = preg_replace('@[^a-z0-9-]+@','-', strtolower($term));
+
+      // Does this product belong to the medallion category?
+      if ($category['target_id'] == 408 || $category['target_id'] == 619){
+        $medallion = TRUE;
+        break;
+      }
+      if ($category['target_id'] == 930){
+        $name_plate = TRUE;
+        break;
+      }
+    }
+
+    // Name Plate Logic
+    // TODO: Hide for non-name-plate categories
+    // TODO: Make name-plate fields required
+
+    if (!$name_plate){
+
+      unset($form['field_material']['widget']);
+      unset($form['field_corners']['widget']);
+      unset($form['field_color']['widget']);
+      unset($form['field_attach']['widget']);
+      unset($form['field_logo_placement']['widget']);
+
+    }else{
+
+      $form['field_material']['widget']['#required'] = TRUE;
+      $form['field_corners']['widget']['#required'] = TRUE;
+      $form['field_color']['widget']['#required'] = TRUE;
+      $form['field_attach']['widget']['#required'] = TRUE;
+      $form['field_logo_placement']['widget']['#required'] = TRUE;
+
+      $form['field_material']['widget']['#ajax'] = [
+        'callback' => 'awardsSelectChange',
+        'event' => 'change',
+        'wrapper' => 'material-wrapper',
+      ];
+
+      $form['field_material']['widget']['#options']['_none'] = '- select -';
+      $form['field_corners']['widget']['#options']['_none'] = '- select -';
+      $form['field_color']['widget']['#options']['_none'] = '- select -';
+      $form['field_attach']['widget']['#options']['_none'] = '- select -';
+      $form['field_logo_placement']['widget']['#options']['_none'] = '- select -';
+
+      $form['field_corners']['widget']['#states'] =  array(
+        'invisible' => array(
+          ':input[name="field_material"]' => array('value' => '_none'),
+        ),
+      );
+      $form['field_color']['widget']['#states'] =  array(
+        'invisible' => array(
+          ':input[name="field_material"]' => array('value' => '_none'),
+        ),
+      );
+      $form['field_logo_placement']['widget']['#states'] =  array(
+        'invisible' => array(
+          ':input[name="field_material"]' => array('value' => '_none'),
+        ),
+      );
+      $form['field_attach']['widget']['#states'] =  array(
+        'invisible' => array(
+          ':input[name="field_material"]' => array('value' => '_none'),
+        ),
+      );
+
+      $form['field_corners']['#prefix'] = '<div id="material-wrapper">';
+      $form['field_logo_placement']['#suffix'] = "</div>";
+    }
+
 
     // Change Drop-down to radio selectors
     if (isset($form['purchased_entity']['widget'][0]['variation']['#options'])){
       $form['purchased_entity']['widget'][0]['variation']['#title'] = 'Select Type';
-      //$form['purchased_entity']['widget'][0]['variation']['#type'] = 'radios';
     }
 
     /*
@@ -119,26 +219,6 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
           unset($form['field_order_item_logo']['widget']['#options']['stock_logo']);
         }
 
-        // Does this product belong to the medallion category?
-        $product_id = $storage['product']->id();
-
-        $product = \Drupal\commerce_product\Entity\Product::load($product_id);
-
-        $categories = $product->field_prod_category->getValue(0);
-
-        $medallion = FALSE;
-        $category_classes = array();
-
-        foreach ($categories as $key => $category){
-          $term = \Drupal\taxonomy\Entity\Term::load($category['target_id'])->name->value;
-          $category_classes[] = preg_replace('@[^a-z0-9-]+@','-', strtolower($term));
-
-          // Does this product belong to the medallion category?
-          if ($category['target_id'] == 408 || $category['target_id'] == 619){
-            $medallion = TRUE;
-            break;
-          }
-        }
 
         if ($medallion){
           $form['field_order_item_logo']['widget']['#default_value'] = 'stock_art_as_shown';
@@ -153,8 +233,8 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
             'visible' => array(
                 ':input[name="field_order_item_logo"]' => array('value' => 'stock_logo'),
             ),
-
         );
+
         $form['#validate'][] = 'awards_custom_validate_image_fields';
 
         $form['field_custom_prod_image']['#states'] =  array(

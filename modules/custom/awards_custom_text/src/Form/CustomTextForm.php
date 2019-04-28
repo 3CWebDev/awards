@@ -14,7 +14,7 @@ use Drupal\Component\Utility\UrlHelper;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\file\Entity\File;
-
+use Drupal\Component\Utility\SafeMarkup;
 
 /**
  * Contribute form.
@@ -50,7 +50,30 @@ class CustomTextForm extends FormBase {
     }
 
     $num_lines = $product->field_number_of_lines->getString();
-    $order_item = \Drupal\commerce_order\Entity\OrderItem::load($order_item_id);
+
+
+
+    $all_carts = \Drupal::service('commerce_cart.cart_provider')
+      ->getCarts();
+
+    $first_cart = reset($all_carts);
+    $order_items = $first_cart->order_items->getValue();
+
+    $verified = FALSE;
+    foreach ($order_items as $key => $order_item){
+      if ($order_item['target_id'] == $order_item_id){
+        $verified = TRUE;
+        $order_item_id = $order_item['target_id'];
+        break;
+      }
+    }
+
+    if (!$verified){
+      // No matching order ID found is users cart, exit
+      return FALSE;
+    }
+
+    $order_item = \Drupal\commerce_order\Entity\OrderItem::load($order_item['target_id']);
 
     // Check product
     if (!is_numeric($num_lines)){
