@@ -95,17 +95,25 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
     );
   }elseif($form_id == 'commerce_checkout_flow_custom_checkout_flow' && $form['#step_id'] == 'review'){
 
+    // Remove phone number for payment information
+
+    $form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['#access'] = FALSE;
+    //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['widget']['#required'] = FALSE;
+    //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['widget'][0]['value']['#type'] = 'hidden';
+    $form['#title'] = 'Payment';
+
+    /*
     $request = \Drupal::request();
     $current_path = $request->getPathInfo();
     $path_args = explode('/', $current_path);
-    if ($path_args[3] != 'complete'){
+        if ($path_args[3] != 'complete'){
       $order_id = $path_args[2];
       $order = \Drupal\commerce_order\Entity\Order::load($order_id);
       $order_date_needed = $order->get('field_order_date_needed')->getString();
       $order_date_needed = strtotime($order_date_needed);
       $order_date_needed = date('n/j/Y',$order_date_needed);
       $form['review']['shipping_information']['summary']['need_by_date']['summary']['#markup'] = '<div class="field--label">Need by Date</div><div class="field--item">' . $order_date_needed . '</div>';
-    }
+    }*/
 
   }
 
