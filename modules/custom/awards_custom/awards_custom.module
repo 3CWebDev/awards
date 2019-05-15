@@ -97,7 +97,7 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
     // Remove phone number for payment information
 
-    $form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['#access'] = FALSE;
+    //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['#access'] = FALSE;
     //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['widget']['#required'] = FALSE;
     //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['widget'][0]['value']['#type'] = 'hidden';
     $form['#title'] = 'Payment';

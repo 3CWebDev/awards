@@ -94,7 +94,7 @@
         "drupal/reg_confirm_email": "^1.0",
         "drupal/quicklink": "^1.0@beta",
         "drupal/disqus": "^1.0@RC"
-    },   
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
@@ -108,7 +108,7 @@
             "This file specifies the packages.drupal.org repository.",
             "You can read more about this composer repository at:",
             "https://www.drupal.org/node/2718229"
-        ],        
+        ],
         "installer-paths": {
             "core": ["type:drupal-core"],
             "modules/contrib/{$name}": ["type:drupal-module"],
@@ -118,20 +118,16 @@
             "modules/custom/{$name}": ["type:drupal-custom-module"],
             "themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
-		"patches": {         			
-			"drupal/commerce_shipping": {
-                "Auto-recalculate shipping when the address changes": "https://www.drupal.org/files/issues/commerce_shipping-autorecalculate-2849756-45.patch"     
-            },			
-			"drupal/commerce_ups": {
-				"Weight and Dimensions Validation is necessary":				"https://www.drupal.org/files/issues/2018-09-13/commerce_ups-fix_rate_request_weight_unit_handling-2960549-12.patch",
-				"Adds drop ship address functionality to Commerce UPS":
-				"dropship-patch.patch"
-			},
+		"patches": {						
             "drupal/core": {
                "#states not affecting visibility/requirement of managed_file" : "https://www.drupal.org/files/issues/states_not_affecting-2847425-24.patch"
             },
-	    "drupal/disqus": {
-	"Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"}
+	        "drupal/disqus": {
+	            "Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"
+            },
+			"drupal/commerce": {
+				"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"
+			}
         }
     },
     "autoload": {

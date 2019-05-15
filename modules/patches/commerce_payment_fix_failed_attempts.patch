@@ -1,0 +1,50 @@
+diff --git a/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentProcess.php b/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentProcess.php
+index 16e26412..0efa09eb 100644
+--- a/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentProcess.php
++++ b/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentProcess.php
+@@ -88,8 +88,8 @@ class PaymentProcess extends CheckoutPaneBase {
+    */
+   public function defaultConfiguration() {
+     return [
+-      'capture' => TRUE,
+-    ] + parent::defaultConfiguration();
++        'capture' => TRUE,
++      ] + parent::defaultConfiguration();
+   }
+ 
+   /**
+@@ -180,6 +180,7 @@ class PaymentProcess extends CheckoutPaneBase {
+     $next_step_id = $this->checkoutFlow->getNextStepId($this->getStepId());
+ 
+     if ($payment_gateway_plugin instanceof OnsitePaymentGatewayInterface) {
++      $payment_method = $this->order->payment_method->entity;
+       try {
+         $payment->payment_method = $this->order->payment_method->entity;
+         $payment_gateway_plugin->createPayment($payment, $this->configuration['capture']);
+@@ -187,13 +188,24 @@ class PaymentProcess extends CheckoutPaneBase {
+       }
+       catch (DeclineException $e) {
+         $message = $this->t('We encountered an error processing your payment method. Please verify your details and try again.');
++
++        \Drupal::messenger()->addMessage(t('We see you might be having trouble checking out. Please give us a call at 1-800-659-0860 for checkout assistance.'), 'warning');
++
+         $this->messenger()->addError($message);
++        $this->order->get('payment_gateway')->setValue(NULL);
++        $this->order->get('payment_method')->setValue(NULL);
++        $payment_method->delete();
++
+         $this->checkoutFlow->redirectToStep($error_step_id);
+       }
+       catch (PaymentGatewayException $e) {
+-        $this->logger->error($e->getMessage());
+-        $message = $this->t('We encountered an unexpected error processing your payment method. Please try again later.');
++        \Drupal::logger('commerce_payment')->error($e->getMessage());
++        $message = $this->t('We encountered an error processing your payment method. Please verify your details and try again.</p><p>We see you might be having trouble checking out. Please give us a call at 1-800-659-0860 for checkout assistance.');
++        \Drupal::messenger()->addMessage(t('We see you might be having trouble checking out. Please give us a call at 1-800-659-0860 for checkout assistance.'), 'warning');
+         $this->messenger()->addError($message);
++        $this->order->get('payment_gateway')->setValue(NULL);
++        $this->order->get('payment_method')->setValue(NULL);
++        $payment_method->delete();
+         $this->checkoutFlow->redirectToStep($error_step_id);
+       }
+     }
