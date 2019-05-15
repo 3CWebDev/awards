@@ -8,6 +8,9 @@
 /libraries/
 /private/
 /private:/
+/modules/custom/awards_product_importer/assets
+/modules/custom/awards_product_importer/assets/csv
+
 # Ignore sensitive information
 /sites/*/settings.php
 /sites/*/settings.local.php
