@@ -1,0 +1,1381 @@
+// REFACTOR CONTAINERS
+
+.path-catalog,
+.path-shop {
+
+  @include size(mdu) {
+    .main-container {
+
+      .col-sm-3 {
+        width: 33% !important;
+      }
+      .col-sm-9 {
+        width: 66% !important;
+      }
+    }
+  }
+  @include size(lgu) {
+    .main-container {
+
+      .col-sm-3 {
+        width: 25% !important;
+      }
+      .col-sm-9 {
+        width: 75% !important;
+      }
+    }
+  }
+}
+
+
+// RELATED PRODUCTS
+
+#block-related-products,
+#block-views-block-related-products-block-1,
+#block-views-block-related-products-block-2,
+#block-views-block-related-products-block-1-2{
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 110px;
+  font-family: Montserrat, arial, sans-serif;
+
+  h2.block-title {
+
+    font-weight: 600;
+    color: #283444;
+    font-size: 30px;
+    margin-top: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e4e3e3;
+    margin-bottom: 20px;
+  }
+
+  .view-content {
+
+    .views-row {
+      text-align: center;
+      margin-bottom: 30px;
+      @include size(mdu) {
+        margin-bottom: 0;
+      }
+      .img-responsive {
+        width: 100%;
+        @include size(mdu) {
+          width: auto;
+        }
+      }
+      .views-field-title {
+        font-size: 15px;
+        @include size(mdu) {
+          margin-top: 30px;
+        }
+
+        a {
+          color: #283444;
+        }
+      }
+
+      .views-field-price__number {
+        font-size: 20px;
+        text-transform: uppercase;
+        color: $brand-primary;
+
+      }
+    }
+  }
+}
+
+
+// CATALOG SEARCH
+
+.path-catalog,
+.path-shop {
+
+  .breadcrumb {
+    display: none;
+    @include size(mdu) {
+      display: block;
+      text-align: left;
+      padding-left: 0;
+
+    
+      li.active {
+        display: none;
+
+      }
+      
+    }
+  }
+
+  h1.page-header {
+    margin-bottom: 0;
+    position: relative;
+    //top: 70px;
+    font-size: 40px;
+    color: $brand-primary;
+    font-family: Montserrat, arial, sans-serif;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+    @include size(xlu) {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.view-product-search-search-api {
+
+  .view-header {
+    background: #f8f8f8;
+    color: $brand-primary;
+    padding: 20px;
+    font-size: 18px;
+    float: left;
+    width: 100%;
+    @include size(mdu) {
+      float: right;
+      margin-left: 30px;
+      width: auto;
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  .view-filters {
+    background: #f8f8f8;
+    padding: 13px;
+    padding-top: 10px;
+    padding-bottom: 60px;
+    height: 65px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    float: left;
+    position: relative;
+    @include size(mdu) {
+      padding-top: 13px;
+      padding-bottom: 0;
+      float: none;
+      height: 66px;
+      //margin-top: 70px;
+
+    }
+
+    label {
+      font-weight: normal;
+    }
+
+    .form-control {
+      background: transparent;
+      border: 0;
+      box-shadow: 0 0 0;
+      font-size: 18px;
+
+    }
+
+    .form-type-select {
+      float: right;
+      position: absolute;
+      top: -55px;
+      left: auto;
+      right: 20px;
+      @include size(mdu) {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: auto;
+
+        font-size: 14px;
+      }
+      @include size(lgu) {
+        font-size: inherit;
+      }
+
+      .select-wrapper {
+        @include size(mdu) {
+          width: 58px;
+        }
+        @include size(lgu) {
+          width: auto;
+        }
+      }
+    }
+
+    .form-type-textfield {
+      margin-top: 50px;
+      @include size(mdu) {
+        width: 27%;
+        margin-top: 0;
+      }
+      @include size(lgu) {
+        width: 40%;
+      }
+      @include size(xlu) {
+        width: auto;
+      }
+
+      .form-text {
+        background: #fff;
+        border-radius: 0;
+        height: 43px;
+        margin-right: 10px;
+        border: 1px solid #dcdcdc;
+        width: 80%;
+        margin-top: -50px;
+        @include size(mdu) {
+          width: 96%;
+          margin-top: 0;
+        }
+        @include size(lgu) {
+          width: 95%;
+        }
+
+      }
+    }
+
+    .form-submit {
+      border-radius: 0;
+      font-size: 0;
+      background: #d5e14e;
+    color: #445560;
+    border-color: #d5e14e;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    @include size(mdu) {
+      position: relative;
+      top: 0;
+    }
+
+      .glyphicon-search:before {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .view-content {
+    clear: both;
+
+    .views-row {
+      text-align: center;
+      min-height: 370px;
+      @include size(mdu) {
+        min-height: 460px;
+      }
+
+      .views-field-title {
+        font-size: 15px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        a {
+          color: #283444;
+        }
+      }
+      .views-field-field-product-base-image {
+
+        img {
+          margin: 0 auto;
+          @include size(mdu) {
+            margin: 0;
+          }
+        }
+      }
+
+      .views-field-field-product-base-price {
+        font-size: 20px;
+        text-transform: uppercase;
+        color: $brand-primary;
+
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+// --> Header Slideshows
+
+.path-catalog,
+.path-shop {
+
+  .slick {
+    position: relative;
+    margin-bottom: 40px;
+
+    .media {
+      img {
+        width: 100%;
+      }
+    }
+    .slide__caption {
+      position: absolute;
+      top: 10%;
+      left: 9%;
+      color: #41555c;
+      background-color: rgb(245, 245, 245);
+      opacity: 0.749;
+      letter-spacing: 0px;
+      font-weight: 500;
+      line-height: 1;
+      font-size: 12px;
+      text-align: center;
+      width: 80%;
+      padding: 20px;
+      @include size(mdu) {
+        font-size: 17px;
+        left: 10%;
+      }
+      @include size(xlu) {
+        top: 25%;
+        font-size: 20px;
+      }
+      @include size(xxlu) {
+        top: 25%;
+      }
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-top: 0;
+        font-family: Montserrat, arial, sans-serif;
+        margin-bottom: 5px;
+        color: #000;
+
+        @include size(mdu) {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+        @include size(lgu) {
+          font-size: 28px;
+          margin-bottom: 10px;
+        }
+        @include size(xlu) {
+          font-size: 32px;
+          margin-bottom: 5px;
+        }
+        @include size(xxlu) {
+          font-size: 32px;
+        }
+      }
+
+      a {
+        color: #fff;
+
+      }
+    }
+  }
+}
+
+// --> FACETS & SIDEBAR
+
+.region-sidebar-first {
+
+  .mobile-filters,
+  .mobile-lp {
+
+    text-align: center;
+    background-color: $brand-primary;
+    margin-bottom: 20px;
+    @include size(mdu) {
+      display: none;
+    }
+
+    a {
+      color: #fff;
+      text-transform: uppercase;
+      font-family: Montserrat, arial, sans-serif;
+      padding: 10px;
+      width: 100%;
+      font-size: 19px;
+      display: block;
+      padding: 10px 0;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+
+  }
+
+  // Collapsiblock
+
+  div.collapsiblock {
+    background: none;
+
+    a {
+      cursor: default;
+
+      h2 {
+        @include size(mb) {
+          &:after {
+            content: "\f107";
+            font-family: font-awesome;
+            font-size: 30px;
+            position: relative;
+            left: 10px;
+          }
+        }
+      }
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+  }
+
+  div.collapsiblock.collapsiblockCollapsed {
+    background: none;
+
+    a {
+      cursor: default;
+
+      h2 {
+        @include size(mb) {
+          &:after {
+            content: "\f106";
+            font-family: font-awesome;
+            font-size: 30px;
+            position: relative;
+            left: 10px;
+          }
+        }
+      }
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+  }
+
+  .facets-widget-checkbox,
+  .facet-slider {
+    @include size(mdu) {
+      display: block !important;
+    }
+  }
+}
+
+.facet-reset {
+  text-align: center;
+  margin: 20px 0;
+  display: none;
+
+  @include size(mdu) {
+    display: block;
+
+  }
+
+  .btn-info {
+    border-radius: 0;
+    background-color: #c4cacc;
+    border-color: #c4cacc;
+    color: #41555c;
+    text-transform: uppercase;
+    font-family: Montserrat, arial, sans-serif;
+    padding: 10px;
+    width: 100%;
+
+    &:hover {
+      background-color: $brand-info;
+      border-color: $brand-info;
+      color: #fff;
+    }
+  }
+}
+
+.block-facets {
+  color: #41555c;
+  background: #fcfcfc;
+  padding: 30px 5px;
+  padding-bottom: 10px;
+  font-family: Montserrat, arial, sans-serif;
+  font-size: 18px;
+  margin-bottom: 5px;
+  display: none;
+  @include size(mdu) {
+    display: block;
+  }
+
+
+  h2.block-title {
+    font-family: BebasNeueRegular, arial, sans-serif;
+    font-weight: 400;
+    font-size: 35px;
+    text-transform: uppercase;
+    color: #41555c;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    @include size(mdu) {
+      font-size: 25px;
+    }
+    @include size(lgu) {
+      font-size: 35px;
+    }
+    @include size(xlu) {
+
+    }
+    @include size(xxlu) {
+      font-size: 35px;
+    }
+  }
+  ul {
+    list-style: none;
+    @include size(mdu) {
+      padding-left: 0.5em;
+    }
+    @include size(lgu) {
+      padding-left: 10px;
+    }
+    @include size(xlu) {
+      padding-left: 1.5em;
+    }
+  }
+
+  li.facet-item {
+    list-style: none;
+    list-style-image: none;
+    padding-left: 0;
+    @include size(mdu) {
+      font-size: 13px;
+    }
+    @include size(lgu) {
+      font-size: 14px;
+    }
+    @include size(xlu) {
+      font-size: 16px;
+    }
+
+    label {
+      font-weight: normal;
+    }
+
+    .facets-checkbox {
+      margin-right: 10px;
+
+    }
+
+    li.facet-item {
+      font-size: 13px;
+    }
+  }
+
+}
+
+// RUSH AWARDS 
+
+.rush-awards-desc {
+  margin-top: -20px;
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+#block-pricesearch,
+#block-pricesearch-1,
+#block-pricesearch-2 {
+  background: #f5f5f5;
+  padding: 30px 25px;
+  padding-bottom: 10px;
+
+  .ui-slider-pips [class*=ui-slider-pip-selected],
+  .ui-slider-pips .ui-slider-pip-selected-2,
+  .ui-slider-pips .ui-slider-pip-initial-2,
+  .ui-slider-pips [class*=ui-slider-pip-initial] {
+    color: #283444;
+  }
+
+  //#price_search {
+
+  //  &:after {
+  //    content: "$0 - 200 - 400 - 600 - 800 - 1000+";
+  //    font-size: 20px;
+  //    position: relative;
+  //    top: 20px;
+  //    left: 10px;
+  //    @include size(mdu) {
+  //      font-size: 15px;
+  //      content: "$0 - 1000";
+  //      left: 15px;
+  //    }
+  //    @include size(lgu) {
+  //      font-size: 13px;
+  //      content: "$0 - 200 - 400 - 600 - 800+";
+  //      left: 0px;
+  //    }
+  //    @include size(xlu) {
+  //      left: 15px;
+  //      font-size: 15px;
+  //      content: "$0 - 200 - 400 - 600 - 800+";
+  //    }
+  //    @include size(xxlu) {
+  //      left: 20px;
+  //      content: "$0 - 200 - 400 - 600 - 800+";
+  //    }
+//    }
+//  }
+}
+
+#block-views-block-ships-today-block-1 {
+  margin: 20px 0;
+  @include size(lgu) {
+    margin: 0 0;
+    float: right;
+  }
+
+  .views-field-nothing {
+    color: red;
+
+    .ship {
+      display: inline;
+      &:before {
+        content: "\f48b";
+        font-family: font-awesome5;
+        font-size: 24px;
+        color: #444;
+      }
+    }
+    .help {
+      display: inline;
+      padding: 3px 8px;
+      background: #444;
+      color: #fff;
+      border-radius: 20px;
+      position: relative;
+      top: -3px;
+      font-size: 14px;
+    }
+
+    .tooltip.top,
+    .tooltip-main,
+    .tooltip-qm,
+    .tooltip-inner,
+    .tooltip {
+      font-size: 12px !important;
+    }
+  }
+}
+
+
+// CART
+
+button#edit-checkout {
+  background-color: #d5e14e;
+  border-color: #d5e14e;
+  color: #283444;
+  border-radius: 0;
+}
+
+.view-commerce-cart-form {
+
+  .btn {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #edit-submit,
+  [data-drupal-selector="edit-submit"] {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
+    padding: 6px 12px;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .order-total-line-label {
+    margin-right: 10px;
+  }
+
+  .table-responsive {
+    font-size: 18px;
+
+    .views-field-purchased-entity {
+      font-weight: bold;
+
+      .desc {
+        font-weight: 400;
+        font-size: 14px;
+        color: #999;
+      }
+    }
+
+    .views-field-quantity {
+      text-align: center;
+    }
+
+    
+  }
+}
+
+
+// CUSTOM TEXT PAGE
+
+body#custom-text {
+
+  // HELP TEXT 
+
+  .help-button {
+    background-color: #009fc3;
+    color: #fff;
+    display: block;
+    width: 180px;
+    text-align: center;
+    margin: 20px 0;
+    &:hover {
+      color: #445560;
+      background-color: $brand-secondary;
+    }
+  }
+
+  #block-contentcustomtextdescription .help-text {
+    position: absolute;
+    left: -9999em;
+    
+  }
+  #colorbox #cboxContent #cboxLoadedContent .help-text {
+    display: block;
+    text-indent: 0;
+    font-size: 18px;
+    
+  }
+
+
+
+  .product-thumbnail {
+    text-align: center;
+    margin-bottom: 30px;
+
+    img {
+      width: 150px;
+      height: auto;
+    }
+  }
+  
+
+  .custom-text-description {
+    font-size: 18px;
+    margin: 20px 0;
+  }
+
+  .awards-custom-text-form {
+
+    p {
+      font-style: italic;
+      font-size: 16px;
+      float: left;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    }
+
+    .js-form-item-agree {
+      p {
+        font-style: normal;
+        font-size: inherit;
+        float: none;
+        width: auto;
+        margin-bottom: 15.5px;
+        margin-top: 0;
+      }
+    }
+  }
+
+  // ORDER TYPE
+
+  #edit-order-type--wrapper {
+
+    legend {
+      display: none;
+    }
+
+    .fieldset-wrapper {
+
+      .radio {
+        display: inline-block;
+        margin-right: 30px;
+        font-size: 20px;
+        @include size(mdu) {
+          margin-bottom: 40px;
+          font-size: 22px;
+        }
+      }
+    }
+
+    #edit-order-type {
+      position: relative;
+      z-index: 100;
+      &:before {
+        content: "1";
+        padding: 10px 22px;
+        background: #444;
+        border-radius: 30px;
+        margin-right: 30px;
+        font-size: 25px;
+        font-family: arial;
+        font-weight: bold;
+        color: #fff;
+        float: left;
+      }
+    }
+  }
+
+  // File upload field
+  #edit-text-type {
+    &:before {
+      content: "2";
+      padding: 10px 22px;
+      background: #444;
+      border-radius: 30px;
+      margin-right: 30px;
+      margin-bottom: 80px;
+      font-size: 25px;
+      font-family: arial;
+      font-weight: bold;
+      color: #fff;
+      float: left;
+
+    }
+    .form-item {
+      top: -50px;
+      left: 88px;
+      font-size: 20px;
+      width: 60%;
+      padding-bottom: 10px;
+      @include size(mdu) {
+        top: 0;
+        left: 0;
+        font-size: 22px;
+        width: auto;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  div#edit-text-file-upload {
+    &:after {
+      content: "Allowed file formats: txt doc docx xls xlsx pdf rtf";
+      font-size: 14px;
+    }
+  }
+
+  .panel {
+    margin-bottom: 50px;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
+    border: 0;
+
+    .panel-heading {
+      background-color: $brand-primary;
+      color: #fff;
+      border-color: $brand-primary;
+      border-radius: 0;
+    }
+
+    .panel-body {
+      padding: 0;
+    }
+
+
+    div[id^="text_preview"] {
+      text-align: center;
+      font-size: 16px;
+      //border: 1px solid #ddd;
+      //margin-top: 20px;
+      //margin-bottom: 40px;
+      @include size(mdu) {
+        position: absolute;
+        width: 41%;
+        right: 15px;
+        overflow-wrap: break-word;
+        overflow: auto;
+        max-height: 240px;
+        padding-left: 2%;
+      }
+
+      div {
+        //margin: 30px;
+        //padding-bottom: 20px;
+        font-size: 1.3vw;
+        font-weight: 600;
+        line-height: 1.7;
+      }
+
+    }
+
+
+    .form-item {
+      margin-bottom: 15px;
+      @include size(mdu) {
+        position: relative;
+        top: 20px;
+      }
+
+      label {
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-family: BebasNeueRegular, arial, sans-serif;
+        font-size: 24px;
+        margin-right: 10px;
+      }
+
+      .form-control {
+        font-size: 16px;
+        padding: 6px 12px;
+        height: 35px;
+        border-radius: 0;
+        box-shadow: 0 0 0 transparent;
+        width: 80%;
+        @include size(mdu) {
+          width: 30%;
+        }
+        @include size(lgu) {
+          width: 50%;
+        }
+        @include size(xlu) {
+          width: 60%;
+        }
+      }
+    }
+
+    .form-type-checkbox {
+
+      input {
+        width: 20px;
+        height: 20px;
+      }
+
+      label {
+        font-size: 0;
+        color: #fff;
+        position: absolute;
+        top: -50px;
+        right: 0;
+        @include size(mdu) {
+          position: relative;
+          top: 0;
+          left: -375px;
+        }
+        @include size(lgu) {
+          left: -255px;
+        }
+        @include size(xlu) {
+          left: -185px;
+
+          @-moz-document url-prefix() { 
+            left: -225px;
+          }
+        }
+        &:after {
+          font-family: font-awesome;
+          content: "\f0c5";
+          font-size: 24px;
+          color: $text-color;
+
+        }
+      }
+    }
+  }
+
+  // RIBBONS
+
+  .fieldset-legend {
+    padding: 15px;
+    border-left: 2px solid #009fc3;
+    border-top: 2px solid #009fc3;
+    background-color: #009fc3;
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    border-right: 2px solid #009fc3;
+  }
+
+  .medallion-image {
+    width: 100%;
+    border-left: 2px solid #ddd;
+    text-align: center;
+    border-right: 2px solid #ddd;
+  }
+
+  .ribbon-sample {
+    width: 100%;
+    border-left: 2px solid #ddd;
+    text-align: center;
+    border-right: 2px solid #ddd;
+
+    img {
+      margin-bottom: -95px;
+    }
+  }
+
+  #edit-ribbon {
+    padding: 15px;
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    width: 100%;
+    margin-bottom: 40px;
+
+    .form-item.radio {
+      display: inline-block;
+      padding: 10px;
+    }
+
+    .radio input[type="radio"] {
+      position: absolute;
+      margin-left: 0;
+      top: 100px;
+      left: 52%;
+    }
+    .ribbon-image {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+
+  // AGREEMENT
+
+
+
+  .form-item-agree {
+    clear: both;
+    border: 1px solid #333;
+    padding: 20px;
+    margin-bottom: 30px;
+    @include size(mdu) {
+      margin-top: 90px;
+    }
+
+    label {
+      font-size: 30px;
+      color: red;
+
+      p {
+        margin-left: 20px;
+        @include size(lgu) {
+          margin-left: 10px;
+          margin-bottom: 10px;
+        }
+      }
+      &:after {
+        display: none;
+      }
+    }
+    .form-checkbox {
+      width: 20px;
+      height: 35px;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #000;
+    }
+  }
+
+  #edit-submit {
+    background-color: #d5e14e;
+    border-color: #d5e14e;
+    color: #283444;
+    text-transform: uppercase;
+    border-radius: 0;
+    letter-spacing: 1px;
+    font-weight: 600;
+    @include size(mdu) {
+      margin-left: 20px;
+    }
+  }
+
+  #edit-cancel {
+    font-size: 16px;
+    margin-bottom: 20px;
+    @include size(mdu) {
+      margin-bottom: 0;
+      font-size: 22px;
+    }
+  }
+}
+
+
+// CHECKOUT
+
+.checkout-pane {
+
+  .panel {
+    margin-bottom: 50px;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
+    border: 0;
+  }
+
+  .panel-heading {
+    background-color: $brand-primary;
+    color: #fff;
+    border-color: $brand-primary;
+    border-radius: 0;
+  }
+
+  .panel-body {
+
+
+    .form-item {
+      margin-bottom: 15px;
+
+      label {
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-family: BebasNeueRegular, arial, sans-serif;
+        font-size: 24px;
+        margin-right: 10px;
+      }
+
+      .form-control {
+        font-size: 16px;
+        padding: 6px 12px;
+        height: 35px;
+        border-radius: 0;
+        box-shadow: 0 0 0 transparent;
+      }
+    }
+
+    legend {
+
+      .fieldset-legend {
+        font-family: BebasNeueRegular, arial, sans-serif;
+      }
+    }
+
+    #edit-shipping-information-recalculate-shipping {
+      margin-bottom: 30px;
+    }
+
+    .field--name-shipping-method {
+      margin-top: 20px;
+    }
+  }
+}
+
+.checkout-pane .panel-body #shipping-information-shipments-wrapper  {
+
+  .form-item label {
+    font-family: Montserrat, arial, sans-serif;
+    text-transform: none;
+    font-size: 20px;
+    letter-spacing: 0;
+  }
+
+  .js-webform-radios .form-type-radio:nth-child(3) {
+    margin-bottom: 40px;
+  }
+
+
+}
+
+.checkout-pane-shipping-information {
+  .disclaimer {
+    font-size: 20px;
+    font-style: italic;
+  }
+}
+
+#edit-actions-next {
+  background-color: #d5e14e;
+  border-color: #d5e14e;
+  color: #283444;
+  text-transform: uppercase;
+  border-radius: 0;
+  letter-spacing: 1px;
+  font-weight: 600;
+  width: 100%;
+  margin-bottom: 20px;
+  @include size(mdu) {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
+
+.layout-region-checkout-footer {
+  a {
+    display: block;
+    text-align: center;
+    @include size(mdu) {
+      display: inline;
+      text-align: left;
+    }
+  }
+}
+
+.path-checkout {
+
+
+  //LOGIN or Make Account
+
+  #edit-checkoutaccountspane-returning-customer {
+
+    @include size(mdu) {
+      width: 50%;
+      float: left;
+    }
+    @include size(lgu) {
+      width: 33%;
+    }
+
+    .panel-heading {
+      background-color: #d5e14e;
+      border-color: #d5e14e;
+      color: #445560;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: BebasNeueRegular;
+
+      .panel-title {
+        font-size: 30px;
+        padding-bottom: 5px;
+      }
+    }
+
+    .btn-primary {
+      background-color: #445560;
+      border-color: #445560;
+      margin-right: 20px;
+    }
+
+    a {
+      font-size: 15px;
+    }
+  }
+
+  #edit-checkoutaccountspane-register-password {
+    margin-bottom: 50px !important;
+  }
+
+  #edit-checkoutaccountspane-register {
+    @include size(mdu) {
+      width: 50%;
+      float: left;
+    }
+    @include size(lgu) {
+      width: 33%;
+    }
+
+    .password-suggestions,
+    .password-confirm {
+      font-size: 15px;
+    }
+    .password-strength {
+
+      .password-strength__meter {
+        height: 0.35em;
+
+        .password-strength__indicator.is-weak {
+          background-color: red;
+        }
+        .password-strength__indicator.is-good,
+        .password-strength__indicator.is-fair {
+          background-color: goldenrod;
+        }
+        .password-strength__indicator.is-strong {
+          background-color: green;
+        }
+
+      }
+      .password-strength__title {
+        display: none;
+      }
+    }
+  }
+
+  #edit-checkoutaccountspane-guest {
+
+    @include size(mdu) {
+      clear: both;
+      float: left;
+      border-top: 1px solid #ddd;
+    }
+    @include size(lgu) {
+      clear: none;
+      border-top: 0;
+      width: 33%;
+    }
+    
+
+    .panel-heading {
+      background: #fff;
+      color: #333;
+      border-color: #fff;
+
+      .panel-title {
+        font-size: 20px;
+        padding: 0 15px;
+      }
+    }
+
+    .panel-body {
+
+      font-size: 15px;
+
+      .btn-default {
+        font-size: 15px;
+      }
+    }
+  }
+
+
+  #edit-actions {
+    margin-top: 30px;
+  }
+
+  #edit-extra-info-checkout-pane {
+    margin-top: 40px;
+  }
+
+  // ORDER SUMMARY BLOCK
+
+  .layout-region-checkout-secondary {
+    padding: 15px;
+    border: 1px solid #ddd;
+
+    h3 {
+      background-color: #d5e14e;
+      margin: -15px;
+      padding: 15px;
+      padding-bottom: 5px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #283444;
+      font-family: BebasNeueRegular, arial, sans-serif;
+    }
+
+    table {
+      font-size: 16px;
+    }
+
+    .order-total-line-label {
+      margin-right: 10px;
+    }
+
+    #edit-sidebar-coupon-redemption {
+      label {
+        clear: both;
+        width: 100%;
+        float: left;
+      }
+      #edit-sidebar-coupon-redemption-form-code {
+        width: 40%;
+        float: left;
+        @include size(mdu) {
+          width: 45%;
+        }
+      }
+      #edit-sidebar-coupon-redemption-form-apply {
+        margin-left: 10px;
+      }
+    }
+  }
+}

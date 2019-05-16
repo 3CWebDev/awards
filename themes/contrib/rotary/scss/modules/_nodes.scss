@@ -1,0 +1,19 @@
+.path-product #product-display .column-right .step-1 {
+  color: $brand-secondary;
+  background: url(../images/icon_step1.png) 0 0 no-repeat;
+}
+
+.path-product #product-display .column-left .price {
+  color: $brand-primary;
+
+}
+
+.path-product #product-display .column-right [data-drupal-selector="edit-field-order-item-logo-wrapper"] legend .fieldset-legend:before {
+  color: $brand-secondary;
+  background: url(../images/icon_step2.png) 0 0 no-repeat;
+}
+
+body.user-logged-in.path-user .customer-information .customer-information__shipping .field__label,
+body.user-logged-in.path-user .customer-information .customer-billing .field__label {
+  color: #fff;
+}

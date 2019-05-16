@@ -1,0 +1,91 @@
+// Example of how to use these rad responsive variables
+
+//@include size(xs) { /* Words */ }
+//@include size(sm) { /* Words */ }
+//@include size(md) { /* Words */ }
+//@include size(lg) { /* Words */ }
+//@include size(xlu) { /* Words */ }
+@mixin size($media) {
+  // These variables are for styles needed ONLY within these widths
+  @if $media == xs {
+    @media only screen and (max-width: 479px) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: 480px) and (max-width: 767px) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: 768px) and (max-width: 991px) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: 992px) and (max-width: 1198px) { @content; }
+  }
+  @else if $media == lgx {
+    @media only screen and (min-width: 1199px) and (max-width: 1317px) { @content; }
+  }
+
+    // These variables are for styles needed in their min-widths and everything above it
+  @else if $media == smu {
+    @media only screen and (min-width: 480px) { @content; }
+  }
+  @else if $media == mdu {
+    @media only screen and (min-width: 768px) { @content; }
+  }
+  @else if $media == lgu {
+    @media only screen and (min-width: 992px) { @content; }
+  }
+  @else if $media == xlu {
+    @media only screen and (min-width: 1200px) { @content; }
+  }
+
+  @else if $media == xxlu {
+    @media only screen and (min-width: 1600px) { @content; }
+  }
+    // Special media query for only for mobile break point
+  @else if $media == mb {
+    @media only screen and (max-width: 767px) { @content; }
+  }
+
+}
+
+
+
+///
+/// Viewport sized typography with minimum and maximum values
+///
+/// @author Eduardo Boucas (@eduardoboucas)
+///
+/// @param {Number}   $responsive  - Viewport-based size
+/// @param {Number}   $min         - Minimum font size (px)
+/// @param {Number}   $max         - Maximum font size (px)
+///                                  (optional)
+/// @param {Number}   $fallback    - Fallback for viewport-
+///                                  based units (optional)
+///
+/// @example scss - 5vw font size (with 50px fallback),
+///                 minumum of 35px and maximum of 150px
+///  @include responsive-font(5vw, 35px, 150px, 50px);
+/// SOURCE - http://codepen.io/eduardoboucas/pen/YXxmwv/
+///
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}

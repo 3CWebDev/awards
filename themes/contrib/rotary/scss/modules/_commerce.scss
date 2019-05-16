@@ -1,0 +1,553 @@
+// RELATED PRODUCTS
+
+#block-related-products,
+#block-views-block-related-products-block-1 {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 110px;
+  font-family: Montserrat, arial, sans-serif;
+
+  h2.block-title {
+
+    font-weight: 600;
+    color: #283444;
+    font-size: 30px;
+    margin-top: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e4e3e3;
+    margin-bottom: 20px;
+  }
+
+  .view-content {
+
+    .views-row {
+      text-align: center;
+
+      .views-field-title {
+        font-size: 15px;
+        margin-top: 30px;
+
+        a {
+          color: #283444;
+        }
+      }
+
+      .views-field-price__number {
+        font-size: 20px;
+        text-transform: uppercase;
+        color: $brand-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+// CATALOG SEARCH
+
+.path-catalog,
+.path-shop {
+
+  h1.page-header {
+    margin-bottom: 0;
+    position: relative;
+    top: 70px;
+    font-size: 40px;
+    color: $brand-primary;
+    font-family: Montserrat, arial, sans-serif;
+    font-weight: 500;
+    margin-bottom: 80px;
+    @include size(xlu) {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.view-product-search-search-api {
+
+  .view-header {
+    background: #f8f8f8;
+    color: $brand-primary;
+    padding: 20px;
+    font-size: 18px;
+    float: left;
+    @include size(mdu) {
+      float: right;
+      margin-left: 30px;
+    }
+  }
+
+  .view-filters {
+    background: #f8f8f8;
+
+    @include size(mdu) {
+
+
+    }
+
+    label {
+      font-weight: normal;
+    }
+
+    .form-control {
+      background: transparent;
+      border: 0;
+      box-shadow: 0 0 0;
+      font-size: 18px;
+
+    }
+
+    .form-submit {
+      background: $brand-secondary;
+      color: #fff;
+      border-color: $brand-secondary;
+    }
+  }
+
+  .view-content {
+    clear: both;
+
+    .views-row {
+      text-align: center;
+      min-height: 420px;
+
+      .views-field-title {
+        font-size: 15px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        a {
+          color: #283444;
+        }
+      }
+
+      .views-field-field-product-base-price {
+        font-size: 20px;
+        text-transform: uppercase;
+        color: $brand-primary;
+        text-decoration: underline;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+// --> Header Slideshows
+
+.path-catalog,
+.path-shop {
+
+  .slick {
+    position: relative;
+
+    .media {
+      img {
+        width: 100%;
+      }
+    }
+    .slide__caption {
+      position: absolute;
+      top: 10%;
+      left: 9%;
+      color: #41555c;
+      background-color: rgb(245, 245, 245);
+      opacity: 0.749;
+      letter-spacing: 0px;
+      font-weight: 500;
+      line-height: 1;
+      font-size: 12px;
+      text-align: center;
+      width: 80%;
+      padding: 20px;
+      @include size(mdu) {
+        font-size: 17px;
+        left: 10%;
+      }
+      @include size(xlu) {
+        top: 25%;
+        font-size: 20px;
+      }
+      @include size(xxlu) {
+        top: 25%;
+      }
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-top: 0;
+        font-family: Montserrat, arial, sans-serif;
+        margin-bottom: 5px;
+        color: #000;
+
+        @include size(mdu) {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+        @include size(lgu) {
+          font-size: 28px;
+          margin-bottom: 10px;
+        }
+        @include size(xlu) {
+          font-size: 32px;
+          margin-bottom: 5px;
+        }
+        @include size(xxlu) {
+          font-size: 32px;
+        }
+      }
+
+      a {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// --> FACETS
+
+.facet-reset {
+
+  .btn-info {
+
+    font-family: "Open Sans", arial, sans-serif;
+
+  }
+}
+
+.block-facets {
+  font-family: "Open Sans", arial, sans-serif;
+
+
+}
+
+
+// CART
+
+button#edit-checkout {
+  background-color: $brand-teritary;
+  border-color: $brand-teritary;
+  color: #fff;
+}
+
+.view-commerce-cart-form {
+
+  .btn {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #edit-submit {
+    background-color: #5acef3;
+    border-color: #5acef3;
+    padding: 6px 12px;
+    font-size: 16px;
+    color: #283444;
+  }
+
+  #edit-checkout {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
+    padding: 6px 12px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 0;
+  }
+
+  .order-total-line-label {
+    margin-right: 10px;
+  }
+
+  .table-responsive {
+    font-size: 18px;
+
+    .views-field-purchased-entity {
+      font-weight: bold;
+
+      .desc {
+        font-weight: 400;
+        font-size: 14px;
+        color: #999;
+      }
+    }
+
+    .views-field-quantity {
+      text-align: center;
+    }
+
+    .views-field-custom-text {
+
+
+    }
+  }
+}
+
+
+// CUSTOM TEXT PAGE
+
+body#custom-text {
+
+  .custom-text-description {
+    font-size: 18px;
+    margin: 20px 0;
+  }
+
+  // RIBBONS
+
+  .fieldset-legend {
+    padding: 15px;
+    border-left: 2px solid #ddd;
+    border-top: 2px solid #ddd;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+    border-right: 2px solid #ddd;
+  }
+
+  .panel {
+    margin-bottom: 50px;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
+    border: 0;
+
+    .panel-heading {
+      background-color: $brand-primary;
+      color: #fff;
+      border-color: $brand-primary;
+      border-radius: 0;
+    }
+
+    .panel-body {
+      padding: 0;
+    }
+
+    div[id^="text_preview"] {
+      text-align: center;
+      font-size: 16px;
+
+      margin-top: 10px;
+
+      div {
+        padding-bottom: 20px;
+        font-size: 18px;
+      }
+    }
+
+    .form-item {
+      margin-bottom: 15px;
+
+      label {
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 0px;
+        font-family: "Open Sans", arial, sans-serif;
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .form-control {
+        font-size: 16px;
+        padding: 6px 12px;
+        height: 35px;
+        border-radius: 0;
+        box-shadow: 0 0 0 transparent;
+      }
+    }
+
+    .form-type-checkbox {
+
+      input {
+        width: 20px;
+        height: 20px;
+      }
+
+      label {
+        font-size: 0;
+        color: #fff;
+        &:after {
+          font-family: font-awesome;
+          content: "\f0c5";
+          font-size: 24px;
+          color: $text-color;
+
+        }
+      }
+    }
+  }
+
+
+
+  // AGREEMENT
+
+  .form-item-agree {
+    border: 1px solid #333;
+    padding: 20px;
+    margin-bottom: 30px;
+
+    label {
+      font-size: 30px;
+      color: red;
+    }
+    .form-checkbox {
+      width: 20px;
+      height: 35px;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #000;
+    }
+  }
+
+  #edit-submit {
+    background-color: $brand-secondary;
+    border-color: $brand-secondary;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+}
+
+
+// CHECKOUT
+
+.checkout-pane {
+
+  .panel {
+    margin-bottom: 50px;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
+    border: 0;
+  }
+
+  .panel-heading {
+    background-color: $brand-primary;
+    color: #fff;
+    border-color: $brand-primary;
+    border-radius: 0;
+  }
+
+  .panel-body {
+
+
+    .form-item {
+      margin-bottom: 15px;
+
+      label {
+        text-transform: none;
+        font-weight: 400;
+        letter-spacing: 0px;
+        font-family: "Open Sans", arial, sans-serif;
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .form-control {
+        font-size: 16px;
+        padding: 6px 12px;
+        height: 35px;
+        border-radius: 0;
+        box-shadow: 0 0 0 transparent;
+      }
+    }
+
+    legend {
+
+      .fieldset-legend {
+        font-family: "Open Sans", arial, sans-serif;
+      }
+    }
+
+    #edit-shipping-information-recalculate-shipping {
+      margin-bottom: 30px;
+    }
+
+    .field--name-shipping-method {
+      margin-top: 20px;
+    }
+  }
+}
+
+#edit-actions-next {
+  background-color: $brand-secondary;
+  border-color: $brand-secondary;
+  color: #fff;
+}
+
+.path-checkout {
+
+  #edit-actions {
+    margin-top: 30px;
+  }
+
+  #edit-checkoutaccountspane-returning-customer {
+
+    .panel-heading {
+      background-color: $brand-secondary;
+      font-weight: 400;
+      color: #fff;
+      font-family: "Open Sans", arial, sans-serif;
+      text-transform: none;
+      border-color: $brand-secondary;
+
+      .panel-title {
+        font-size: 23px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  #edit-checkoutaccountspane-register {
+
+    .btn-success {
+      background-color: $brand-secondary;
+      border-color: $brand-secondary;
+    }
+  }
+
+  // ORDER SUMMARY BLOCK
+
+  .layout-region-checkout-secondary {
+    padding: 15px;
+    border: 1px solid #ddd;
+
+    h3 {
+      background-color: #005daa;
+      margin: -15px;
+      padding: 15px;
+      padding-bottom: 12px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #FFF;
+      font-family: "Open Sans", arial, sans-serif;
+      font-size: 24px;
+    }
+
+    table {
+      font-size: 16px;
+    }
+
+    #edit-sidebar-coupon-redemption {
+      label {
+        clear: both;
+        width: 100%;
+        float: left;
+      }
+      #edit-sidebar-coupon-redemption-form-code {
+        width: 45%;
+        float: left;
+      }
+      #edit-sidebar-coupon-redemption-form-apply {
+        margin-left: 10px;
+      }
+    }
+  }
+}

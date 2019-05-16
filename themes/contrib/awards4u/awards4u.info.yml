@@ -1,0 +1,31 @@
+core: 8.x
+type: theme
+base theme: bootstrap
+
+name: 'Awards4U'
+description: 'Theme for the main Awards4U site, based on Bootstrap'
+package: 'Bootstrap'
+
+regions:
+  alert: 'Alert'
+  top_nav: 'Top Navigation'
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  banner: 'Banner'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  secondary_content: 'Secondary Content'
+  tertiary_content: 'Tertiary Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  pre_footer: 'Pre Footer'
+  footer: 'Footer'
+  post_footer: 'Post Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+libraries:
+  - 'awards4u/global-styling'
+  - 'awards4u/bootstrap-scripts'

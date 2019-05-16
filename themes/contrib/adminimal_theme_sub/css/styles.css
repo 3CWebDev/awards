@@ -1,0 +1,29 @@
+.layout-region-order-secondary .entity-meta .details-wrapper {
+  margin-left: 20px;
+}
+
+.views-field-custom-text-admin a {
+  text-transform: capitalize;
+}
+
+.views-field-custom-text-admin .ui-state-default .ui-icon {
+  display: inline-block;
+}
+
+.view-commerce-orders .views-table .views-field-state .state.completed {
+  color: green;
+  font-weight: bold;
+}
+.view-commerce-orders .views-table .views-field-state .state.pending {
+  color: red;
+  font-weight: bold;
+}
+
+.layout-region-order-secondary .field--name-field-order-date-needed .field__item {
+  color: red;
+}
+
+.layout-region-order-secondary .entity-meta .details-wrapper .field--name-field-order-special-instructions.field__item {
+  color: red;
+  margin-bottom: 20px;
+}

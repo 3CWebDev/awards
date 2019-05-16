@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+{#<pre>{{ dump(product|keys) }}</pre>
+<pre>{{ dump(product_entity|keys) }}</pre>#}
+
+
+<article{{ attributes }} id="product-display">
+
+  <div class="column-left col-xs-12 col-sm-12 col-md-6">
+    <div class="price">Starting at {{ product.variation_price}}</div>
+    <div class="sku">{{ product.variation_sku}}</div>
+    <div class="image">{{ product.variation_field_product_image }}</div>
+    <div class="image-desc">View Larger Image</div>
+    <div class="desc"><div class="desc-label">Description</div>{{ product.variation_field_prod_variation_description }}</div>
+    
+  </div>
+  <div class="column-right col-xs-12 col-sm-12 col-md-6">
+    <div class="step-1">Choose Your Size & Quantity</div>
+    <div class="price-breaks">{{ product.variation_field_prod_var_price_break}}</div>
+    <div class="variations">{{ product.variations}}</div>
+    <div class="custom-text">* You will be able to add your custom text/message after adding <BR>your item to the cart (if applicable)</div>
+  </div>
+</article>

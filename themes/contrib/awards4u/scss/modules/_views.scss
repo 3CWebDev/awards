@@ -1,0 +1,284 @@
+// BLOG
+
+.path-blog {
+
+  .view-blog,
+  .view-taxonomy-term {
+
+    .views-row {
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #e4e3e3;
+      float: left;
+      width: 100%;
+      clear: both;
+
+      .views-field-field-blog-image {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+      }
+
+      .views-field-title {
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 15px;
+
+        a {
+          color: #0094b3;
+          text-decoration: none;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+      .views-field-body {
+        font-size: 18px;
+      }
+    }
+
+    .views-row:last-child {
+      border-bottom: 0;
+    }
+  }
+  .feed-icons {
+    display: none;
+  }
+}
+
+// BLOG CATEGORIES 
+
+.blog-categories {
+  margin-right: 10px;
+  margin-top: 35px;
+
+  h2.block-title {
+    font-size: 22px;
+    background: $brand-secondary;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .views-row {
+    padding-left: 20px;
+    padding-bottom: 15px;
+    font-size: 16px;
+    &:before {
+      content: "\f105";
+      font-family: font-awesome;
+      color: #444;
+      padding-right: 10px;
+      font-size: 16px;
+      float: left;
+    }
+  }
+}
+
+
+// SEARCH
+
+.view-default-search-index {
+
+  .view-filters {
+
+    .form-control {
+      height: 75px;
+      padding: 20px;
+      float: left;
+
+      border-radius: 0;
+      @include size(mdu) {
+
+      }
+    }
+
+    .form-group {
+      @include size(mdu) {
+        margin-bottom: 0;
+      }
+    }
+    .form-submit{
+      border-radius: 0;
+      height: 75px;
+      font-size: 0;
+    }
+    #edit-reset {
+      font-size: 22px;
+      color: #666;
+    }
+    .glyphicon-search:before {
+      font-size: 40px;
+    }
+  }
+
+  .views-row {
+    clear: both;
+    margin-bottom: 10px;
+    width: 100%;
+    float: left;
+
+
+    .views-field.views-field-field-product-image,
+    .views-field.views-field-field-product-image-1 {
+        float: left;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+
+    .col-sm-12 {
+      padding: 0;
+    }
+
+    h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+
+      a {
+        color: #536874;
+      }
+    }
+    .views-field-price,
+    .views-field-price-1 {
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #009fc3;
+      margin-bottom: 10px;
+  }
+    .views-field-field-prod-variation-description,
+    .views-field-field-prod-variation-description-1 {
+      font-size: 18px;
+      .field-content {
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+
+// CUSTOMER REVIEWS 
+
+#block-views-block-customer-reviews-block-1 {
+  display: none;
+  clear: both;
+  margin-top: 70px;
+  float: left;
+  width: 100%;
+  @include size(mdu) {
+    display: block;
+  }
+  
+  h2.block-title {
+    font-weight: 600;
+    color: #283444;
+    font-size: 30px;
+    margin-top: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e4e3e3;
+    margin-bottom: 20px;
+  }
+
+  .view-content {
+    font-size: 14px;
+    text-align: center;
+
+    .views-field-body {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    
+    .views-field-field-reviews-name {
+      font-weight: bold;
+    }
+
+    .views-field-field-reviews-rating {
+      width: 100%;
+      float: left;
+      clear: both;
+      margin-bottom: 10px;
+
+      .starrating {
+        position: relative;
+        margin: 0 28%;
+        width: 100%;
+        @include size(lgu) {
+          margin: 0 38%;
+        }
+
+        .star1-on {
+          width: 20px;
+        }
+      }
+
+      
+    }
+  }
+}
+
+// LANDING PAGES 
+
+.landing-sidebar {
+  display: none;
+  @include size(mdu) {
+    display: block;
+  }
+}
+
+.views-element-container {
+
+  .landing-page {
+
+    .view-header {
+      font-size: 18px;
+      margin-bottom: 30px;
+
+      h2 {
+        position: relative;
+        font-size: 40px;
+        color: #009fc3;
+        font-family: Montserrat,arial,sans-serif;
+        font-weight: 500;
+        margin-top: -45px;
+      }
+    }
+
+    .view-content {
+      clear: both;
+  
+      .views-row {
+        text-align: center;
+        min-height: 370px;
+        @include size(mdu) {
+          min-height: 460px;
+        }
+  
+        .views-field-title {
+          font-size: 15px;
+          margin-top: 30px;
+          margin-bottom: 20px;
+  
+          a {
+            color: #283444;
+          }
+        }
+        .views-field-field-product-base-image {
+  
+          img {
+            margin: 0 auto;
+            @include size(mdu) {
+              margin: 0;
+            }
+          }
+        }
+  
+        .views-field-field-product-base-price {
+          font-size: 20px;
+          text-transform: uppercase;
+          color: $brand-primary;
+  
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

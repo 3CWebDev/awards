@@ -1,0 +1,52 @@
+
+.breadcrumb {
+  background-color: transparent;
+
+  a {
+    color: $brand-secondary;
+  }
+}
+
+// ADD TO CART
+
+#edit-actions {
+
+  .btn-success {
+    background-color: $brand-teritary;
+    border-color: $brand-teritary;
+    border-radius: 0;
+    font-size: 24px;
+    font-family: "Open Sans", arial, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 20px 45px;
+    font-weight: 700;
+  }
+}
+
+
+// MOBILE MENU
+
+.mm-menu_theme-dark {
+  background: $brand-secondary;
+  color: #fff;
+}
+
+
+.mm-panel {
+
+
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus,
+  .nav > li.mm-listitem > a:hover {
+    background-color: #f7a81b;
+    color: #fff;
+  }
+
+}
+
+.mm-listitem .mm-btn_next,
+.mm-listitem .mm-btn_prev {
+  background-color: #f7a81b;
+
+}

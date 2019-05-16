@@ -1,0 +1,533 @@
+// BLOG POSTS
+
+.page-node-type-blog {
+
+  .field--name-field-blog-image {
+
+    .img-responsive {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    @include size(lgu) {
+      float: left;
+      margin-right: 50px;
+      margin-bottom: 50px;
+
+      .img-responsive {
+        width: auto;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+// BASIC PAGES
+
+.page-node-type-page {
+
+  .field--name-body {
+
+    h3 {
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+
+// PRODUCTS
+
+.path-product {
+
+  h1.page-header {
+    font-family: Montserrat, arial, sans-serif;
+    font-weight: 500;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    margin-bottom: 10px;
+    padding-left: 0;
+    text-align: left;
+  }
+
+  // LEAVE A REVIEW 
+
+  #block-leave-a-review- {
+    clear: both;
+    background: #f6f6f6;
+    padding: 20px;
+    margin-top: 40px;
+    width: 100%;
+    float: left;
+    
+    h2.block-title {
+      background: #fff;
+      margin-top: -20px;
+      margin-left: -20px;
+      padding: 20px;
+      padding-left: 0;
+      margin-right: -20px;
+      font-family: montserrat;
+      font-weight: 400;
+      color: #009fc3;
+      font-size: 30px;
+    }
+    
+    .field--name-body {
+      margin-bottom: 30px;
+      font-size: 18px;
+      background: #fff;
+      margin: -20px;
+      margin-bottom: 0px;
+      padding-bottom: 15px;
+    }
+
+  }
+
+  // Product info
+
+  #product-display {
+    font-family: Montserrat, arial, sans-serif;
+
+    .column-left {
+      padding-left: 0;
+      padding-right: 0px;
+      @include size(mdu) {
+        padding-right: 30px;
+      }
+
+
+      .price {
+
+        color: $brand-primary;
+        font-size: 30px;
+
+        div {
+          display: inline;
+        }
+      }
+
+      .sku {
+        font-size: 18px;
+        color: #bbb;
+        margin-bottom: 20px;
+
+        .field--label {
+          font-weight: 400;
+        }
+      }
+
+      .image {
+        text-align: center;
+
+
+        a {
+          display: inline-block;
+          padding-bottom: 45px;
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      .image-desc {
+        margin-bottom: 50px;
+        font-size: 15px;
+        color: $brand-primary;
+        background: url(../images/icon_zoom.png) 0 0 no-repeat;
+        padding-left: 33px;
+
+        margin-top: -25px;
+      }
+
+      .desc {
+        font-size: 18px;
+        color: #283444;
+        line-height: 2;
+
+        .desc-label {
+          font-size: 30px;
+          line-height: 1.4;
+          color: #283444;
+          padding-bottom: 20px;
+          border-bottom: 2px solid #e4e3e3;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+
+    .column-right {
+      padding-right: 0;
+      margin-top: 80px;
+      padding-left: 0px;
+      @include size(mdu) {
+        padding-left: 30px;
+      }
+
+      .custom-text {
+        font-size: 15px;
+        margin-top: 20px;
+      }
+
+      .step-1 {
+        font-size: 23px;
+        color: $brand-primary;
+        background: url(../images/icon_step1.png) 0 0 no-repeat;
+        padding-left: 70px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        padding-bottom: 11px;
+        padding-top: 0px;
+        @include size(mdu) {
+          font-size: 30px;
+          padding-top: 6px;
+        }
+      }
+
+      #edit-submit {
+        margin-top: 40px;
+      }
+
+      .price-breaks {
+        margin-bottom: 20px;
+
+        div {
+          display: none;
+        }
+        div:nth-of-type(1) {
+          display: block;
+        }
+
+        table {
+
+          tr {
+            display: table-header-group;
+            float: left;
+            text-align: center;
+            padding: 0 11px;
+            font-size: 13px;
+            border-top: 1px solid #ddd;
+            border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            @include size(mdu) {
+              padding: 0 20px;
+            }
+
+            td {
+              display: table-row;
+            }
+          }
+
+          tr:last-child {
+            border-right: 1px solid #ddd;
+          }
+
+
+        }
+      }
+
+      fieldset#edit-purchased-entity-0-variation--wrapper,
+      fieldset[data-drupal-selector="edit-purchased-entity-0-variation"] {
+
+        legend {
+          border-bottom: 0;
+          margin-bottom: 0;
+
+          .fieldset-legend {
+            font-size: 0;
+            color: #fff;
+
+            &:before {
+              content: "Please Select";
+              color: #283444;
+              font-size: 18px;
+
+            }
+          }
+        }
+
+        .form-item {
+          background: #f6f6f6;
+          color: #283444;
+          font-size: 20px;
+          padding: 40px 60px;
+
+          .radio input[type="radio"] {
+            margin-left: -40px;
+          }
+        }
+
+
+      }
+
+      [data-drupal-selector="edit-purchased-entity-wrapper"] {
+        background: #f6f6f6;
+        padding: 25px;
+        padding-bottom: 20px;
+
+        label {
+          display: none;
+        }
+
+        select {
+          font-size: 20px;
+        }
+      }
+
+      [data-drupal-selector="edit-quantity-wrapper"] {
+        margin-top: -15px;
+
+        .form-item {
+          background: #f6f6f6;
+          color: #283444;
+          font-size: 20px;
+          padding: 40px 60px;
+          padding-top: 0;
+
+          .form-control {
+            max-width: 70px;
+            float: right;
+            border-radius: 0;
+            border: 1px solid $brand-primary;
+            background: transparent;
+            text-align: center;
+            -moz-appearance:textfield;
+          }
+        }
+      }
+
+      [data-drupal-selector="edit-field-order-item-logo-wrapper"] {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        font-family: Montserrat, arial, sans-serif;
+
+        legend {
+          border-bottom: 0;
+          margin-bottom: 0;
+
+          .fieldset-legend {
+            font-size: 0;
+            color: #fff;
+            border-left: 0;
+            border-right: 0;
+            border-top: 0;
+            border-bottom: 0;
+            background-color: transparent;
+
+            &:before {
+              content: "Customize Your Order";
+              font-size: 23px;
+              color: $brand-primary;
+              background: url(../images/icon_step2.png) 0 0 no-repeat;
+              padding-left: 70px;
+              font-weight: 600;
+              margin-bottom: 30px;
+              padding-bottom: 21px;
+              padding-top: 11px;
+              @include size(mdu) {
+                font-size: 30px;
+                padding-bottom: 11px;
+              }
+
+            }
+          }
+        }
+
+        .fieldset-wrapper {
+          margin-top: 30px;
+          padding: 45px;
+          background: #f6f6f6;
+          font-size: 20px;
+          font-weight: 300;
+
+          .radio {
+            margin-bottom: 20px;
+          }
+
+        }
+      }
+
+      .field--name-field-custom-prod-image,
+      #edit-field-order-item-stock-image--wrapper,
+      [data-drupal-selector="edit-field-order-item-stock-image"],
+      [data-drupal-selector="edit-field-logo-is-on-file-wrapper"] {
+        padding: 45px;
+        padding-top: 20px;
+        background: #f6f6f6;
+        margin-top: -21px;
+        margin-bottom: 50px;
+
+        input[type="file"],
+        label {
+          font-size: 16px;
+          font-weight: normal;
+        }
+      }
+
+      #edit-field-order-item-stock-image--wrapper,
+      [data-drupal-selector="edit-field-order-item-stock-image-wrapper"] {
+
+        margin-top: -41px;
+
+        img {
+          width: 50px;
+          height: 50px;
+        }
+
+        legend {
+          border-bottom: 0;
+          margin-bottom: 0;
+
+          .fieldset-legend {
+            font-size: 0;
+            color: #fff;
+
+            &:before {
+              content: "Please Select";
+              color: #283444;
+              font-size: 18px;
+
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+
+
+  
+
+
+}
+
+
+// USER ORDER PAGE
+
+body.user-logged-in.path-user {
+
+  .customer-information {
+
+    .customer-information__shipping {
+      margin: 20px 0;
+      @include size(mdu) {
+        float: left;
+        width: 50%;
+      }
+
+      .field__label {
+        background: $brand-secondary;
+        padding: 10px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: BebasNeueRegular;
+        font-size: 30px;
+        padding-bottom: 3px;
+      }
+
+      .field--name-shipping-method {
+        margin-top: 20px;
+      }
+    }
+
+    .customer-billing {
+      margin: 20px 0;
+
+      @include size(mdu) {
+        float: left;
+        width: 48%;
+        margin-left: 2%;
+      }
+
+      .field__label {
+        background: $brand-secondary;
+        padding: 10px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: BebasNeueRegular;
+        font-size: 30px;
+        padding-bottom: 3px;
+      }
+    }
+
+
+  }
+
+  .order-information {
+    clear: both;
+    margin-top: 60px;
+    width: 100%;
+    float: left;
+
+
+    .table {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    .order-total-line-label {
+      margin-right: 15px;
+    }
+  }
+}
+
+
+// SEARCH PAGE & FORM
+
+#webform-submission-website-search-node-3626-add-form {
+
+  .form-control {
+    height: 75px;
+    padding: 20px;
+    float: left;
+    width: 75%;
+    border-radius: 0;
+    border: 1px solid #666;
+    @include size(mdu) {
+      width: 80%;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+  .form-submit{
+    border-radius: 0;
+    height: 75px;
+    font-size: 0;
+  }
+  .glyphicon-search:before {
+    font-size: 40px;
+  }
+}
+
+
+// FAQ PAGE
+
+.faq-page {
+
+  .btt {
+    margin-bottom: 70px;
+    display: block;
+  }
+}
+
+
+// LOGIN PAGE 
+
+.path-user {
+
+  p.login-title {
+    font-size: 28px;
+    text-shadow: 0 0 0 transparent;
+  }
+}

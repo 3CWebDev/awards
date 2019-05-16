@@ -1,0 +1,409 @@
+// TOP NAV BAR
+
+#top-nav {
+  background: #005daa;
+  padding: 15px 0;
+  margin-bottom: 27px;
+  height: 70px;
+
+  // PHONE NUMBER
+  .phone-block {
+    @include size(mdu) {
+      top: 6px;
+
+    }
+
+    .field--name-body {
+      background: url(../images/icon_phone.png) 0 10px no-repeat;
+      padding-left: 45px;
+      font-size: 48px;
+    }
+  }
+
+  // NAV MENU
+  ul.sf-menu {
+    float: right;
+    position: relative;
+    z-index: 11;
+
+
+      li {
+        font-size: 24px;
+
+        a {
+          color: #fff;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: 9px 15px;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-color: transparent;
+          }
+        }
+      }
+      li:last-child {
+        background: transparent;
+        margin-left: 0;
+        margin-right: 30px;
+
+        a {
+          background: none;
+          color: #fff;
+          padding-right: 0;
+          font-weight: 600;
+
+        }
+        ul {
+          background: #17458f;
+          top: 2.3em !important;
+          border-left: 0;
+          border-right: 0;
+          border-bottom: 0;
+
+          li,
+          li:last-child {
+            background: #17458f;
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+      }
+  }
+
+
+}
+
+
+// MAIN NAVIGATION
+header.navbar {
+  padding: 0 30px;
+  margin-bottom: 53px;
+  box-shadow: 5.5px 9.526px 25px 0px rgba(0, 0, 0, 0.06);
+  padding-bottom: 15px;
+
+  // LOGO
+
+  .logo {
+
+    img {
+      width: 90%;
+      @include size(mdu) {
+        width: 60%;
+      }
+      @include size(lgu) {
+        width: 70%;
+      }
+      @include size(xlu) {
+        width: 90%;
+      }
+      @include size(xxlu) {
+        width: 100%;
+      }
+    }
+  }
+
+  // MENU
+  .block-superfish {
+  width: auto;
+  float: right;
+  top: 15px;
+
+  @include size(mdu) {
+    //display: none;
+  }
+
+  @include size(lgu) {
+    margin-top: -70px;
+    left: 10px;
+  }
+  @include size(xlu) {
+    margin-top: 0;
+    margin-right: 0px;
+    left: 0px;
+  }
+
+    ul {
+
+      li {
+        a {
+          font-size: 20px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: #005daa;
+
+
+          @include size(lgu) {
+            font-size: 16px;
+            padding: 1em 0.65em;
+          }
+
+
+          @include size(xlu) {
+            font-size: 20px;
+            padding: 1em 0.92em;
+          }
+          @include size(xxlu) {
+            padding: 0.5em 1.5em;
+            font-size: 24px;
+          }
+          // Off case media size
+          @include size(lgx) {
+            font-size: 17px;
+            padding: 1em 0.5em;
+           }
+        }
+      }
+      li:first-child {
+        a {
+          padding-left: 0;
+        }
+      }
+      li:last-child {
+        border: 3px solid rgb(247, 168, 27);
+        transform: skew(-6deg);
+        top: -8px;
+
+        @include size(lgu) {
+          right: -10px;
+        }
+        @include size(xlu) {
+          right: -10px;
+        }
+
+        &:hover {
+          background-color: rgb(247, 168, 27);
+
+        }
+
+        a {
+          color: rgb(247, 168, 27);
+          text-decoration: underline;
+          transform: skew(6deg);
+          padding: 17px 35px;
+
+          @include size(lgu) {
+            padding: 17px 15px;
+          }
+          @include size(xlu) {
+            padding: 17px 20px;
+          }
+          @include size(lgx) {
+            padding: 17px 15px;
+          }
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+// Banner
+
+.banner-wrapper {
+  margin: 0 15px;
+  @include size(mdu) {
+    margin: 0 30px;
+  }
+
+  .banner-content {
+    background: #e6e6e6;
+    background-size: 100% 100%;
+    height: 85px;
+    position: relative;
+    margin-bottom: 30px;
+    @include size(mdu) {
+      background-size: cover;
+      height: 127px;
+      margin-bottom: 50px;
+    }
+    @include size(lgu) {
+      background-size: contain;
+      height: 173px;
+    }
+    @include size(xlu) {
+      background-size: 100% 100%;
+    }
+
+    #block-bannerrotary {
+      position: absolute;
+      left: 4%;
+      font-size: 12px;
+      @include size(mdu) {
+        left: 16%;
+        font-size: 18px;
+      }
+      @include size(lgu) {
+        left: 26%;
+      }
+
+      .field--name-body {
+        padding: 10px;
+
+        @include size(mdu) {
+          padding: 20px;
+        }
+
+        img {
+          margin: -25px 0;
+          margin-right: 20px;
+          width: 48%;
+          @include size(mdu){
+            margin: 0;
+            width: 40%;
+          }
+          @include size(lgu) {
+            width: 51%;
+            margin: -35px 0;
+          }
+        }
+        h3 {
+          font-family: BebasNeueRegular, arial, sans-serif;
+          font-size: 17px;
+          color: #000;
+          margin-top: 0;
+          margin-bottom: -20px;
+          @include size(mdu) {
+            font-size: 32px;
+          }
+          @include size(lgu) {
+            font-size: 40px;
+          }
+        }
+        a {
+          color: $brand-primary;
+          font-size: 15px;
+          font-weight: 600;
+          text-transform: uppercase;
+          text-decoration: underline;
+          margin-top: 10px;
+          left: 53%;
+          position: relative;
+          @include size(mdu) {
+            left: 0;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// FOOTER
+
+footer {
+  padding-top: 120px;
+  padding-bottom: 50px;
+  background-image: url(../images/bg_footer_arrow_white.png);
+  background-color: #005daa;
+  background-position: center -30px;
+  background-repeat: no-repeat;
+  margin-top: 60px;
+
+  .block {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+
+    h2.block-title {
+      font-family: BebasNeueBold, arial, sans-serif;
+      font-size: 48px;
+      text-transform: uppercase;
+    }
+  }
+
+  #block-footerrotaryabout {
+    text-align: center;
+
+    // SOCIAL MEDIA
+    ul {
+      margin-bottom: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 10px;
+        a {
+          font-size: 0;
+          overflow: hidden;
+          &:hover {
+            color: #7ad4e8;
+          }
+          &:before {
+            display: block;
+            font-family: "font-awesome";
+            font-size: 32px;
+            padding: 2px 5px;
+            color: #fff;
+
+          }
+        }
+
+        a.fa-facebook {
+          &:before {
+            content: "\f09a";
+          }
+        }
+        a.fa-twitter {
+          &:before {
+            content: "\f099";
+          }
+        }
+        a.fa-instagram {
+          &:before {
+            content: "\f16d";
+          }
+        }
+      }
+    }
+  }
+
+  #block-footerrotarycontact {
+
+    .contact-left {
+      font-family: BebasNeueRegular, arial, sans-serif;
+      font-size: 30px;
+      text-transform: uppercase;
+      text-align: right;
+      margin-right: 10px;
+      display: block;
+      float: left;
+      clear: left;
+      width: 120px;
+      @include size(mdu) {
+        width: 36%;
+        margin-bottom: 20px;
+      }
+      @include size(lgu) {
+        width: 120px;
+      }
+      @include size(xlu) {
+        width: 36%;
+      }
+
+    }
+    .contact-right {
+      font-size: 20px;
+      color: #5acef3;
+      font-weight: 500;
+      float: left;
+      text-align: left;
+      padding-left: 10px;
+      position: relative;
+      top: 4px;
+      @include size(mdu) {
+        width: 62%;
+        top: 0;
+      }
+}
+  }
+
+
+
+}

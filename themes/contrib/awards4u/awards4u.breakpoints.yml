@@ -1,0 +1,56 @@
+awards4u.screen-xs-max:
+  label: screen-xs-max
+  mediaQuery: 'all and (max-width: 479px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+awards4u.screen-sm-min:
+  label: screen-sm-min
+  mediaQuery: 'all and (min-width: 480px)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
+awards4u.screen-sm-max:
+  label: screen-sm-max
+  mediaQuery: 'all and (max-width: 767px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x
+awards4u.screen-md-min:
+  label: screen-md-min
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 2x
+awards4u.screen-md-max:
+  label: screen-md-max
+  mediaQuery: 'all and (max-width: 991px)'
+  weight: 5
+  multipliers:
+    - 1x
+    - 2x
+awards4u.screen-lg-min:
+  label: screen-lg-min
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 6
+  multipliers:
+    - 1x
+    - 2x
+awards4u.screen-lg-max:
+  label: screen-lg-max
+  mediaQuery: 'all and (min-width: 1198px)'
+  weight: 7
+  multipliers:
+    - 1x
+    - 2x 
+awards4u.screen-xl-min:
+  label: screen-xl-min
+  mediaQuery: 'all and (min-width: 1199px)'
+  weight: 8
+  multipliers:
+    - 1x
+    - 2x       

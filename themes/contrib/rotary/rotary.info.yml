@@ -1,0 +1,30 @@
+core: 8.x
+type: theme
+base theme: awards4u
+
+name: 'National Awards4U'
+description: 'Theme for the main National Awards4U site, sub theme of Awards4U'
+package: 'Bootstrap'
+
+regions:
+  top_nav: 'Top Navigation'
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  banner: 'Banner'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  secondary_content: 'Secondary Content'
+  tertiary_content: 'Tertiary Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  pre_footer: 'Pre Footer'
+  footer: 'Footer'
+  post_footer: 'Post Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+libraries:
+  - 'rotary/global-styling'
+  - 'rotary/bootstrap-scripts'
