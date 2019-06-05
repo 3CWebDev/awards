@@ -1,0 +1,5 @@
+services:
+  awards_markups.markups_order_processor:
+    class: '\Drupal\awards_markups\MarkupsOrderProcessor'
+    tags:
+      - { name: commerce_order.order_processor, priority: 300 }
