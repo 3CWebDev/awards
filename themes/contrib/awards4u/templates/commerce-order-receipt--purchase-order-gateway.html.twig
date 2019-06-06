@@ -31,7 +31,7 @@
         <tbody>
           <tr>
             <td>
-              <a href="{{ url('<front>') }}" style="color: #0e69be; text-decoration: none; font-weight: bold; margin-top: 15px;"><img src="https://hsdev.site/sites/default/files/logo.png"></a><br>
+              <a href="{{ url('<front>') }}" style="color: #0e69be; text-decoration: none; font-weight: bold; margin-top: 15px;"><img src="https://www.awards4u.com/sites/default/files/logo.png"></a><br>
                 <span style="font-weight:bold;">800-659-0860</span>
             </td>
           </tr>
@@ -59,21 +59,6 @@
                     </td>
                     <td>
                       <span>{{ order_item.label }}</span>
-
-                      {% if order_item.field_ribbon.entity.name.value %}
-                        <span> |
-                            {{ order_item.field_ribbon.entity.name.value }}
-                        </span>
-                      {% endif %}
-
-                      {% if order_item.field_material.value %}
-                        <br />
-                            Material: {{ order_item.field_material.value }} | Corners: {{ order_item.field_corners.value }} | Color: {{ order_item.field_color.value }} | Logo Placement: {{ order_item.field_logo_placement.value }} | Attachment: {{ order_item.field_attach.value }}
-                        <br />
-                      {% endif %}
-
-                    </td>
-                    <td>
                       <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
                     </td>
                   </tr>
@@ -166,4 +151,3 @@
   </tr>
   </tbody>
 </table>
-###3

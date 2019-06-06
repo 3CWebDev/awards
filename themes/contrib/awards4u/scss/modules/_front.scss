@@ -1,6 +1,7 @@
 // Front
 
-.path-frontpage {
+.path-frontpage,
+.node-id-3859 {
 
   // HIDE PAGE TITLE
   h1.page-header {
@@ -45,6 +46,7 @@
         }
         @include size(xxlu) {
           top: 35%;
+          left: 18%;
           font-size: 20px;
         }
         h3 {

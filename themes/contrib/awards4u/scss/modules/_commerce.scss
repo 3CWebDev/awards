@@ -1181,6 +1181,7 @@ body#custom-text {
   .disclaimer {
     font-size: 20px;
     font-style: italic;
+    display: none;
   }
 }
 
@@ -1263,6 +1264,19 @@ body#custom-text {
     @include size(lgu) {
       width: 33%;
     }
+    .panel-heading {
+      background-color: #009fc3;
+      border-color: #009fc3;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: BebasNeueRegular;
+
+      .panel-title {
+        font-size: 30px;
+        padding-bottom: 5px;
+      }
+    }
 
     .password-suggestions,
     .password-confirm {
@@ -1306,13 +1320,16 @@ body#custom-text {
     
 
     .panel-heading {
-      background: #fff;
-      color: #333;
-      border-color: #fff;
+      background: #e65385;
+      color: #fff;
+      border-color: #e65385;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: BebasNeueRegular;
 
       .panel-title {
-        font-size: 20px;
-        padding: 0 15px;
+        font-size: 30px;
+        padding-bottom: 5px;
       }
     }
 
@@ -1377,5 +1394,22 @@ body#custom-text {
         margin-left: 10px;
       }
     }
+  }
+}
+
+#block-contentcartkeepshopping {
+  .field--name-body {
+    .btn {
+      background-color: #e65385;
+      border-color: #e65385;
+      color: #fff;
+    }
+  }
+}
+
+.path-cart {
+  .view-commerce-cart-form #edit-submit, .view-commerce-cart-form [data-drupal-selector="edit-submit"] {
+    background-color: #536874;
+    border-color: #536874; 
   }
 }

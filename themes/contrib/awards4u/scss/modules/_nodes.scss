@@ -58,7 +58,8 @@
 
   // LEAVE A REVIEW 
 
-  #block-leave-a-review- {
+  #block-leave-a-review-,
+  #block-leaveareview {
     clear: both;
     background: #f6f6f6;
     padding: 20px;
@@ -88,6 +89,36 @@
       padding-bottom: 15px;
     }
 
+  }
+
+  .disqus {
+    clear: both;
+    background: #f6f6f6;
+    padding: 20px;
+    margin-top: 40px;
+    width: 100%;
+    float: left;
+    .dis-label {
+      background: #fff;
+      margin-top: -20px;
+      margin-left: -20px;
+      padding: 20px;
+      padding-left: 0;
+      margin-right: -20px;
+      font-family: montserrat;
+      font-weight: 400;
+      color: #009fc3;
+      font-size: 30px;
+    }
+    .field--item {
+      
+    }
+  }
+
+  // Prop 65
+  .prop65 {
+    font-size: 14px;
+    margin-top: 20px;
   }
 
   // Product info

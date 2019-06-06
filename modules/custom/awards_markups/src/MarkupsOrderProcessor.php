@@ -37,9 +37,11 @@ class MarkupsOrderProcessor implements OrderProcessorInterface
               //This is a Medallion with custom text - let's markup the price now
 
               $price = $order_item->getUnitPrice()->getNumber();
-              $price = $price + .75;
 
+              $config = \Drupal::service('config.factory')->getEditable('awards_custom.settings');
+              $markup_amount = $config->get('awards_custom_medallion_text_markup');
 
+              $price = $price + $markup_amount;
               $price = new Price(strval($price), 'USD');
 
               $order_item->setUnitPrice($price);

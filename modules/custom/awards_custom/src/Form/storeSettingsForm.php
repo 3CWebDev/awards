@@ -37,6 +37,13 @@ class storeSettingsForm extends ConfigFormBase {
         '#required' => TRUE,
     );
 
+    $form['awards_custom_medallion_text_markup'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('The Medallion markup price per item if custom text is selected (example: .75)'),
+      '#default_value' => $config->get('awards_custom_medallion_text_markup'),
+      '#required' => TRUE,
+    );
+
 
     return parent::buildForm($form, $form_state);
   }
@@ -48,7 +55,10 @@ class storeSettingsForm extends ConfigFormBase {
     // Retrieve the configuration
     $this->configFactory->getEditable('awards_custom.settings')
         // Set the submitted configuration setting
+
         ->set('awards_custom_product_days', $form_state->getValue('awards_custom_product_days'))
+        ->set('awards_custom_medallion_text_markup', $form_state->getValue('awards_custom_medallion_text_markup'))
+
         // You can set multiple configurations at once by making
         // multiple calls to set()
         //->set('other_things', $form_state->getValue('other_things'))

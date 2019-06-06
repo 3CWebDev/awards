@@ -30,7 +30,8 @@
     <div class="sku">{{ product.variation_sku}}</div>
     <div class="image">{{ product.variation_field_product_image }}</div>
     <div class="image-desc">View Larger Image</div>
-    <div class="desc"><div class="desc-label">Description</div>{{ product.variation_field_prod_variation_description }}</div>
+    <div class="desc"><div class="desc-label">Description</div><div class="size">{{ product.variation_field_prod_var_size }} </div>{{ product.variation_field_prod_variation_description }}</div>
+    <div class="prop65"><strong>California Residents:</strong><BR><a class="use-ajax" data-dialog-type="modal" href="/california-proposition-65">Review the Proposition 65 warning related to this product.</a></div>
     
   </div>
   <div class="column-right col-xs-12 col-sm-12 col-md-6">
@@ -38,5 +39,8 @@
     <div class="price-breaks">{{ product.variation_field_prod_var_price_break}}</div>
     <div class="variations">{{ product.variations}}</div>
     <div class="custom-text">* You will be able to add your custom text/message after adding <BR>your item to the cart (if applicable)</div>
+    
   </div>
 </article>
+
+<div class="disqus"><div class="dis-label">Leave a Review!</div><BR>Did you order this for someone and they loved it? Share your experience!{{ product.variation_field_prod_disqus }}</div>
