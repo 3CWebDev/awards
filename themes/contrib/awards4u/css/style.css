@@ -12023,6 +12023,11 @@ body#custom-text .awards-custom-text-form .js-form-item-agree p {
   margin-top: 0;
 }
 
+body#custom-text .awards-custom-text-form .form-item label .markup {
+  font-size: 14px;
+  font-style: italic;
+}
+
 body#custom-text #edit-order-type--wrapper legend {
   display: none;
 }

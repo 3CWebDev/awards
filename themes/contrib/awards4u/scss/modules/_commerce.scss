@@ -781,6 +781,17 @@ body#custom-text {
         margin-top: 0;
       }
     }
+
+    .form-item {
+
+      label {
+
+        .markup {
+          font-size: 14px;
+          font-style: italic;
+        }
+      }
+    }
   }
 
   // ORDER TYPE
