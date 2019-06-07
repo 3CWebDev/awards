@@ -163,7 +163,7 @@ class CustomTextForm extends FormBase {
 
       $config = \Drupal::service('config.factory')->getEditable('awards_custom.settings');
       $markup_amount = $config->get('awards_custom_medallion_text_markup');
-      $additional = " (<em>$" . $markup_amount . " additional per item</em>)";
+      $additional = ' <span class="markup">(<em>$' . $markup_amount . ' additional per item</em>)</span>';
 
       $medallion_output = '<legend><span class="fieldset-legend js-form-required form-required">Select Ribbon</span>  </legend>';
       // Output image
@@ -221,6 +221,15 @@ class CustomTextForm extends FormBase {
         3 => "No Text",
         4 => "I'll Send it Later" . $additional,
       );
+
+      if ($medallion){
+        $options = array(
+          3 => "No Text",
+          1 => "Enter Custom Text Manually" . $additional,
+          2 => "Upload File Containing Text" . $additional,
+          4 => "I'll Send it Later" . $additional,
+        );
+      }
       $form['text_type'] = array(
         '#type' => 'radios',
         '#options' => $options,
