@@ -11,8 +11,7 @@ use Drupal\commerce_order\Adjustment;
 /**
  * Provides an order processor that modifies the cart according to the business logic.
  */
-class MarkupsOrderProcessor implements OrderProcessorInterface
-{
+class MarkupsOrderProcessor implements OrderProcessorInterface{
   /**
    * {@inheritdoc}
    */
