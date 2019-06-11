@@ -37,7 +37,10 @@ class PickupTax extends LocalTaxTypeBase {
 
       // 4 & 5 are the method ID of the two local pickup types
       if ($method_id == 4 || $method_id == 5){
-        return TRUE;
+        if (!\Drupal\user\Entity\User::load(\Drupal::currentUser()->id())->hasRole('tax_exempt')){
+          return TRUE;
+        }
+
       }
 
     }

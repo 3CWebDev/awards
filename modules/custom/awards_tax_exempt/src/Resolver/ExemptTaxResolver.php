@@ -19,9 +19,9 @@ class ExemptTaxResolver implements TaxRateResolverInterface {
    * {@inheritdoc}
    */
   public function resolve(TaxZone $zone, OrderItemInterface $order_item, ProfileInterface $customer_profile) {
-
     // If no rate has been found, let's others resolvers try to get it.
     if (\Drupal\user\Entity\User::load(\Drupal::currentUser()->id())->hasRole('tax_exempt')){
+
       return TaxRateResolverInterface::NO_APPLICABLE_TAX_RATE;
     }
 
