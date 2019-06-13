@@ -186,7 +186,7 @@ class CustomTextForm extends FormBase {
         //'#title' => t(''),
         '#options' => $options,
         '#weight' => -3,
-        '#required' => TRUE,
+        //'#required' => TRUE,
         '#prefix' => $medallion_output,
         '#default_value' => $order_item->field_ribbon->getString(),
       );
@@ -387,9 +387,14 @@ class CustomTextForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
+
     $trigger = $form_state->getTriggeringElement();
     if ($trigger['#submit'][0] == '::submitForm'){
       $values = $form_state->getValues();
+      if (isset($values['ribbon']) && empty($values['ribbon'])){
+        $form_state->setErrorByName('ribbon', t('Please select a ribbon for the medallion.'));
+      }
+
       if ($values['text_type'] === 0){
         $form_state->setErrorByName('text_type', t('Please select your text entry method.'));
       }
