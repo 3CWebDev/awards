@@ -29,7 +29,7 @@ class CustomOrderProcessor implements OrderProcessorInterface
           }
           foreach ($product_variation->field_prod_var_price_break as $price_break) {
             if ($total_quantity >= intval($price_break->threshold)) {
-              if (!isset($current_pricebreak) || $current_pricebreak->threshold < $price_break->threshold) {
+              if (!isset($current_pricebreak->threshold) || $current_pricebreak->threshold < $price_break->threshold) {
                 $current_pricebreak = $price_break;
               }
             }
