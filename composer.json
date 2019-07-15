@@ -37,7 +37,7 @@
         "gabrielbull/ups-api": "~0.7",
         "drupal/commerce_avatax": "1.x-dev",
         "drupal/imce": "^1.6",
-        "drupal/bootstrap": "^3.7",
+        "drupal/bootstrap": "3.19",
         "drupal/domain_theme_switch": "^1.2",
         "drupal/commerce_shipping": "^2.0@beta",
         "drupal/commerce_purchase_order": "1.x-dev",

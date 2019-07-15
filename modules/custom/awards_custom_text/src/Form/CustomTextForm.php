@@ -13,7 +13,6 @@ use Drupal\image\Entity\ImageStyle;
 use Drupal\file\Entity\File;
 use Drupal\Component\Utility\SafeMarkup;
 //use Drupal\commerce_cart\CartProviderInterfac;
-
 /**
  * Contribute form.
  */
@@ -155,16 +154,12 @@ class CustomTextForm extends FormBase {
         ),
       ),
     );
-
     $additional = '';
-
     // Medallion Logic
     if ($medallion){
-
       $config = \Drupal::service('config.factory')->getEditable('awards_custom.settings');
       $markup_amount = $config->get('awards_custom_medallion_text_markup');
       $additional = ' <span class="markup">(<em>$' . $markup_amount . ' additional per item</em>)</span>';
-
       $medallion_output = '<legend><span class="fieldset-legend js-form-required form-required">Select Ribbon</span>  </legend>';
       // Output image
       if ($file){
@@ -213,15 +208,12 @@ class CustomTextForm extends FormBase {
       );
       // Upload a file for custom text
       // Text Template Options
-
-
       $options = array(
         1 => "Enter Custom Text Manually" . $additional,
         2 => "Upload File Containing Text" . $additional,
         3 => "No Text",
         4 => "I'll Send it Later" . $additional,
       );
-
       if ($medallion){
         $options = array(
           3 => "No Text",
@@ -368,7 +360,7 @@ class CustomTextForm extends FormBase {
     );
     $form['cancel'] = array(
       '#type' => 'submit',
-      '#value' => t('Cancel & Return to Product Page'),
+      '#value' => t('Return to Product Page'),
       '#weight' => 50,
       //'#limit_validation_errors' => array(),
       '#submit' => array('::submitFormCancel'),
@@ -387,14 +379,12 @@ class CustomTextForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-
     $trigger = $form_state->getTriggeringElement();
     if ($trigger['#submit'][0] == '::submitForm'){
       $values = $form_state->getValues();
       if (isset($values['ribbon']) && empty($values['ribbon'])){
         $form_state->setErrorByName('ribbon', t('Please select a ribbon for the medallion.'));
       }
-
       if ($values['text_type'] === 0){
         $form_state->setErrorByName('text_type', t('Please select your text entry method.'));
       }
@@ -419,18 +409,24 @@ class CustomTextForm extends FormBase {
       }
     }
   }
-
   /**
    * {@inheritdoc}
    */
   public function submitFormCancel(array &$form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
+
     if (isset($values['order_item_id'])){
       $order_item_id = $values['order_item_id'];
       $order_item = \Drupal\commerce_order\Entity\OrderItem::load($order_item_id);
+
+      $order = \Drupal\commerce_order\Entity\Order::load($values['order_id']);
+
+      $order->removeItem($order_item);
+      $order_item->delete();
+
       $product_variation = $order_item->getPurchasedEntity();
       $product_id = $product_variation->product_id->getString();
-      $order_item->delete();
+      \Drupal::service('cache.render')->invalidateAll();
     }
     //$response = new RedirectResponse('/cart', 302);
     $response = new RedirectResponse('/product/' . $product_id, 302);
@@ -442,7 +438,6 @@ class CustomTextForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Save values to order item and update
     $values = $form_state->getValues();
-
     $order_item_id = $values['order_item_id'];
     $order_item = \Drupal\commerce_order\Entity\OrderItem::load($order_item_id);
     $order_item->set('field_line_item_text_type', $values['text_type']);
@@ -470,12 +465,9 @@ class CustomTextForm extends FormBase {
     if (isset($values['ribbon'])){
       $order_item->field_ribbon->target_id = $values['ribbon'];
     }
-
     $order_item->save();
-
     $order = \Drupal\commerce_order\Entity\Order::load($values['order_id']);
     $order->save();
-
     $response = new RedirectResponse('/cart', 302);
     $response->send();
   }
