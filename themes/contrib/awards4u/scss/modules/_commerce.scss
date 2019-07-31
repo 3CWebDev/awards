@@ -667,6 +667,11 @@ button#edit-checkout {
   border-radius: 0;
 }
 
+.delete-order-item {
+  background-color: #e65385;
+  border-color: #e65385;
+}
+
 .view-commerce-cart-form {
 
   .btn {
@@ -849,13 +854,16 @@ body#custom-text {
       float: left;
 
     }
+    
     .form-item {
-      top: -50px;
+      clear: both;
+      top: -75px;
       left: 88px;
       font-size: 20px;
       width: 60%;
       padding-bottom: 10px;
       @include size(mdu) {
+        clear: none;
         top: 0;
         left: 0;
         font-size: 22px;

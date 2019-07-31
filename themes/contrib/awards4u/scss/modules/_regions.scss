@@ -43,7 +43,7 @@
 
 #top-nav {
   display: none;
-  background: #536874;
+  background: #e65385;
   float: left;
   width: 100%;
   margin-bottom: 47px;
@@ -142,6 +142,8 @@
 
     }
   }
+
+  
 
   // FREE ENGRAVING
   .free-engraving {
@@ -390,6 +392,10 @@ header.navbar {
     }
   }
 
+  #main-menu-link-contentc6fe730f-bbb5-4119-b55d-3ad3f7fcbf26 ul li  {
+    border: 0;
+  }
+
   // NAV ICONS
 
   .nav-icons {
@@ -483,7 +489,8 @@ header.navbar {
 
 // Banner
 
-.banner-wrapper {
+.banner-wrapper,
+.front-banner-wrapper {
   margin: 0 15px;
   @include size(mdu) {
     margin: 0 30px;
@@ -514,7 +521,8 @@ header.navbar {
     }
 
     #block-bannerawards4u,
-    #block-bannerrushawards {
+    #block-bannerrushawards,
+    .promo-banner-content {
       position: absolute;
       left: 4%;
       font-size: 12px;
@@ -613,6 +621,16 @@ header.navbar {
     }
   }
 }
+
+.front-banner-wrapper {
+  margin: 0 15px;
+  margin-top: 20px;
+
+  .banner-content {
+    margin-bottom: 0;
+  }
+}
+
 
 // SLIDESHOW
 

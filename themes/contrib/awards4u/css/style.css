@@ -8809,7 +8809,7 @@ h1.page-header {
 
 #top-nav {
   display: none;
-  background: #536874;
+  background: #e65385;
   float: left;
   width: 100%;
   margin-bottom: 47px;
@@ -9212,6 +9212,10 @@ header.navbar .block-superfish ul li:last-child a {
   padding-right: 0;
 }
 
+header.navbar #main-menu-link-contentc6fe730f-bbb5-4119-b55d-3ad3f7fcbf26 ul li {
+  border: 0;
+}
+
 header.navbar .nav-icons {
   position: absolute;
   top: -89px;
@@ -9327,17 +9331,20 @@ header.navbar #block-cart a:hover {
   text-decoration: none;
 }
 
-.banner-wrapper {
+.banner-wrapper,
+.front-banner-wrapper {
   margin: 0 15px;
 }
 
 @media only screen and (min-width: 768px) {
-  .banner-wrapper {
+  .banner-wrapper,
+  .front-banner-wrapper {
     margin: 0 30px;
   }
 }
 
-.banner-wrapper .banner-content {
+.banner-wrapper .banner-content,
+.front-banner-wrapper .banner-content {
   background-size: 100% 100%;
   height: 63px;
   position: relative;
@@ -9346,7 +9353,8 @@ header.navbar #block-cart a:hover {
 }
 
 @media only screen and (min-width: 768px) {
-  .banner-wrapper .banner-content {
+  .banner-wrapper .banner-content,
+  .front-banner-wrapper .banner-content {
     background: url(../images/bg_banner_a4u.jpg) 0 0 repeat;
     background-size: cover;
     height: 143px;
@@ -9356,7 +9364,8 @@ header.navbar #block-cart a:hover {
 }
 
 @media only screen and (min-width: 992px) {
-  .banner-wrapper .banner-content {
+  .banner-wrapper .banner-content,
+  .front-banner-wrapper .banner-content {
     margin-bottom: 40px;
     background-size: contain;
     height: 153px;
@@ -9364,13 +9373,18 @@ header.navbar #block-cart a:hover {
 }
 
 @media only screen and (min-width: 1200px) {
-  .banner-wrapper .banner-content {
+  .banner-wrapper .banner-content,
+  .front-banner-wrapper .banner-content {
     background-size: 100% 100%;
   }
 }
 
 .banner-wrapper .banner-content #block-bannerawards4u,
-.banner-wrapper .banner-content #block-bannerrushawards {
+.banner-wrapper .banner-content #block-bannerrushawards,
+.banner-wrapper .banner-content .promo-banner-content,
+.front-banner-wrapper .banner-content #block-bannerawards4u,
+.front-banner-wrapper .banner-content #block-bannerrushawards,
+.front-banner-wrapper .banner-content .promo-banner-content {
   position: absolute;
   left: 4%;
   font-size: 12px;
@@ -9378,7 +9392,11 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 768px) {
   .banner-wrapper .banner-content #block-bannerawards4u,
-  .banner-wrapper .banner-content #block-bannerrushawards {
+  .banner-wrapper .banner-content #block-bannerrushawards,
+  .banner-wrapper .banner-content .promo-banner-content,
+  .front-banner-wrapper .banner-content #block-bannerawards4u,
+  .front-banner-wrapper .banner-content #block-bannerrushawards,
+  .front-banner-wrapper .banner-content .promo-banner-content {
     left: 16%;
     font-size: 15px;
     width: 100%;
@@ -9387,7 +9405,11 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 992px) {
   .banner-wrapper .banner-content #block-bannerawards4u,
-  .banner-wrapper .banner-content #block-bannerrushawards {
+  .banner-wrapper .banner-content #block-bannerrushawards,
+  .banner-wrapper .banner-content .promo-banner-content,
+  .front-banner-wrapper .banner-content #block-bannerawards4u,
+  .front-banner-wrapper .banner-content #block-bannerrushawards,
+  .front-banner-wrapper .banner-content .promo-banner-content {
     left: 22%;
     font-size: 18px;
     width: auto;
@@ -9396,7 +9418,11 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 1200px) {
   .banner-wrapper .banner-content #block-bannerawards4u,
-  .banner-wrapper .banner-content #block-bannerrushawards {
+  .banner-wrapper .banner-content #block-bannerrushawards,
+  .banner-wrapper .banner-content .promo-banner-content,
+  .front-banner-wrapper .banner-content #block-bannerawards4u,
+  .front-banner-wrapper .banner-content #block-bannerrushawards,
+  .front-banner-wrapper .banner-content .promo-banner-content {
     left: 30%;
     width: 57%;
   }
@@ -9404,26 +9430,42 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 1200px) {
   .banner-wrapper .banner-content #block-bannerawards4u .col-lg-5,
-  .banner-wrapper .banner-content #block-bannerrushawards .col-lg-5 {
+  .banner-wrapper .banner-content #block-bannerrushawards .col-lg-5,
+  .banner-wrapper .banner-content .promo-banner-content .col-lg-5,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .col-lg-5,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .col-lg-5,
+  .front-banner-wrapper .banner-content .promo-banner-content .col-lg-5 {
     width: 25%;
   }
 }
 
 .banner-wrapper .banner-content #block-bannerawards4u .field--name-body,
-.banner-wrapper .banner-content #block-bannerrushawards .field--name-body {
+.banner-wrapper .banner-content #block-bannerrushawards .field--name-body,
+.banner-wrapper .banner-content .promo-banner-content .field--name-body,
+.front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body,
+.front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body,
+.front-banner-wrapper .banner-content .promo-banner-content .field--name-body {
   padding: 10px;
   color: #fff;
 }
 
 @media only screen and (min-width: 768px) {
   .banner-wrapper .banner-content #block-bannerawards4u .field--name-body,
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body,
+  .banner-wrapper .banner-content .promo-banner-content .field--name-body,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body,
+  .front-banner-wrapper .banner-content .promo-banner-content .field--name-body {
     padding: 20px;
   }
 }
 
 .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
-.banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
+.banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+.banner-wrapper .banner-content .promo-banner-content .field--name-body img,
+.front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
+.front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+.front-banner-wrapper .banner-content .promo-banner-content .field--name-body img {
   margin: -25px 0;
   margin-right: 20px;
   width: 28%;
@@ -9431,7 +9473,11 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 768px) {
   .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .banner-wrapper .banner-content .promo-banner-content .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .front-banner-wrapper .banner-content .promo-banner-content .field--name-body img {
     margin: -18px 15px;
     width: 15%;
   }
@@ -9439,7 +9485,11 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 992px) {
   .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .banner-wrapper .banner-content .promo-banner-content .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .front-banner-wrapper .banner-content .promo-banner-content .field--name-body img {
     width: 100%;
     margin: -20px 10px;
   }
@@ -9447,14 +9497,22 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 1200px) {
   .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .banner-wrapper .banner-content .promo-banner-content .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .front-banner-wrapper .banner-content .promo-banner-content .field--name-body img {
     width: 97%;
     max-width: 136px;
   }
 }
 
 .banner-wrapper .banner-content #block-bannerawards4u .field--name-body h3,
-.banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3 {
+.banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3,
+.banner-wrapper .banner-content .promo-banner-content .field--name-body h3,
+.front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body h3,
+.front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3,
+.front-banner-wrapper .banner-content .promo-banner-content .field--name-body h3 {
   font-family: BebasNeueBold, arial, sans-serif;
   font-size: 17px;
   color: #fff;
@@ -9464,55 +9522,81 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 768px) {
   .banner-wrapper .banner-content #block-bannerawards4u .field--name-body h3,
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3 {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3,
+  .banner-wrapper .banner-content .promo-banner-content .field--name-body h3,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body h3,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3,
+  .front-banner-wrapper .banner-content .promo-banner-content .field--name-body h3 {
     font-size: 32px;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .banner-wrapper .banner-content #block-bannerawards4u .field--name-body h3,
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3 {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3,
+  .banner-wrapper .banner-content .promo-banner-content .field--name-body h3,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body h3,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body h3,
+  .front-banner-wrapper .banner-content .promo-banner-content .field--name-body h3 {
     font-size: 36px;
   }
 }
 
 .banner-wrapper .banner-content #block-bannerawards4u .field--name-body a,
-.banner-wrapper .banner-content #block-bannerrushawards .field--name-body a {
+.banner-wrapper .banner-content #block-bannerrushawards .field--name-body a,
+.banner-wrapper .banner-content .promo-banner-content .field--name-body a,
+.front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body a,
+.front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body a,
+.front-banner-wrapper .banner-content .promo-banner-content .field--name-body a {
   color: #d5e14e;
 }
 
 @media only screen and (min-width: 992px) {
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
     margin: 0 10px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerrushawards .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body img {
     max-width: 130px;
     margin: -17px 20px;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body img {
     margin: -18px 15px;
     width: 17%;
   }
 }
 
 @media only screen and (min-width: 992px) {
-  .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body img {
     width: 100%;
     margin: -20px 10px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img {
+  .banner-wrapper .banner-content #block-bannerawards4u .field--name-body img,
+  .front-banner-wrapper .banner-content #block-bannerawards4u .field--name-body img {
     width: 97%;
     max-width: 136px;
   }
+}
+
+.front-banner-wrapper {
+  margin: 0 15px;
+  margin-top: 20px;
+}
+
+.front-banner-wrapper .banner-content {
+  margin-bottom: 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -11025,7 +11109,8 @@ footer #block-webform-2 .form-actions button {
 }
 
 .view-default-search-index .views-row .views-field.views-field-field-product-image,
-.view-default-search-index .views-row .views-field.views-field-field-product-image-1 {
+.view-default-search-index .views-row .views-field.views-field-field-product-image-1,
+.view-default-search-index .views-row .views-field.views-field-field-product-base-image {
   float: left;
   margin-right: 20px;
   margin-top: 20px;
@@ -11927,6 +12012,11 @@ button#edit-checkout {
   border-radius: 0;
 }
 
+.delete-order-item {
+  background-color: #e65385;
+  border-color: #e65385;
+}
+
 .view-commerce-cart-form .btn {
   font-size: 16px;
   font-weight: 700;
@@ -12078,7 +12168,8 @@ body#custom-text #edit-text-type:before {
 }
 
 body#custom-text #edit-text-type .form-item {
-  top: -50px;
+  clear: both;
+  top: -75px;
   left: 88px;
   font-size: 20px;
   width: 60%;
@@ -12087,6 +12178,7 @@ body#custom-text #edit-text-type .form-item {
 
 @media only screen and (min-width: 768px) {
   body#custom-text #edit-text-type .form-item {
+    clear: none;
     top: 0;
     left: 0;
     font-size: 22px;
@@ -12754,6 +12846,23 @@ body#custom-text #edit-cancel {
   font-family: Montserrat, arial, sans-serif;
 }
 
+.path-product #product-display .desc {
+  font-size: 18px;
+  color: #283444;
+  line-height: 1.5;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.path-product #product-display .desc .desc-label {
+  font-size: 30px;
+  line-height: 1.4;
+  color: #283444;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e4e3e3;
+  margin-bottom: 20px;
+}
+
 .path-product #product-display .column-left {
   padding-left: 0;
   padding-right: 0px;
@@ -12804,24 +12913,13 @@ body#custom-text #edit-cancel {
   margin-top: -25px;
 }
 
-.path-product #product-display .column-left .desc {
-  font-size: 18px;
-  color: #283444;
-  line-height: 2;
-}
-
-.path-product #product-display .column-left .desc .desc-label {
-  font-size: 30px;
-  line-height: 1.4;
-  color: #283444;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #e4e3e3;
-  margin-bottom: 20px;
+.path-product #product-display .column-left .desc-new {
+  margin: 10px 0;
 }
 
 .path-product #product-display .column-right {
   padding-right: 0;
-  margin-top: 80px;
+  margin-top: 0px;
   padding-left: 0px;
 }
 

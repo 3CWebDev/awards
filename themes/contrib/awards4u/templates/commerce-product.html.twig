@@ -24,13 +24,14 @@
 
 
 <article{{ attributes }} id="product-display">
-
+<div class="desc">{{ product.variation_field_prod_variation_description }}</div>
   <div class="column-left col-xs-12 col-sm-12 col-md-6">
-    <div class="price">Starting at {{ product.variation_price}}</div>
-    <div class="sku">{{ product.variation_sku}}</div>
+    
     <div class="image">{{ product.variation_field_product_image }}</div>
     <div class="image-desc">View Larger Image</div>
-    <div class="desc"><div class="desc-label">Description</div><div class="size">{{ product.variation_field_prod_var_size }} </div>{{ product.variation_field_prod_variation_description }}</div>
+    <div class="desc"><div class="size">{{ product.variation_field_prod_var_size }} </div></div>
+    
+    <div class="sku">{{ product.variation_sku}}</div> 
     <div class="prop65"><strong>California Residents:</strong><BR><a class="use-ajax" data-dialog-type="modal" href="/california-proposition-65">Review the Proposition 65 warning related to this product.</a></div>
     
   </div>
