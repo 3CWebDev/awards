@@ -55,7 +55,7 @@
                   {{ order_item.getQuantity|number_format }} x
                 </td>
                 <td>
-                  <span>{{ order_item.label }}</span>
+                  <span>{{ order_item.label }} ({{ order_item.sku }})</span>
                   <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
                 </td>
               </tr>
@@ -147,3 +147,4 @@
   </tr>
   </tbody>
 </table>
+{{ dump(shipping_information) }}

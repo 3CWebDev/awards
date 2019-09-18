@@ -94,7 +94,8 @@
         "drupal/reg_confirm_email": "^1.0",
         "drupal/quicklink": "^1.0@beta",
         "drupal/disqus": "^1.0@RC",
-        "drupal/commerce_paypal": "^1.0@beta"
+        "drupal/commerce_paypal": "^1.0@beta",
+        "drupal/reroute_email": "^1.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

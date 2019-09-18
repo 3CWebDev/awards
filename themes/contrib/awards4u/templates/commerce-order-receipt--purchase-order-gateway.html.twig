@@ -29,12 +29,12 @@
     <td>
       <table style="margin-left: auto; margin-right: auto; max-width: 768px; text-align: center;">
         <tbody>
-          <tr>
-            <td>
-              <a href="{{ url('<front>') }}" style="color: #0e69be; text-decoration: none; font-weight: bold; margin-top: 15px;"><img src="https://www.awards4u.com/sites/default/files/logo.png"></a><br>
-                <span style="font-weight:bold;">800-659-0860</span>
-            </td>
-          </tr>
+        <tr>
+          <td>
+            <a href="{{ url('<front>') }}" style="color: #0e69be; text-decoration: none; font-weight: bold; margin-top: 15px;"><img src="https://www.awards4u.com/sites/default/files/logo.png"></a><br>
+            <span style="font-weight:bold;">800-659-0860</span>
+          </td>
+        </tr>
         </tbody>
       </table>
       <table style="text-align: center; min-width: 450px; margin: 5px auto 0 auto; border: 1px solid #cccccc; border-radius: 5px; padding: 40px 30px 30px 30px;">
@@ -58,7 +58,9 @@
                       {{ order_item.getQuantity|number_format }} x
                     </td>
                     <td>
-                      <span>{{ order_item.label }}</span>
+                      {% set product_variation  = order_item.getPurchasedEntity %}
+
+                      <span>{{ order_item.label }} ({{ product_variation.getSku }})</span>
                       <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
                     </td>
                   </tr>
@@ -97,6 +99,7 @@
                     </td>
                   {% endif %}
                 </tr>
+                <tr><td><strong>Date Needed</strong>: {{ node.field_order_date_needed.value|date('Y/m/d') }}</td></tr>
                 {% if payment_method %}
                   <tr>
                     <td style="font-weight: bold; margin-top: 10px;">{{ 'Payment Method'|t }}</td>
@@ -115,6 +118,7 @@
             {% endif %}
           </td>
         </tr>
+
         <tr>
           <td>
             <p style="margin-bottom: 0;">
