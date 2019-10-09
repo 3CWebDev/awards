@@ -14,16 +14,19 @@ class CustomOrderProcessor implements OrderProcessorInterface
    * {@inheritdoc}
    */
   public function process(OrderInterface $order)  {
+
     $order2 = $order;
     foreach ($order->getItems() as $order_item) {
       $total_quantity = 0;
       $product_variation = $order_item->getPurchasedEntity();
       $sku_main = $product_variation->getSku();
       $current_pricebreak = FALSE;
-      foreach ($order2->getItems() as $order_item2) {
-        $product_variation = $order_item2->getPurchasedEntity();
-        if (isset($product_variation->field_prod_var_price_break) && !$product_variation->field_prod_var_price_break->isEmpty()) {
-          $sku = $product_variation->getSku();
+
+      if (isset($product_variation->field_prod_var_price_break) && !$product_variation->field_prod_var_price_break->isEmpty()) {
+        foreach ($order2->getItems() as $order_item2) {
+          $product_variation2 = $order_item2->getPurchasedEntity();
+          $sku = $product_variation2->getSku();
+
           if ($sku == $sku_main) {
             $total_quantity = $total_quantity + $order_item2->quantity->getString();
           }
