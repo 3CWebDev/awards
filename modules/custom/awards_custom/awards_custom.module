@@ -310,7 +310,7 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
     $production_days = 5;
   }
 
-  $day_limit = 1; // DEFAULT
+  $day_limit = 5; // DEFAULT
 
   // Is this a UPS Method? (#3 is UPS)
   if ($shipping_method[0] == 3){
@@ -344,7 +344,6 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
 
   // Is this a Expedited Service - We Will Call You With A Quote? (#6 is Expedited Service - We Will Call You With A Quote)
   if ($shipping_method[0] == 6){
-    $day_limit = 0;
     return;
   }
 
