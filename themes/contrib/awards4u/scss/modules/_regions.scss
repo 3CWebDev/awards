@@ -1232,3 +1232,22 @@ footer {
     border-color: $brand-primary;
   }
 }
+
+
+// FL SENATE BLOCK
+
+.fl-senate-banner {
+  
+  margin: 30px 0;
+  padding: 15px;
+  font-size: 18px;
+
+  h3 {
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 235px;
+  }
+}

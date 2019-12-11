@@ -310,7 +310,7 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
     $production_days = 5;
   }
 
-  $day_limit = 5; // DEFAULT
+  $day_limit = 1; // DEFAULT
 
   // Is this a UPS Method? (#3 is UPS)
   if ($shipping_method[0] == 3){
@@ -344,6 +344,7 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
 
   // Is this a Expedited Service - We Will Call You With A Quote? (#6 is Expedited Service - We Will Call You With A Quote)
   if ($shipping_method[0] == 6){
+    $day_limit = 0;
     return;
   }
 
@@ -352,7 +353,10 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
   $need_by_date = $values['field_order_date_needed'][0]['value'];
 
   $number_of_working_days = awards_custom_calc_number_of_working_days(date('Y-m-d'), $need_by_date);
-
+  dpm(date('Y-m-d'));
+  dpm($need_by_date);
+dpm('$number_of_working_days: ' . $number_of_working_days);
+  dpm('$day_limit: ' . $day_limit);
   if ($number_of_working_days < $day_limit){
     $form_state->setErrorByName('order_date_needed', t('Date Needed must be at least ' . $day_limit . ' business days from today. If needed sooner, please select "Expedited Service" below and we will contact you with options and charges.'));
   }

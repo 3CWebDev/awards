@@ -92,6 +92,10 @@
 .path-catalog,
 .path-shop {
 
+  #block-webform-3 {
+    display: none;
+  }
+
   .breadcrumb {
     display: none;
     @include size(mdu) {

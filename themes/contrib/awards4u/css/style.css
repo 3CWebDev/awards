@@ -10276,6 +10276,22 @@ footer #block-webform-2 .form-actions button {
   border-color: #009fc3;
 }
 
+.fl-senate-banner {
+  margin: 30px 0;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.fl-senate-banner h3 {
+  text-align: center;
+}
+
+.fl-senate-banner img {
+  width: 100%;
+  height: auto;
+  max-width: 235px;
+}
+
 .path-frontpage h1.page-header,
 .node-id-3859 h1.page-header {
   display: none;
@@ -11383,6 +11399,11 @@ footer #block-webform-2 .form-actions button {
   font-size: 20px;
   text-transform: uppercase;
   color: #009fc3;
+}
+
+.path-catalog #block-webform-3,
+.path-shop #block-webform-3 {
+  display: none;
 }
 
 .path-catalog .breadcrumb,
