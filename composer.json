@@ -7,7 +7,7 @@
         "drupal/core": "~8.5",
         "composer/installers": "^1.0.24",
         "wikimedia/composer-merge-plugin": "^1.4",
-        "drupal/admin_toolbar": "^1.22",
+        "drupal/admin_toolbar": "^2.0",
         "drupal/block_class": "^1.0@alpha",
         "drupal/module_filter": "^3.1",
         "drupal/commerce": "~2.0",
@@ -130,10 +130,6 @@
             },
 			"drupal/commerce": {
 				"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"
-			},
-			"drupal/commerce_paypal": {
-				"Payment checkout flow validation fails when payment panes are disabled or missing" :
-				"https://www.drupal.org/files/issues/2019-05-03/commerce_payment-3050770-7.patch"
 			}
         }
     },
