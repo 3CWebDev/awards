@@ -14,7 +14,7 @@
         "drupal/ctools": "^3.2",
         "drupal/honeypot": "^1.29",
         "drupal/google_analytics": "^3",
-        "drupal/migrate_plus": "4.0-beta2",
+        "drupal/migrate_plus": "^4.2",
         "drupal/migrate_source_csv": "^2.0",
         "drupal/mailchimp": "^1.5",
         "drupal/pathauto": "^1.0",
@@ -100,7 +100,8 @@
         "drush/drush": "^10.1",
         "webflo/drupal-finder": "~1.2.0",
         "drupal/hide_submit_d8": "^1.0@alpha",
-        "drupal/bootstrap_basic_image_gallery": "^1.3"
+        "drupal/bootstrap_basic_image_gallery": "^1.3",
+        "drupal/migrate_file": "^1.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -127,7 +128,8 @@
         },
 		"patches": {						
             "drupal/core": {
-               "#states not affecting visibility/requirement of managed_file" : "https://www.drupal.org/files/issues/states_not_affecting-2847425-24.patch"
+               "#states not affecting visibility/requirement of managed_file" : "https://www.drupal.org/files/issues/states_not_affecting-2847425-24.patch",
+							  "Error when a process plugin gives a multiple value for a subproperty destination" : "https://www.drupal.org/files/issues/2789125-19.patch"
             },
 	        "drupal/disqus": {
 	            "Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"

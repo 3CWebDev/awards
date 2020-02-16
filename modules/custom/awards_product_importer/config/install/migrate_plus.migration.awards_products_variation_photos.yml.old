@@ -42,6 +42,10 @@ process:
   filename: Product Image
   file_source:
     -
+      plugin: explode
+      delimiter: |
+      source: Product Images
+    -
       plugin: concat
       delimiter: /
       source:
