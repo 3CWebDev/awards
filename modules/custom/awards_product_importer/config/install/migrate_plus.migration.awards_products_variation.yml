@@ -52,12 +52,21 @@ process:
     default_value: in
   field_product_image:
     -
-      plugin: explode
+      plugin: skip_on_empty
+      method: process
       source: Product Image
-      delimiter: '|'
     -
-      plugin: entity_generate
-      entity_type: file
+      plugin: convert_images_to_array
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          plugin: file_import
+          source: source_path
+          destination: destination_path
+          id_only: true
+        alt: alt
+        title: title
   field_base_sku: SKU
   field_prod_var_size:
     plugin: entity_generate

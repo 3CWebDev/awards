@@ -31,29 +31,20 @@ class ConvertImagesToArray extends ProcessPluginBase{
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property){
-    \Drupal::logger('$value')->notice(print_r($value,1));
+
     // Retrieve all images
 
     $values = explode('|', $value);
-    \Drupal::logger('$values')->notice('<pre>' . print_r($values,1) . '</pre>');
-
+    $title = $row->getSourceProperty('Product Name');
     $images = array();
 
-    // Create an array with all datas
     foreach ($values as $key => $value) {
-      \Drupal::logger($key)->notice($value);
-      //$date = date('Y-m');
-      $filename = $key;
-      // Clean a string for use in URL
-      //$filename_sanitized = \Drupal::service('pathauto.alias_cleaner')->cleanString($filename);
       $images[$key]['source_path'] = 'public://import/catalog_images/' . $value;
       $images[$key]['destination_path'] = 'public://product_images/' . $value;
-      $images[$key]['alt'] = 'Alt Lorem ipsum';
-      $images[$key]['title'] = 'Title Lorem ipsum';
+      $images[$key]['alt'] = $title;
+      $images[$key]['title'] = $title;
     }
 
-    \Drupal::logger('my_module1')->notice('<pre>' . print_r($images,1) . '</pre>');
-    // Return value.
     return $images;
 
   }
