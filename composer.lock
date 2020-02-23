@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6106eaf3d95ee4361fd7db3027e0836",
+    "content-hash": "cb695feda3de7103c1fed6ed5b510e65",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -7910,6 +7910,63 @@
             "homepage": "https://www.drupal.org/project/module_filter",
             "support": {
                 "source": "http://cgit.drupalcode.org/module_filter"
+            }
+        },
+        {
+            "name": "drupal/module_missing_message_fixer",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/module_missing_message_fixer.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/module_missing_message_fixer-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "955cd86c8953dce4c79bd3bae3f94982586d91dd"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1561651388",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "See contributors",
+                    "homepage": "https://www.drupal.org/node/2951176/committers",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This module displays a list of missing modules that appear on your site and lets you fix the entries",
+            "homepage": "https://www.drupal.org/project/module_missing_message_fixer",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/module_missing_message_fixer",
+                "issues": "https://www.drupal.org/project/issues/module_missing_message_fixer"
             }
         },
         {
