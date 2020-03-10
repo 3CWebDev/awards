@@ -448,7 +448,10 @@ class FloridaTax extends LocalTaxTypeBase {
           //dpm($config);
           $territory_postal_limits = array_map('trim', explode(',', $config['territory_postal_limits']));
 
-          if (in_array($customer_address->postal_code, $territory_postal_limits)) {
+          $postal_code = $customer_address->postal_code;
+          $postal_code = substr($postal_code,0,5);
+
+          if (in_array($postal_code, $territory_postal_limits)) {
             $resolved_zones[] = $zone;
           }
         }
