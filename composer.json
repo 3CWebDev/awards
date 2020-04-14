@@ -101,7 +101,8 @@
         "webflo/drupal-finder": "~1.2.0",
         "drupal/hide_submit_d8": "^1.0@alpha",
         "drupal/migrate_file": "^1.1",
-        "drupal/module_missing_message_fixer": "^1.1"
+        "drupal/module_missing_message_fixer": "^1.1",
+        "drupal/adminimal_theme": "^1.5"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
