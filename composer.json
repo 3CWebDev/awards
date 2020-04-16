@@ -135,9 +135,12 @@
 	        "drupal/disqus": {
 	            "Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"
             },
-			"drupal/commerce": {
-				"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"
-			}
+					"drupal/commerce": {
+						"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"
+					},
+						"drupal/commerce_ups": {
+						"Update for Shipping 2.0-rc1" :				"https://www.drupal.org/files/issues/2020-03-05/3109829-8.patch"
+					}
         }
     },
     "autoload": {
