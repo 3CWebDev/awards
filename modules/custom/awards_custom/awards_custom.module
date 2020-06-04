@@ -2,35 +2,16 @@
 
 use Drupal\Core\Form\FormStateInterface;
 
-/**
- * Implements hook_field_widget_form_alter().
- */
-
-/*
-function awards_custom_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context){
-  dpm($context);
-  dpm($element);
-  dpm($form_state);
-}*/
-
-function awards_custom_commerce_checkout_pane_info_alter(array &$panes){
-  //dpm($panes);
-
-  //unset($panes['billing_information']);
-}
 
 /*
  * Ajax callback for badage material selector element
  */
 function awardsSelectChange(array $form, FormStateInterface $form_state){
-
+  // Fields are on Order Items
+  // admin/commerce/config/order-item-types/default/edit/fields
   // Get selected material type
   $values = $form_state->getValues();
   $material = $values['field_material'][0]['value'];
-
-  if ($material == 'Metal'){
-    unset($form['field_corners']['widget']['#options']['Round']);
-  }
 
   $form_orig = $form;
   $form = array();
@@ -39,6 +20,8 @@ function awardsSelectChange(array $form, FormStateInterface $form_state){
   $form['field_color'] = $form_orig['field_color'];
   $form['field_logo_placement'] = $form_orig['field_logo_placement'];
   $form['field_attach'] = $form_orig['field_attach'];
+
+  $form['field_colors_img'] = $form_orig['field_colors_img'];
 
   return $form;
 }
@@ -55,8 +38,7 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
   if ($form_id == 'commerce_checkout_flow_custom_checkout_flow' && isset($form['shipping_information'])){
 
-    //$form['shipping_information']['need_by_date_checkout_pane'] = $form['need_by_date_checkout_pane'];
-    //$form['need_by_date_checkout_pane']['order_date_needed']['widget']['#access'] = FALSE;
+
     $form['#cache'] = ['max-age' => 0];
     $entity = \Drupal::service('entity_type.manager')->getStorage('commerce_order')->create(array(
             'type' => 'default'
@@ -95,25 +77,7 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
     );
   }elseif($form_id == 'commerce_checkout_flow_custom_checkout_flow' && $form['#step_id'] == 'review'){
 
-    // Remove phone number for payment information
-
-    //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['#access'] = FALSE;
-    //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['widget']['#required'] = FALSE;
-    //$form['payment_information']['add_payment_method']['billing_information']['field_customer_phone_number']['widget'][0]['value']['#type'] = 'hidden';
     $form['#title'] = 'Payment';
-
-    /*
-    $request = \Drupal::request();
-    $current_path = $request->getPathInfo();
-    $path_args = explode('/', $current_path);
-        if ($path_args[3] != 'complete'){
-      $order_id = $path_args[2];
-      $order = \Drupal\commerce_order\Entity\Order::load($order_id);
-      $order_date_needed = $order->get('field_order_date_needed')->getString();
-      $order_date_needed = strtotime($order_date_needed);
-      $order_date_needed = date('n/j/Y',$order_date_needed);
-      $form['review']['shipping_information']['summary']['need_by_date']['summary']['#markup'] = '<div class="field--label">Need by Date</div><div class="field--item">' . $order_date_needed . '</div>';
-    }*/
 
   }
 
@@ -152,55 +116,57 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
     if (!$name_plate){
 
-      unset($form['field_material']['widget']);
       unset($form['field_corners']['widget']);
-      unset($form['field_color']['widget']);
       unset($form['field_attach']['widget']);
       unset($form['field_logo_placement']['widget']);
+      unset($form['field_nametag_size']['widget']);
 
     }else{
+      // Name Tags
+      $material = $product->field_name_tag_material->getValue();
+      $material = $material[0]['value'];
+      if ($material == 'Metal'){
+        unset($form['field_corners']['widget']['#options']['Square']);
+      }
 
-      $form['field_material']['widget']['#required'] = TRUE;
+
       $form['field_corners']['widget']['#required'] = TRUE;
-      $form['field_color']['widget']['#required'] = TRUE;
       $form['field_attach']['widget']['#required'] = TRUE;
-      $form['field_logo_placement']['widget']['#required'] = TRUE;
+      $form['field_nametag_size']['widget']['#required'] = TRUE;
 
-      $form['field_material']['widget']['#ajax'] = [
-        'callback' => 'awardsSelectChange',
-        'event' => 'change',
-        'wrapper' => 'material-wrapper',
-      ];
+      //$form['field_logo_placement']['widget']['#required'] = TRUE;
+      //$form['#attributes']['novalidate'] = 'novalidate';
 
-      $form['field_material']['widget']['#options']['_none'] = '- select -';
-      $form['field_corners']['widget']['#options']['_none'] = '- select -';
-      $form['field_color']['widget']['#options']['_none'] = '- select -';
-      $form['field_attach']['widget']['#options']['_none'] = '- select -';
-      $form['field_logo_placement']['widget']['#options']['_none'] = '- select -';
-
-      $form['field_corners']['widget']['#states'] =  array(
-        'invisible' => array(
-          ':input[name="field_material"]' => array('value' => '_none'),
-        ),
-      );
-      $form['field_color']['widget']['#states'] =  array(
-        'invisible' => array(
-          ':input[name="field_material"]' => array('value' => '_none'),
-        ),
-      );
       $form['field_logo_placement']['widget']['#states'] =  array(
         'invisible' => array(
-          ':input[name="field_material"]' => array('value' => '_none'),
+          ':input[name="field_order_item_logo"]' => array('value' => 'no_logo'),
         ),
-      );
-      $form['field_attach']['widget']['#states'] =  array(
-        'invisible' => array(
-          ':input[name="field_material"]' => array('value' => '_none'),
+        'required' => array(
+          ':input[name="field_order_item_logo"]' => array('!value' => 'no_logo'),
         ),
-      );
 
-      $form['field_corners']['#prefix'] = '<div id="material-wrapper">';
-      $form['field_logo_placement']['#suffix'] = "</div>";
+      );
+      
+      $form['#validate'][] = '_awards_custom_validate';
+
+      $insert['widget']['#type'] = 'item';
+      $insert['#type'] = 'container';
+      $insert['widget']['#markup'] = '<div class="nt-opts"><div class="tn-corner"><img src="/themes/contrib/awards4u/images/corner-type.jpg" alt="Name Tag Corners Type"></div></div>';
+      $insert['#weight'] = 9;
+      $form = array_insert_before('field_corners',$form, 'corner_sample', $insert);
+
+
+      $form['field_logo_placement']['widget']['#prefix'] = '<div class="nt-opts"><div class="tn-logo"><img src="/themes/contrib/awards4u/images/logo-placement.jpg" alt="Name Tag Logo Placement"></div></div>';
+
+      $insert['widget']['#markup'] = '<div class="nt-opts"><div class="tn-attach"><img src="/themes/contrib/awards4u/images/attachment-options.jpg" alt="Name Tag Attachment Type"></div></div>';
+      $insert['#weight'] = 11;
+      $form = array_insert_before('field_attach',$form, 'attachment_sample', $insert);
+
+      $form['field_corners']['widget']['#options']['_none'] = '- select -';
+      $form['field_logo_placement']['widget']['#options']['_none'] = '- select -';
+      $form['field_attach']['widget']['#options']['_none'] = '- select -';
+      $form['field_nametag_size']['widget']['#options']['_none'] = '- select -';
+
     }
 
 
@@ -285,6 +251,17 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
   }
 }
 
+function _awards_custom_validate(array &$form, FormStateInterface $form_state){
+
+  $values = $form_state->getValues();
+  $logo = $values['field_order_item_logo'][0]['value'];
+  if ($logo != 'no_logo'){
+    $placement = $values['field_logo_placement'];
+    if (!isset($placement['0']['value'])){
+      $form_state->setErrorByName('field_logo_placement', t('Logo placement is required.'));
+    }
+  }
+}
 
 function awards_custom_validate_registration(array &$form, FormStateInterface $form_state){
   $values = $form_state->getValues();
@@ -488,4 +465,31 @@ function _awards_custom_form_submit(array $form, FormStateInterface $form_state)
   }
 
 
+}
+
+/**
+ * Inserts a new key/value before the key in the array.
+ *
+ * @param $key  The key to insert before.
+ * @param $array  An array to insert in to.
+ * @param $new_key  The key/array to insert.
+ * @param $new_value  An value to insert.
+ * @return array
+ */
+function array_insert_before($key, array $array, $new_key, $new_value = null) {
+  if (array_key_exists($key, $array)) {
+    $new = array();
+    foreach($array as $k => $value) {
+      if ($k === $key) {
+        if (is_array($new_key) && count($new_key) > 0) {
+          $new = array_merge($new, $new_key);
+        } else {
+          $new[$new_key] = $new_value;
+        }
+      }
+      $new[$k] = $value;
+    }
+        return $new;
+    }
+  return false;
 }

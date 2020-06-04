@@ -132,7 +132,7 @@
 
   .view-header {
     background: #f8f8f8;
-    color: $brand-primary;
+    color: #41555C;
     padding: 20px;
     font-size: 18px;
     float: left;
@@ -174,7 +174,11 @@
       border: 0;
       box-shadow: 0 0 0;
       font-size: 18px;
-
+      &:focus,
+        &:active,
+        &:focus-within {
+          outline: 1px solid #fff;
+        }
     }
 
     .form-type-select {
@@ -232,6 +236,11 @@
         }
         @include size(lgu) {
           width: 95%;
+        }
+        &:focus,
+        &:active,
+        &:focus-within {
+          outline: 1px solid #fff;
         }
 
       }
@@ -1434,5 +1443,17 @@ body#custom-text {
   .view-commerce-cart-form #edit-submit, .view-commerce-cart-form [data-drupal-selector="edit-submit"] {
     background-color: #536874;
     border-color: #536874; 
+  }
+}
+
+// NAMETAGS
+.nt-opts {
+  @include size(mb){
+    .tn-attach {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 }

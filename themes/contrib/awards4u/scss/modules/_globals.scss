@@ -231,3 +231,24 @@ h1.page-header {
 #cboxOverlay {
   opacity: 0.6 !important;
 }
+
+// OLARK CHAT
+div#olark_tab{
+  position: fixed;
+  left: 0;
+  bottom:0%;
+  z-index:5000;
+}
+
+#olark_tab a {
+  display:block;
+  /*Edit these to change the look of your tab*/
+  border: 0px solid transparent;
+  border-left-style: none;
+  border-bottom-style: none;
+  margin-top:0px;
+}
+
+#olark_tab a:hover{
+  border-color: transparent;
+}

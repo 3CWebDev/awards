@@ -53,6 +53,7 @@ process:
   field_drop_shi/postal_code: Zipcode
   field_featured_product: TopSeller
   field_ships_today: ShipToday
+  field_name_tag_material: Material
 destination:
   plugin: 'entity:commerce_product'
 migration_dependencies:

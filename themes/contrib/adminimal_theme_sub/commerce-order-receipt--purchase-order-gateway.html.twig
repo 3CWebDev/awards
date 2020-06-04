@@ -23,6 +23,7 @@
  * @ingroup themeable
  */
 #}
+
 <table style="margin: 15px auto 0 auto; max-width: 768px; font-family: arial,sans-serif; font-size:20px;">
     <tbody>
     <tr>
@@ -58,9 +59,24 @@
                                             {{ order_item.getQuantity|number_format }} x
                                         </td>
                                         <td>
-                                            {% set product_variation  = order_item.getPurchasedEntity %}
 
+
+                                            {% set product_variation  = order_item.getPurchasedEntity %}
                                             <span>{{ order_item.label }} ({{ product_variation.getSku }})</span>
+
+                                            {% if order_item.field_nametag_size.value %}
+                                                (Size: {{ order_item.field_nametag_size.value }}
+                                            {% endif %}
+                                            {% if order_item.field_corners.value %}
+                                                | Corners: {{ order_item.field_corners.value }}
+                                            {% endif %}
+                                            {% if order_item.field_attach.value %}
+                                                | Attachment: {{ order_item.field_attach.value }}
+                                            {% endif %}
+                                            {% if order_item.field_logo_placement.value %}
+                                                | Placement: {{ order_item.field_logo_placement.value }})
+                                            {% endif %}
+
                                             <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
                                         </td>
                                     </tr>

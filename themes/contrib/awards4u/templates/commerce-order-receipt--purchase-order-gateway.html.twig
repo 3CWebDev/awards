@@ -23,6 +23,7 @@
  * @ingroup themeable
  */
 #}
+
 <table style="margin: 15px auto 0 auto; max-width: 768px; font-family: arial,sans-serif; font-size:20px;">
   <tbody>
   <tr>
@@ -58,8 +59,13 @@
                       {{ order_item.getQuantity|number_format }} x
                     </td>
                     <td>
+
+
                       {% set product_variation  = order_item.getPurchasedEntity %}
 
+                      {% if order_item.field_attach.value %}
+                        Attachment: {{ order_item.field_attach.value }}
+                      {% endif %}
                       <span>{{ order_item.label }} ({{ product_variation.getSku }})</span>
                       <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
                     </td>

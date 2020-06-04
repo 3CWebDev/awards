@@ -5424,7 +5424,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   line-height: 1.42857;
   text-decoration: none;
-  color: #009fc3;
+  color: #41555C;
   background-color: #fff;
   border: 1px solid #ddd;
   margin-left: -1px;
@@ -5458,8 +5458,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > span:focus {
   z-index: 3;
   color: #fff;
-  background-color: #009fc3;
-  border-color: #009fc3;
+  background-color: #41555C;
+  border-color: #41555C;
   cursor: default;
 }
 
@@ -8763,6 +8763,26 @@ h1.page-header {
   opacity: 0.6 !important;
 }
 
+div#olark_tab {
+  position: fixed;
+  left: 0;
+  bottom: 0%;
+  z-index: 5000;
+}
+
+#olark_tab a {
+  display: block;
+  /*Edit these to change the look of your tab*/
+  border: 0px solid transparent;
+  border-left-style: none;
+  border-bottom-style: none;
+  margin-top: 0px;
+}
+
+#olark_tab a:hover {
+  border-color: transparent;
+}
+
 #page-wrapper {
   overflow: hidden;
 }
@@ -8809,7 +8829,7 @@ h1.page-header {
 
 #top-nav {
   display: none;
-  background: #e65385;
+  background: #d2376b;
   float: left;
   width: 100%;
   margin-bottom: 47px;
@@ -9160,11 +9180,11 @@ header.navbar .block-superfish ul li a {
 }
 
 header.navbar .block-superfish ul li ul li {
-  background: #009fc3;
+  background: #41555C;
   border-bottom: 1px solid #fff;
-  border-left: 1px solid #009fc3;
-  border-right: 1px solid #009fc3;
-  border-top: 1px solid #009fc3;
+  border-left: 1px solid #41555C;
+  border-right: 1px solid #41555C;
+  border-top: 1px solid #41555C;
   padding-left: 10px;
 }
 
@@ -9185,7 +9205,7 @@ header.navbar .block-superfish ul li ul li a {
 }
 
 header.navbar .block-superfish ul li ul li a:hover {
-  color: #283444;
+  color: #41555C;
   text-decoration: none;
 }
 
@@ -9549,6 +9569,7 @@ header.navbar #block-cart a:hover {
 .front-banner-wrapper .banner-content #block-bannerrushawards .field--name-body a,
 .front-banner-wrapper .banner-content .promo-banner-content .field--name-body a {
   color: #d5e14e;
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 992px) {
@@ -9668,6 +9689,10 @@ header.navbar #block-cart a:hover {
   }
 }
 
+.cta-box a {
+  text-decoration: underline;
+}
+
 .path-frontpage #tertiary-content {
   border-top: 0;
   margin-top: 0;
@@ -9775,7 +9800,8 @@ li >
 a:active, footer .footer-menu .nav >
 li >
 a:focus {
-  color: #7ad4e8;
+  color: #fff;
+  text-decoration: underline;
   background-color: transparent;
 }
 
@@ -9828,7 +9854,12 @@ footer .footer-locations h2 {
 }
 
 footer .footer-locations a {
-  color: #d5e14e;
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer .footer-locations a:hover {
+  color: #fff;
 }
 
 footer #block-webform-2 {
@@ -10175,6 +10206,10 @@ footer #block-webform-2 .form-actions button {
   #post-footer #block-webform-2 .form-type-email .form-email {
     max-width: 270px;
   }
+}
+
+#post-footer #block-webform-2 .form-type-email .form-email:focus, #post-footer #block-webform-2 .form-type-email .form-email:active, #post-footer #block-webform-2 .form-type-email .form-email:focus-within {
+  outline: 1px solid #fff;
 }
 
 #post-footer #block-webform-2 .form-actions {
@@ -10659,6 +10694,13 @@ footer #block-webform-2 .form-actions button {
   }
 }
 
+.path-frontpage .newsletter-box .form-type-email .form-email:focus, .path-frontpage .newsletter-box .form-type-email .form-email:active, .path-frontpage .newsletter-box .form-type-email .form-email:focus-within,
+.node-id-3859 .newsletter-box .form-type-email .form-email:focus,
+.node-id-3859 .newsletter-box .form-type-email .form-email:active,
+.node-id-3859 .newsletter-box .form-type-email .form-email:focus-within {
+  outline: 1px solid #fff;
+}
+
 .path-frontpage .newsletter-box .form-actions,
 .node-id-3859 .newsletter-box .form-actions {
   position: relative;
@@ -10705,6 +10747,13 @@ footer #block-webform-2 .form-actions button {
     width: auto;
     padding: 20px 45px !important;
   }
+}
+
+.path-frontpage .newsletter-box .form-actions button:focus, .path-frontpage .newsletter-box .form-actions button:active, .path-frontpage .newsletter-box .form-actions button:focus-within,
+.node-id-3859 .newsletter-box .form-actions button:focus,
+.node-id-3859 .newsletter-box .form-actions button:active,
+.node-id-3859 .newsletter-box .form-actions button:focus-within {
+  outline: 1px solid #fff;
 }
 
 .path-frontpage #secondary-content,
@@ -11444,7 +11493,7 @@ footer #block-webform-2 .form-actions button {
 
 .view-product-search-search-api .view-header {
   background: #f8f8f8;
-  color: #009fc3;
+  color: #41555C;
   padding: 20px;
   font-size: 18px;
   float: left;
@@ -11491,6 +11540,10 @@ footer #block-webform-2 .form-actions button {
   border: 0;
   box-shadow: 0 0 0;
   font-size: 18px;
+}
+
+.view-product-search-search-api .view-filters .form-control:focus, .view-product-search-search-api .view-filters .form-control:active, .view-product-search-search-api .view-filters .form-control:focus-within {
+  outline: 1px solid #fff;
 }
 
 .view-product-search-search-api .view-filters .form-type-select {
@@ -11573,6 +11626,10 @@ footer #block-webform-2 .form-actions button {
   .view-product-search-search-api .view-filters .form-type-textfield .form-text {
     width: 95%;
   }
+}
+
+.view-product-search-search-api .view-filters .form-type-textfield .form-text:focus, .view-product-search-search-api .view-filters .form-type-textfield .form-text:active, .view-product-search-search-api .view-filters .form-type-textfield .form-text:focus-within {
+  outline: 1px solid #fff;
 }
 
 .view-product-search-search-api .view-filters .form-submit {
@@ -12764,6 +12821,13 @@ body#custom-text #edit-cancel {
   border-color: #536874;
 }
 
+@media only screen and (max-width: 767px) {
+  .nt-opts .tn-attach img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .page-node-type-blog .field--name-field-blog-image .img-responsive {
   width: 100%;
   margin-bottom: 20px;
@@ -12923,6 +12987,14 @@ body#custom-text #edit-cancel {
   padding-bottom: 45px;
   position: relative;
   z-index: 1;
+}
+
+.path-product #product-display .column-left .image .field--item {
+  display: none;
+}
+
+.path-product #product-display .column-left .image .field--item:nth-child(1) {
+  display: block;
 }
 
 .path-product #product-display .column-left .image-desc {

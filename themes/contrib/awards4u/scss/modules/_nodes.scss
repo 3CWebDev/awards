@@ -181,6 +181,13 @@
           position: relative;
           z-index: 1;
         }
+
+        .field--item {
+          display: none;
+        }
+        .field--item:nth-child(1){
+          display: block;
+        }
       }
 
       .image-desc {

@@ -1,0 +1,4 @@
+name-tags:
+  version: 1.x
+  js:
+    js/name-tags.js: {}

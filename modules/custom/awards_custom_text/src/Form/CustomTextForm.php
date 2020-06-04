@@ -472,8 +472,8 @@ class CustomTextForm extends FormBase {
     $order->save();
     //$form['#cache'] = ['max-age' => 0];
     $response = new RedirectResponse('/cart', 302);
-    //$url = Url::fromRoute('commerce_cart.page');
-    //$form_state->setRedirectUrl($url);
+    $url = Url::fromRoute('commerce_cart.page');
+    $form_state->setRedirectUrl($url);
     $response->send();
   }
   public function callback(array &$form, FormStateInterface $form_state) : array {

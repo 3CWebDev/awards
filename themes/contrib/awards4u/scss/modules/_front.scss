@@ -271,6 +271,11 @@
           padding: 55px 25px;
           max-width: 390px;
         }
+        &:focus,
+        &:active,
+        &:focus-within {
+          outline: 1px solid #fff;
+        }
       }
     }
 
@@ -308,6 +313,12 @@
           height: 110px;
           width: auto;
           padding: 20px 45px !important;
+        }
+
+        &:focus,
+        &:active,
+        &:focus-within {
+          outline: 1px solid #fff;
         }
       }
 

@@ -43,7 +43,7 @@
 
 #top-nav {
   display: none;
-  background: #e65385;
+  background: #d2376b; // WAS #e65385;
   float: left;
   width: 100%;
   margin-bottom: 47px;
@@ -334,11 +334,11 @@ header.navbar {
 
         ul {
           li {
-            background: $brand-primary;
+            background: #41555C;
             border-bottom: 1px solid #fff;
-            border-left: 1px solid $brand-primary;
-            border-right: 1px solid $brand-primary;
-            border-top: 1px solid $brand-primary;
+            border-left: 1px solid #41555C;
+            border-right: 1px solid #41555C;
+            border-top: 1px solid #41555C;
             padding-left: 10px;
 
             &:hover {
@@ -356,7 +356,7 @@ header.navbar {
               text-transform: none;
               font-weight: 400;
               &:hover {
-                color: #283444;
+                color: #41555C;
                 text-decoration: none;
               }
 
@@ -586,7 +586,7 @@ header.navbar {
         }
         a {
           color: #d5e14e;
-
+          text-decoration: underline;
         }
       }
     }
@@ -687,6 +687,10 @@ header.navbar {
       clear: none;
     }
   }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .path-frontpage {
@@ -763,7 +767,8 @@ footer {
           &:hover,
           &:active,
           &:focus {
-            color: #7ad4e8;
+            color: #fff;
+            text-decoration: underline;
             background-color: transparent;
           }
 
@@ -816,7 +821,11 @@ footer {
       margin-top: 0;
     }
     a {
-      color: $brand-secondary;
+      color: #fff;
+      text-decoration: underline;
+      &:hover {
+        color: #fff;
+      }
     }
   }
 
@@ -1134,6 +1143,11 @@ footer {
         }
         @include size(xlu) {
           max-width: 270px;
+        }
+        &:focus,
+        &:active,
+        &:focus-within {
+          outline: 1px solid #fff;
         }
       }
     }
