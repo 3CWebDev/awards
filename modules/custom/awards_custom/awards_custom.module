@@ -156,7 +156,7 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
       $form = array_insert_before('field_corners',$form, 'corner_sample', $insert);
 
 
-      $form['field_logo_placement']['widget']['#prefix'] = '<div class="nt-opts"><div class="tn-logo"><img src="/themes/contrib/awards4u/images/logo-placement.jpg" alt="Name Tag Logo Placement"></div></div>';
+      $form['field_logo_placement']['widget']['#field_suffix'] = '<div class="nt-opts"><div class="tn-logo"><img src="/themes/contrib/awards4u/images/logo-placement.jpg" alt="Name Tag Logo Placement"></div></div>';
 
       $insert['widget']['#markup'] = '<div class="nt-opts"><div class="tn-attach"><img src="/themes/contrib/awards4u/images/attachment-options.jpg" alt="Name Tag Attachment Type"></div></div>';
       $insert['#weight'] = 11;

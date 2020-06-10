@@ -44,9 +44,14 @@
 
   h1.page-header {
     font-family: Montserrat, arial, sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0;
     padding-bottom: 0;
+    font-size: 20px;
+    @include size(lgu){
+      font-size: 40px;
+      font-weight: 500;
+    }
   }
 
   .breadcrumb {
@@ -119,6 +124,9 @@
   .prop65 {
     font-size: 14px;
     margin-top: 20px;
+    @include size(mb){
+      margin-bottom: 30px;
+    }
   }
 
   // Product info
@@ -126,12 +134,24 @@
   #product-display {
     font-family: Montserrat, arial, sans-serif;
 
+    .form-item {
+      label {
+        font-size: 18px;
+        @include size(lgu){
+          font-size: 20px;
+        }
+      }
+    }
+
     .desc {
-      font-size: 18px;
+      font-size: 14px;
       color: #283444;
       line-height: 1.5;
       margin-top: 10px;
       margin-bottom: 30px;
+      @include size(lgu){
+        font-size: 18px;
+      }
 
       .desc-label {
         font-size: 30px;
@@ -162,9 +182,12 @@
       }
 
       .sku {
-        font-size: 18px;
-        color: #bbb;
+        font-size: 14px;
+        color: #333;
         margin-bottom: 20px;
+        @include size(mb){
+          margin-top: -20px;
+        }
 
         .field--label {
           font-weight: 400;
@@ -191,7 +214,7 @@
       }
 
       .image-desc {
-        margin-bottom: 50px;
+        margin-bottom: 0px;
         font-size: 15px;
         color: $brand-primary;
         background: url(../images/icon_zoom.png) 0 0 no-repeat;
@@ -222,25 +245,32 @@
       }
 
       .step-1 {
-        font-size: 23px;
+        font-size: 20px;
         color: $brand-primary;
         background: url(../images/icon_step1.png) 0 0 no-repeat;
-        padding-left: 70px;
+        background-size: 35px;
+        padding-left: 45px;
         font-weight: 600;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         padding-bottom: 11px;
         padding-top: 0px;
         @include size(mdu) {
-          font-size: 30px;
+          font-size: 20px;
           padding-top: 6px;
+        }
+        @include size(lgu){
+          background-size: 45px;
+          font-size: 20px;
+          padding-left: 55px;
         }
       }
 
       #edit-submit {
-        margin-top: 40px;
+        margin-top: 20px;
       }
 
       .price-breaks {
+        font-size: 15px;
         margin-bottom: 20px;
 
         div {
@@ -314,15 +344,31 @@
 
       [data-drupal-selector="edit-purchased-entity-wrapper"] {
         background: #f6f6f6;
-        padding: 25px;
+        padding: 0px 0 25px 0;
         padding-bottom: 20px;
+        @include size(mdu){
+          padding: 15px 15px 12px 15px;
+        }
+        @include size(lgu){
+
+        }
+        @include size(xlu){
+
+        }
 
         label {
           display: none;
         }
 
         select {
-          font-size: 20px;
+          font-size: 16px;
+          height: 35px;
+          &:after {
+            font-size: 16px;
+          }
+        }
+        .input-group-addon {
+          font-size: 16px;
         }
       }
 
@@ -333,11 +379,14 @@
           background: #f6f6f6;
           color: #283444;
           font-size: 20px;
-          padding: 40px 60px;
+          padding: 30px 20px;
           padding-top: 0;
+          @include size(mdu){
+            padding: 0px 60px 30px 20px;
+          }
 
           .form-control {
-            max-width: 70px;
+            max-width: 50px;
             float: right;
             border-radius: 0;
             border: 1px solid $brand-primary;
@@ -349,8 +398,7 @@
       }
 
       [data-drupal-selector="edit-field-order-item-logo-wrapper"] {
-        margin-top: 50px;
-        margin-bottom: 50px;
+        margin: 20px 0;
         font-family: Montserrat, arial, sans-serif;
 
         legend {
@@ -368,43 +416,74 @@
 
             &:before {
               content: "Customize Your Order";
-              font-size: 23px;
+              font-size: 20px;
               color: $brand-primary;
               background: url(../images/icon_step2.png) 0 0 no-repeat;
-              padding-left: 70px;
+              background-size: 35px;
+              padding-left: 45px;
               font-weight: 600;
               margin-bottom: 30px;
               padding-bottom: 21px;
               padding-top: 11px;
               @include size(mdu) {
-                font-size: 30px;
                 padding-bottom: 11px;
+              }
+              @include size(lgu){
+                font-size: 20px;
+                background-size: 45px;
+              padding-left: 55px;
               }
 
             }
           }
         }
+        
+        
 
         .fieldset-wrapper {
-          margin-top: 30px;
-          padding: 45px;
+          margin: 15px 0 0 0;
+          padding: 10px 25px;
           background: #f6f6f6;
           font-size: 20px;
           font-weight: 300;
 
           .radio {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            label {
+              font-size: 16px;
+            }
           }
 
         }
+      }
+
+      
+
+      #edit-field-nametag-size-wrapper {
+        margin-top: 60px;
+      }
+      .select-wrapper {
+
+        select {
+          font-size: 16px;
+          
+        }
+        &:after {
+          font-size: 14px;
+        }
+      }
+
+      #edit-corner-sample,
+      #edit-field-logo-placement-wrapper{
+        margin-top: 30px;
       }
 
       .field--name-field-custom-prod-image,
       #edit-field-order-item-stock-image--wrapper,
       [data-drupal-selector="edit-field-order-item-stock-image"],
       [data-drupal-selector="edit-field-logo-is-on-file-wrapper"] {
-        padding: 45px;
-        padding-top: 20px;
+        padding: 20px 45px;
         background: #f6f6f6;
         margin-top: -21px;
         margin-bottom: 50px;

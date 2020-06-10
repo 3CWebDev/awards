@@ -646,15 +646,19 @@ header.navbar {
 // BOTTOM CTA
 
 #tertiary-content {
-  margin: 0 30px;
+  margin: 0 10px;
   border-top: 1px solid #ddd;
   margin-top: 150px;
+  @include size(mdu){
+    margin: 0 30px;
+  }
 }
 
 .cta-box {
-  margin: 90px 0;
-  font-size: 16px;
+  margin: 20px 0;
+  font-size: 13px;
   @include size(mdu) {
+    margin: 50px 0;
     font-size: 14px;
   }
   @include size(xlu) {
@@ -663,26 +667,41 @@ header.navbar {
 
   h3 {
     font-family: BebasNeueBook, arial, sans-serif;
-    font-size: 36px;
+    font-size: 30px;
     color: #414f57;
     margin-top: 0;
+    @include size(lgu) {
+      font-size: 33px;
+    }
+    @include size(xlu){
+      font-size: 36px;
+    }
   }
   img {
-    margin-right: 20px;
-    margin-bottom: 40px;
+    margin-right: 10px;
+    margin-bottom: 0; 
+    margin-top: -10px;
+    width: 45px;
     @include size(mdu) {
-      margin-bottom: 0;
+      margin-bottom: 35px;
     }
     @include size(lgu) {
       margin-bottom: 20px;
+      margin-top: 0;
+      margin-right: 20px;
     }
     @include size(xlu) {
       margin-bottom: 150px;
+      width: auto;
     }
 
   }
   p {
     clear: both;
+    font-size: 12px;
+    @include size(mdu){
+      font-size: 14px;
+    }
     @include size(xlu) {
       clear: none;
     }
@@ -700,9 +719,12 @@ header.navbar {
     margin-top: 0;
   }
   .cta-box {
-    margin: 40px 0;
+    margin: 20px 0;
+    @include size(mdu){
+      margin: 20px 0;
+    }
     @include size(lgu) {
-      margin-top: 70px;
+      margin-top: 30px;
       margin-bottom: 70px;
     }
     @include size(xlu) {
@@ -718,7 +740,7 @@ footer {
   background-color: #5c6a74;
   clear: both;
   @include size(mdu) {
-    padding-top: 140px;
+    padding-top: 70px;
   }
 
   .footer {

@@ -32,6 +32,10 @@ h1.page-header {
   }
 }
 
+.messages__wrapper {
+  font-size: 16px;
+}
+
 // ADD TO CART
 
 #edit-actions,
@@ -42,12 +46,12 @@ h1.page-header {
     background-color: #d5e14e;
     border-color: #d5e14e;
     border-radius: 0;
-    font-size: 24px;
+    font-size: 20px;
     font-family: Montserrat, arial, sans-serif;
     color: #283444;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 20px 45px;
+    padding: 5px 25px;
     font-weight: 700;
   }
 }
