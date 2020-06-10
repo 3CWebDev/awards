@@ -12,7 +12,7 @@
         "drupal/module_filter": "^3.1",
         "drupal/commerce": "^2.16",
         "drupal/ctools": "^3.2",
-        "drupal/honeypot": "^1.29",
+        "drupal/honeypot": "^2.0",
         "drupal/google_analytics": "^3",
         "drupal/migrate_plus": "^4.2",
         "drupal/migrate_source_csv": "^2.0",
@@ -43,7 +43,7 @@
         "drupal/commerce_purchase_order": "1.x-dev",
         "drupal/menu_link_attributes": "^1.0",
         "drupal/superfish": "^1.1",
-        "drupal/better_exposed_filters": "^3.0@alpha",
+        "drupal/better_exposed_filters": "^4.0",
         "drupal/slick": "^1.0",
         "drupal/slick_extras": "^1.0@beta",
         "drupal/colorbox": "^1.4",
@@ -66,7 +66,7 @@
         "drupal/console": "~1.0",
         "drupal/path_redirect_import": "1.x-dev",
         "drupal/entity_reference_views_select": "^1.2",
-        "drupal/anchor_link": "^1.6",
+        "drupal/anchor_link": "^2.4",
         "drupal/ckeditor_font": "^1.0",
         "drupal/colorbutton": "^1.1",
         "drupal/image_effects": "~2.0",
@@ -136,10 +136,7 @@
 	            "Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"
             },
 					"drupal/commerce": {
-						"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"
-					},
-						"drupal/commerce_ups": {
-						"Update for Shipping 2.0-rc1" :				"https://www.drupal.org/files/issues/2020-03-05/3109829-8.patch"
+						"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"					
 					},
 						"drupal/commerce_shipping": {
 						"Auto-recalculate shipping when the address changes" :				"https://www.drupal.org/files/issues/2020-03-12/2849756-148.patch"

@@ -35,12 +35,23 @@ process:
     plugin: default_value
     default_value: 'full_html'
   'field_prod_category': tid
-  'field_product_base_image/target_id':
-    plugin: migration
-    migration: awards_products_variation_photos
-    source: Product Image
-    no_stub: true
-  'field_product_base_image/alt': Product Name
+  field_product_base_image:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: Product Image
+    -
+      plugin: convert_images_to_array
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          plugin: file_import
+          source: source_path
+          destination: destination_path
+          id_only: true
+          alt: alt
+          title: title
   field_product_base_price: Price
   field_product_meta_tags: metatags
   field_allow_image_upload: allow_image_upload
