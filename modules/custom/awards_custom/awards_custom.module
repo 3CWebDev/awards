@@ -41,13 +41,13 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
     $form['#cache'] = ['max-age' => 0];
     $entity = \Drupal::service('entity_type.manager')->getStorage('commerce_order')->create(array(
-            'type' => 'default'
-        )
+        'type' => 'default'
+      )
     );
 
     //Get the EntityFormDisplay (i.e. the default Form Display) of this content type
     $entity_form_display = \Drupal::service('entity_type.manager')->getStorage('entity_form_display')
-        ->load('commerce_order.default.default');
+      ->load('commerce_order.default.default');
 
     //Get the body field widget and add it to the form
     if ($widget = $entity_form_display->getRenderer('field_order_date_needed')) { //Returns the widget class
@@ -73,7 +73,7 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
     $form['shipping_information']['order_date_needed']['widget'][0]['value']['#default_value'] = (isset($order_date_needed) ? $order_date_needed : '');
     $form['shipping_information']['order_date_needed']['widget'][0]['value']['#description'] = '<p><strong>NOTE:</strong> All orders require a minimum of 5 days for production and shipping, except "Ship Today" items.</p>';
     $form['shipping_information']['disclaimer'] = array(
-        '#markup' => '<p class="disclaimer">We will contact you before your order ships.</p>',
+      '#markup' => '<p class="disclaimer">We will contact you before your order ships.</p>',
     );
   }elseif($form_id == 'commerce_checkout_flow_custom_checkout_flow' && $form['#step_id'] == 'review'){
 
@@ -116,6 +116,9 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
     if (!$name_plate){
 
+      unset($form['field_order_item_logo']['widget']['#options']['repeat']);
+      unset($form['field_repeat_order_description']);
+
       unset($form['field_corners']['widget']);
       unset($form['field_attach']['widget']);
       unset($form['field_logo_placement']['widget']);
@@ -129,29 +132,75 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
         unset($form['field_corners']['widget']['#options']['Square']);
       }
 
+      //$form['field_corners']['widget']['#required'] = TRUE;
+      //$form['field_attach']['widget']['#required'] = TRUE;
+      //$form['field_nametag_size']['widget']['#required'] = TRUE;
 
-      $form['field_corners']['widget']['#required'] = TRUE;
-      $form['field_attach']['widget']['#required'] = TRUE;
-      $form['field_nametag_size']['widget']['#required'] = TRUE;
+      $form['field_repeat_order_description']['widget'][0]['value']['#attributes']['placeholder'] = t('Enter organization/logo name or other details of previous order.');
 
-      //$form['field_logo_placement']['widget']['#required'] = TRUE;
-      //$form['#attributes']['novalidate'] = 'novalidate';
+
+
+      $form['field_repeat_order_description']['#states'] =  array(
+        'invisible' => array(
+          ':input[name="field_order_item_logo"]' => array('!value' => 'repeat'),
+        ),
+        'required' => array(
+          ':input[name="field_order_item_logo"]' => array('!value' => 'repeat'),
+        ),
+      );
+
+      $form['field_corners']['widget']['#states'] =  array(
+        'invisible' => array(
+          ':input[name="field_order_item_logo"]' => array('value' => 'repeat'),
+        ),
+        'required' => array(
+          ':input[name="field_order_item_logo"]' => array('!value' => 'repeat'),
+        ),
+      );
+
+      $form['field_nametag_size']['widget']['#states'] =  array(
+        'invisible' => array(
+          ':input[name="field_order_item_logo"]' => array('value' => 'repeat'),
+        ),
+        'required' => array(
+          ':input[name="field_order_item_logo"]' => array(
+            array('!value' => 'repeat'),
+          ),
+        ),
+      );
 
       $form['field_logo_placement']['widget']['#states'] =  array(
         'invisible' => array(
-          ':input[name="field_order_item_logo"]' => array('value' => 'no_logo'),
+          ':input[name="field_order_item_logo"]' => array(
+            array('value' => 'no_logo'),
+            array('value' => 'repeat'),
+          ),
         ),
         'required' => array(
-          ':input[name="field_order_item_logo"]' => array('!value' => 'no_logo'),
+          ':input[name="field_order_item_logo"]' => array(
+            array('!value' => 'no_logo'),
+            array('!value' => 'repeat'),
+          ),
         ),
-
       );
-      
+
+      $form['field_attach']['widget']['#states'] =  array(
+        'required' => array(
+          ':input[name="field_order_item_logo"]' => array(
+            array('!value' => 'no_logo'),
+            array('!value' => 'repeat'),
+          ),
+        ),
+      );
+
+
+
+
       $form['#validate'][] = '_awards_custom_validate';
 
       $insert['widget']['#type'] = 'item';
       $insert['#type'] = 'container';
-      $insert['widget']['#markup'] = '<div class="nt-opts"><div class="tn-corner"><img src="/themes/contrib/awards4u/images/corner-type.jpg" alt="Name Tag Corners Type"></div></div>';
+      $insert['widget']['#field_suffix'] = '<div class="nt-opts"><div class="tn-corner"><img src="/themes/contrib/awards4u/images/corner-type.jpg" alt="Name Tag Corners Type"></div></div>';
       $insert['#weight'] = 9;
       $form = array_insert_before('field_corners',$form, 'corner_sample', $insert);
 
@@ -204,29 +253,29 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
         $form['field_logo_is_on_file']['widget'][0]['value']['#title'] = 'Enter the name of the logo we have on file';
 
         $form['field_order_item_stock_image']['widget']['#states'] =  array(
-            'visible' => array(
-                ':input[name="field_order_item_logo"]' => array('value' => 'stock_logo'),
-            ),
+          'visible' => array(
+            ':input[name="field_order_item_logo"]' => array('value' => 'stock_logo'),
+          ),
         );
 
         $form['#validate'][] = 'awards_custom_validate_image_fields';
 
         $form['field_custom_prod_image']['#states'] =  array(
-            'visible' => array(
-                ':input[name="field_order_item_logo"]' => array('value' => 'custom_logo'),
-            ),
-            'required' => array(
-                ':input[name="field_order_item_logo"]' => array('value' => 'custom_logo'),
-            ),
+          'visible' => array(
+            ':input[name="field_order_item_logo"]' => array('value' => 'custom_logo'),
+          ),
+          'required' => array(
+            ':input[name="field_order_item_logo"]' => array('value' => 'custom_logo'),
+          ),
         );
 
         $form['field_logo_is_on_file']['#states'] =  array(
-            'visible' => array(
-                ':input[name="field_order_item_logo"]' => array('value' => 'logo_on_file'),
-            ),
-            'required' => array(
-                ':input[name="field_order_item_logo"]' => array('value' => 'logo_on_file'),
-            ),
+          'visible' => array(
+            ':input[name="field_order_item_logo"]' => array('value' => 'logo_on_file'),
+          ),
+          'required' => array(
+            ':input[name="field_order_item_logo"]' => array('value' => 'logo_on_file'),
+          ),
         );
       }
     }else{
@@ -240,8 +289,8 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
     // Remove the custom text field from the add to cart form
     if (isset($form['field_item_custom_text'])){
-        //unset($form['field_item_custom_text']);
-        $form['field_item_custom_text']['#access'] = FALSE;
+      //unset($form['field_item_custom_text']);
+      $form['field_item_custom_text']['#access'] = FALSE;
     }
     if (isset($form['field_prod_custom_text'])){
       //unset($form['field_item_custom_text']);
@@ -255,10 +304,38 @@ function _awards_custom_validate(array &$form, FormStateInterface $form_state){
 
   $values = $form_state->getValues();
   $logo = $values['field_order_item_logo'][0]['value'];
-  if ($logo != 'no_logo'){
+
+  if ($logo != 'no_logo' && $logo != 'repeat'){
     $placement = $values['field_logo_placement'];
     if (!isset($placement['0']['value'])){
       $form_state->setErrorByName('field_logo_placement', t('Logo placement is required.'));
+    }
+  }
+
+  if ($logo != 'repeat'){
+
+    $size = $values['field_nametag_size'];
+    if (!isset($size['0']['value'])){
+      $form_state->setErrorByName('field_nametag_size', t('Size is required.'));
+    }
+
+    $corners = $values['field_corners'];
+    if (!isset($corners['0']['value'])){
+      $form_state->setErrorByName('field_corners', t('Corner type is required.'));
+    }
+
+    $attach = $values['field_attach'];
+    if (!isset($attach['0']['value'])){
+      $form_state->setErrorByName('field_attach', t('Attachment type is required.'));
+    }
+
+  }
+
+  if ($logo == 'repeat'){
+    $description = $values['field_repeat_order_description'][0]['value'];
+
+    if (empty($description)){
+      $form_state->setErrorByName('field_repeat_order_description', t('Enter previous order information.'));
     }
   }
 }
@@ -330,7 +407,7 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
   $need_by_date = $values['field_order_date_needed'][0]['value'];
 
   $number_of_working_days = awards_custom_calc_number_of_working_days(date('Y-m-d'), $need_by_date);
-  
+
   if ($number_of_working_days < $day_limit){
     $form_state->setErrorByName('order_date_needed', t('Date Needed must be at least ' . $day_limit . ' business days from today. If needed sooner, please select "Expedited Service" below and we will contact you with options and charges.'));
   }
@@ -356,25 +433,25 @@ function awards_custom_submit_need_by_date(array &$form, FormStateInterface $for
 
 function awards_custom_validate_image_fields(array &$form, FormStateInterface $form_state) {
 
-    $values = $form_state->getValues();
+  $values = $form_state->getValues();
 
-    switch ($values['field_order_item_logo'][0]['value']){
-      case 'custom_logo':
-        if (empty($values['field_custom_prod_image'][0]['fids'])){
-          $form_state->setErrorByName('field_custom_prod_image', t('Please upload your custom image.'));
-        }
-        break;
-      case 'stock_logo':
-        if (empty($values['field_order_item_stock_image'][0]['target_id'])){
-          $form_state->setErrorByName('field_custom_prod_image', t('Please select your stock image.'));
-        }
-        break;
-      case 'logo_on_file':
-        if (empty($values['field_logo_is_on_file'][0]['value'])){
-          $form_state->setErrorByName('field_logo_is_on_file', t('Please enter the name of logo on file.'));
-        }
-        break;
-    }
+  switch ($values['field_order_item_logo'][0]['value']){
+    case 'custom_logo':
+      if (empty($values['field_custom_prod_image'][0]['fids'])){
+        $form_state->setErrorByName('field_custom_prod_image', t('Please upload your custom image.'));
+      }
+      break;
+    case 'stock_logo':
+      if (empty($values['field_order_item_stock_image'][0]['target_id'])){
+        $form_state->setErrorByName('field_custom_prod_image', t('Please select your stock image.'));
+      }
+      break;
+    case 'logo_on_file':
+      if (empty($values['field_logo_is_on_file'][0]['value'])){
+        $form_state->setErrorByName('field_logo_is_on_file', t('Please enter the name of logo on file.'));
+      }
+      break;
+  }
 
 }
 
@@ -489,7 +566,7 @@ function array_insert_before($key, array $array, $new_key, $new_value = null) {
       }
       $new[$k] = $value;
     }
-        return $new;
-    }
+    return $new;
+  }
   return false;
 }

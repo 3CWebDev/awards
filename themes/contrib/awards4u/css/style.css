@@ -9202,10 +9202,11 @@ header.navbar .block-superfish ul li ul li:hover {
 
 header.navbar .block-superfish ul li ul li a {
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 10px;
   text-transform: none;
   font-weight: 400;
+  padding: 0.7em 1em;
 }
 
 header.navbar .block-superfish ul li ul li a:hover {
@@ -13822,7 +13823,8 @@ body#custom-text #edit-cancel {
 .path-product #product-display .column-right .field--name-field-custom-prod-image,
 .path-product #product-display .column-right #edit-field-order-item-stock-image--wrapper,
 .path-product #product-display .column-right [data-drupal-selector="edit-field-order-item-stock-image"],
-.path-product #product-display .column-right [data-drupal-selector="edit-field-logo-is-on-file-wrapper"] {
+.path-product #product-display .column-right [data-drupal-selector="edit-field-logo-is-on-file-wrapper"],
+.path-product #product-display .column-right [data-drupal-selector="edit-field-repeat-order-description-wrapper"] {
   padding: 20px 45px;
   background: #f6f6f6;
   margin-top: -21px;
@@ -13836,7 +13838,9 @@ body#custom-text #edit-cancel {
 .path-product #product-display .column-right [data-drupal-selector="edit-field-order-item-stock-image"] input[type="file"],
 .path-product #product-display .column-right [data-drupal-selector="edit-field-order-item-stock-image"] label,
 .path-product #product-display .column-right [data-drupal-selector="edit-field-logo-is-on-file-wrapper"] input[type="file"],
-.path-product #product-display .column-right [data-drupal-selector="edit-field-logo-is-on-file-wrapper"] label {
+.path-product #product-display .column-right [data-drupal-selector="edit-field-logo-is-on-file-wrapper"] label,
+.path-product #product-display .column-right [data-drupal-selector="edit-field-repeat-order-description-wrapper"] input[type="file"],
+.path-product #product-display .column-right [data-drupal-selector="edit-field-repeat-order-description-wrapper"] label {
   font-size: 16px;
   font-weight: normal;
 }

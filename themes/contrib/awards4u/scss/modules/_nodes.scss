@@ -482,7 +482,8 @@
       .field--name-field-custom-prod-image,
       #edit-field-order-item-stock-image--wrapper,
       [data-drupal-selector="edit-field-order-item-stock-image"],
-      [data-drupal-selector="edit-field-logo-is-on-file-wrapper"] {
+      [data-drupal-selector="edit-field-logo-is-on-file-wrapper"],
+      [data-drupal-selector="edit-field-repeat-order-description-wrapper"] {
         padding: 20px 45px;
         background: #f6f6f6;
         margin-top: -21px;

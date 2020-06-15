@@ -94,15 +94,15 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition, CheckoutFlowInterface $checkout_flow = NULL) {
     return new static(
-        $configuration,
-        $plugin_id,
-        $plugin_definition,
-        $checkout_flow,
-        $container->get('entity_type.manager'),
-        $container->get('commerce.credentials_check_flood'),
-        $container->get('current_user'),
-        $container->get('user.auth'),
-        $container->get('request_stack')
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $checkout_flow,
+      $container->get('entity_type.manager'),
+      $container->get('commerce.credentials_check_flood'),
+      $container->get('current_user'),
+      $container->get('user.auth'),
+      $container->get('request_stack')
     );
   }
 
@@ -111,9 +111,9 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
    */
   public function defaultConfiguration() {
     return [
-            'allow_guest_checkout' => TRUE,
-            'allow_registration' => FALSE,
-        ] + parent::defaultConfiguration();
+        'allow_guest_checkout' => TRUE,
+        'allow_registration' => FALSE,
+      ] + parent::defaultConfiguration();
   }
 
   /**
@@ -142,19 +142,19 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
     $form['allow_guest_checkout'] = [
-        '#type' => 'checkbox',
-        '#title' => $this->t('Allow guest checkout'),
-        '#default_value' => $this->configuration['allow_guest_checkout'],
+      '#type' => 'checkbox',
+      '#title' => $this->t('Allow guest checkout'),
+      '#default_value' => $this->configuration['allow_guest_checkout'],
     ];
     $form['allow_registration'] = [
-        '#type' => 'checkbox',
-        '#title' => $this->t('Allow registration'),
-        '#default_value' => $this->configuration['allow_registration'],
-        '#states' => [
-            'visible' => [
-                ':input[name="configuration[panes][login][configuration][allow_guest_checkout]"]' => ['checked' => FALSE],
-            ],
+      '#type' => 'checkbox',
+      '#title' => $this->t('Allow registration'),
+      '#default_value' => $this->configuration['allow_registration'],
+      '#states' => [
+        'visible' => [
+          ':input[name="configuration[panes][login][configuration][allow_guest_checkout]"]' => ['checked' => FALSE],
         ],
+      ],
     ];
 
     return $form;
@@ -188,85 +188,85 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
     $pane_form['#attached']['library'][] = 'commerce_checkout_accounts/commerce-checkout-accounts';
 
     $pane_form['returning_customer'] = [
-        '#type' => 'fieldset',
-        '#title' => $this->t('Returning Customer'),
-        '#attributes' => [
-            'class' => [
-                'form-wrapper__login-option',
-                'form-wrapper__returning-customer',
-            ],
+      '#type' => 'fieldset',
+      '#title' => $this->t('Returning Customer'),
+      '#attributes' => [
+        'class' => [
+          'form-wrapper__login-option',
+          'form-wrapper__returning-customer',
         ],
+      ],
     ];
     $pane_form['returning_customer']['mail'] = [
-        '#type' => 'email',
-        '#title' => $this->t('Email address'),
-        '#required' => FALSE,
+      '#type' => 'email',
+      '#title' => $this->t('Email address'),
+      '#required' => FALSE,
     ];
 
     $pane_form['returning_customer']['password'] = [
-        '#type' => 'password',
-        '#title' => $this->t('Password'),
-        '#size' => 60,
+      '#type' => 'password',
+      '#title' => $this->t('Password'),
+      '#size' => 60,
     ];
     $pane_form['returning_customer']['submit'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Log in'),
-        '#op' => 'login',
+      '#type' => 'submit',
+      '#value' => $this->t('Log in'),
+      '#op' => 'login',
     ];
     $pane_form['returning_customer']['forgot_password'] = [
-        '#type' => 'markup',
-        '#markup' => Link::createFromRoute($this->t('Forgot password?'), 'user.pass')->toString(),
+      '#type' => 'markup',
+      '#markup' => Link::createFromRoute($this->t('Forgot password?'), 'user.pass')->toString(),
     ];
 
     $pane_form['register'] = [
-        '#type' => 'fieldset',
-        '#title' => $this->t('New Customer'),
-        '#access' => $this->configuration['allow_registration'],
-        '#attributes' => [
-            'class' => [
-                'form-wrapper__login-option',
-                'form-wrapper__guest-checkout',
-            ],
+      '#type' => 'fieldset',
+      '#title' => $this->t('New Customer'),
+      '#access' => $this->configuration['allow_registration'],
+      '#attributes' => [
+        'class' => [
+          'form-wrapper__login-option',
+          'form-wrapper__guest-checkout',
         ],
+      ],
     ];
     $pane_form['register']['mail'] = [
-        '#type' => 'email',
-        '#title' => $this->t('Email address'),
-        '#required' => FALSE,
+      '#type' => 'email',
+      '#title' => $this->t('Email address'),
+      '#required' => FALSE,
     ];
     $pane_form['register']['password'] = [
-        '#type' => 'password_confirm',
-        '#size' => 60,
-        '#description' => $this->t('Provide a password for the new account in both fields.'),
-        '#required' => FALSE,
+      '#type' => 'password_confirm',
+      '#size' => 60,
+      '#description' => $this->t('Provide a password for the new account in both fields.'),
+      '#required' => FALSE,
     ];
     $pane_form['register']['register'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Create account and continue'),
-        '#op' => 'register',
+      '#type' => 'submit',
+      '#value' => $this->t('Create account and continue'),
+      '#op' => 'register',
     ];
 
 
     $pane_form['guest'] = [
-        '#type' => 'fieldset',
-        '#title' => $this->t('Guest Checkout'),
-        '#access' => $this->configuration['allow_guest_checkout'],
-        '#attributes' => [
-            'class' => [
-                'form-wrapper__login-option',
-                'form-wrapper__guest-checkout',
-            ],
+      '#type' => 'fieldset',
+      '#title' => $this->t('Guest Checkout'),
+      '#access' => $this->configuration['allow_guest_checkout'],
+      '#attributes' => [
+        'class' => [
+          'form-wrapper__login-option',
+          'form-wrapper__guest-checkout',
         ],
+      ],
     ];
     $pane_form['guest']['text'] = [
-        '#prefix' => '<p>',
-        '#suffix' => '</p>',
-        '#markup' => $this->t('Proceed to checkout. You can optionally create an account at the end.'),
+      '#prefix' => '<p>',
+      '#suffix' => '</p>',
+      '#markup' => $this->t('Proceed to checkout. You can optionally create an account at the end.'),
     ];
     $pane_form['guest']['continue'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Continue as Guest'),
-        '#op' => 'continue',
+      '#type' => 'submit',
+      '#value' => $this->t('Continue as Guest'),
+      '#op' => 'continue',
     ];
 
     return $pane_form;
@@ -308,7 +308,7 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
 
         /* Custom Code to lookup username from email address*/
         if ($username = \Drupal::database()->query("SELECT name FROM {users_field_data} WHERE LOWER(mail) = LOWER(:mail)", array(
-            ':mail' => $mail,
+          ':mail' => $mail,
         ))->fetchField()) {
           $form_state->setValue('name', array($username));
         }else{
@@ -359,10 +359,10 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
 
         /** @var \Drupal\user\UserInterface $account */
         $account = $this->entityTypeManager->getStorage('user')->create([
-            'mail' => $email,
-            'name' => $email,
-            'pass' => $password,
-            'status' => TRUE,
+          'mail' => $email,
+          'name' => $email,
+          'pass' => $password,
+          'status' => TRUE,
         ]);
 
         // Validate the entity. This will ensure that the username and email
@@ -408,8 +408,8 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
     }
 
     $form_state->setRedirect('commerce_checkout.form', [
-        'commerce_order' => $this->order->id(),
-        'step' => $this->checkoutFlow->getNextStepId($this->getStepId()),
+      'commerce_order' => $this->order->id(),
+      'step' => $this->checkoutFlow->getNextStepId($this->getStepId()),
     ]);
   }
 }
