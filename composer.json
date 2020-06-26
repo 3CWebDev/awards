@@ -4,7 +4,7 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "drupal/core": "~8.9",
+        "drupal/core": "~8.5",
         "composer/installers": "^1.0.24",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/admin_toolbar": "^2.0",
@@ -12,7 +12,7 @@
         "drupal/module_filter": "^3.1",
         "drupal/commerce": "^2.16",
         "drupal/ctools": "^3.2",
-        "drupal/honeypot": "^2.0",
+        "drupal/honeypot": "^1.29",
         "drupal/google_analytics": "^3",
         "drupal/migrate_plus": "^4.2",
         "drupal/migrate_source_csv": "^2.0",
@@ -20,7 +20,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/redirect": "^1.0",
         "drupal/metatag": "^1.4",
-        "drupal/responsive_menu": "^2.5",
+        "drupal/responsive_menu": "^4.2",
         "drupal/webform": "^5.0@RC",
         "drupal/token": "^1.1",
         "drupal/toolbar_menu": "^2.1",
@@ -36,14 +36,14 @@
         "drupal/domain": "^1.0@alpha",
         "gabrielbull/ups-api": "~0.7",
         "drupal/commerce_avatax": "1.x-dev",
-        "drupal/imce": "^2.2",
+        "drupal/imce": "^1.6",
         "drupal/bootstrap": "3.19",
         "drupal/domain_theme_switch": "^1.2",
         "drupal/commerce_shipping": "^2.0@beta",
         "drupal/commerce_purchase_order": "1.x-dev",
         "drupal/menu_link_attributes": "^1.0",
         "drupal/superfish": "^1.1",
-        "drupal/better_exposed_filters": "^4.0",
+        "drupal/better_exposed_filters": "^3.0@alpha",
         "drupal/slick": "^1.0",
         "drupal/slick_extras": "^1.0@beta",
         "drupal/colorbox": "^1.4",
@@ -60,27 +60,26 @@
         "drupal/config_update": "^1.5",
         "drupal/config_devel": "^1",
         "drupal/devel": "^2.0",
-        "drupal/views_bulk_operations": "^3.8",
+        "drupal/views_bulk_operations": "^2.0",
         "drupal/views_data_export": "1.x-dev",
         "drupal/commerce_variation_cart_form": "^1.0",
         "drupal/console": "~1.0",
         "drupal/path_redirect_import": "1.x-dev",
         "drupal/entity_reference_views_select": "^1.2",
-        "drupal/anchor_link": "^2.4",
         "drupal/ckeditor_font": "^1.0",
         "drupal/colorbutton": "^1.1",
         "drupal/image_effects": "~2.0",
         "drupal/ds": "^3.1",
         "drupal/commerce_xquantity": "1.x-dev",
         "drupal/mailsystem": "^4.1",
-        "drupal/swiftmailer": "^2.0",
+        "drupal/swiftmailer": "1.x-dev",
         "drupal/sendgrid_integration": "^1.1",
         "drupal/date_popup": "^1.0",
         "drupal/single_datetime": "^1.5",
         "drupal/commerce_authnet": "^1.0@beta",
         "drupal/super_login": "^1.0",
         "drupal/commerce_abandoned_carts": "1.x-dev",
-        "drupal/recaptcha": "^3.0",
+        "drupal/recaptcha": "^2.3",
         "drupal/commerce_ups": "^3.0@alpha",
         "drupal/facets_pretty_paths": "^1.0@beta",
         "drupal/draggableviews": "^1.2",
@@ -95,7 +94,7 @@
         "drupal/quicklink": "^1.0@beta",
         "drupal/disqus": "^1.0@RC",
         "drupal/commerce_paypal": "^1.0@beta",
-        "drupal/reroute_email": "^2.0",
+        "drupal/reroute_email": "^1.1",
         "drupal/shield": "^1.2",
         "drush/drush": "^10.1",
         "webflo/drupal-finder": "~1.2.0",
@@ -103,7 +102,7 @@
         "drupal/migrate_file": "^1.1",
         "drupal/module_missing_message_fixer": "^1.1",
         "drupal/adminimal_theme": "^1.5",
-        "drupal/devel_entity_updates": "^2.0"
+        "drupal/devel_entity_updates": "^3.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -137,18 +136,17 @@
 	            "Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"
             },
 					"drupal/commerce": {
-						"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"					
+						"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"
+					},
+						"drupal/commerce_ups": {
+						"Update for Shipping 2.0-rc1" :				"https://www.drupal.org/files/issues/2020-03-05/3109829-8.patch"
 					},
 						"drupal/commerce_shipping": {
 						"Auto-recalculate shipping when the address changes" :				"https://www.drupal.org/files/issues/2020-03-12/2849756-148.patch"
 					}
         }
     },
-    "autoload": {
-        "psr-4": {
-            "Drupal\\Core\\Composer\\": "core/lib/Drupal/Core/Composer"
-        }
-    },
+ 
     "scripts": {
         "pre-autoload-dump": "Drupal\\Core\\Composer\\Composer::preAutoloadDump",
         "post-autoload-dump": [

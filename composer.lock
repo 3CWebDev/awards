@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e7cb9644f8fc850cc24c73e70d9a32c",
+    "content-hash": "c9f13ed991816c8d606bdaf48bc98d7d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2771,60 +2771,6 @@
             }
         },
         {
-            "name": "drupal/anchor_link",
-            "version": "2.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/anchor_link.git",
-                "reference": "8.x-2.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/anchor_link-8.x-2.4.zip",
-                "reference": "8.x-2.4",
-                "shasum": "d37becfde799c5e03faf9ba16fd0848a1a487d41"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9",
-                "drupal/fakeobjects": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-2.4",
-                    "datestamp": "1582628297",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                },
-                "branch-alias": {
-                    "dev-8.x-2.x": "8.2.x-dev"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Vardot",
-                    "homepage": "https://www.drupal.org/vardot",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "RajabNatshah",
-                    "homepage": "https://www.drupal.org/user/1414312"
-                }
-            ],
-            "description": "This plugin module adds the better link dialog and anchor related features to CKEditor in Drupal 8.",
-            "homepage": "https://www.drupal.org/project/anchor_link",
-            "support": {
-                "source": "http://cgit.drupalcode.org/anchor_link",
-                "issues": "https://www.drupal.org/project/issues/anchor_link"
-            }
-        },
-        {
             "name": "drupal/backup_migrate",
             "version": "dev-4.x",
             "source": {
@@ -3659,7 +3605,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-2.19",
-                    "datestamp": "1591210158",
+                    "datestamp": "1591211125",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5138,16 +5084,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.9.0",
+            "version": "8.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "f90882ab0723becda2333e4d33e1a6ab27cb8f0c"
+                "reference": "e8ee964c562870381876e85d3f5eaaf8c8ecc9ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/f90882ab0723becda2333e4d33e1a6ab27cb8f0c",
-                "reference": "f90882ab0723becda2333e4d33e1a6ab27cb8f0c",
+                "url": "https://api.github.com/repos/drupal/core/zipball/e8ee964c562870381876e85d3f5eaaf8c8ecc9ee",
+                "reference": "e8ee964c562870381876e85d3f5eaaf8c8ecc9ee",
                 "shasum": ""
             },
             "require": {
@@ -5369,7 +5315,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2020-06-03T16:44:36+00:00"
+            "time": "2020-06-17T17:57:48+00:00"
         },
         {
             "name": "drupal/csv_serialization",
@@ -5638,6 +5584,70 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
+        },
+        {
+            "name": "drupal/devel_entity_updates",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/devel_entity_updates.git",
+                "reference": "3.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/devel_entity_updates-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "2fcbde815745117b11170598de0211b31dd2321e"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9",
+                "drupal/devel": "*"
+            },
+            "conflict": {
+                "drupal/core": "<8.7",
+                "drush/drush": ">=9.0 <9.6"
+            },
+            "require-dev": {
+                "drupal/devel": "^2 || ^3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.0",
+                    "datestamp": "1591220515",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Francesco Placella (plach)",
+                    "homepage": "https://www.drupal.org/u/plach",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "plach",
+                    "homepage": "https://www.drupal.org/user/183211"
+                }
+            ],
+            "description": "Provides developers an API and drush command to perform automatic entity updates.",
+            "homepage": "http://drupal.org/project/devel_entity_updates",
+            "support": {
+                "source": "https://cgit.drupalcode.org/devel_entity_updates",
+                "issues": "https://drupal.org/project/issues/devel_entity_updates",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             }
         },
@@ -6457,58 +6467,6 @@
             ],
             "support": {
                 "source": "https://git.drupalcode.org/project/facets_pretty_paths"
-            }
-        },
-        {
-            "name": "drupal/fakeobjects",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/fakeobjects.git",
-                "reference": "8.x-1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/fakeobjects-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "b1ebbd4ad2026f99c0204ad513cea74fb2692ff8"
-            },
-            "require": {
-                "drupal/core": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1474470239",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Kevin Quillen (kevinquillen)",
-                    "homepage": "https://www.drupal.org/u/kevinquillen",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Adds the FakeObjects plugin to CKEditor. This plugin is a utility plugin that is required by certain user-facing CKEditor plugins.",
-            "homepage": "http://drupal.org/project/fakeobjects",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/fakeobjects",
-                "issues": "http://drupal.org/project/issues/fakeobjects"
             }
         },
         {
@@ -8942,29 +8900,26 @@
         },
         {
             "name": "drupal/responsive_menu",
-            "version": "2.6.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/responsive_menu.git",
-                "reference": "8.x-2.6"
+                "reference": "4.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/responsive_menu-8.x-2.6.zip",
-                "reference": "8.x-2.6",
-                "shasum": "8dc4f4251ada211fad52aa9d0c02d50c4752d457"
+                "url": "https://ftp.drupal.org/files/projects/responsive_menu-4.2.0.zip",
+                "reference": "4.2.0",
+                "shasum": "4f5c7151d588aabd24f343db020cfaef8d877d29"
             },
             "require": {
-                "drupal/core": "^8.4"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-2.6",
-                    "datestamp": "1515872884",
+                    "version": "4.2.0",
+                    "datestamp": "1592465858",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
