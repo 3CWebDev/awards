@@ -570,3 +570,27 @@ function array_insert_before($key, array $array, $new_key, $new_value = null) {
   }
   return false;
 }
+
+
+function awards_custom_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context){
+
+
+  if ($context['widget']->getPluginId() == 'commerce_shipping_rate'){
+
+    // Does the returned rates contain more than one option?
+    $options = $element['#options'];
+
+    foreach ($options as $key => $option){
+
+      $string = $option->__toString();
+      if (strpos($string, 'Priority') !== FALSE){
+        $amount = substr($string, strpos($string, "$") + 1);
+        $element['#options'][$key]->__construct('@service: @amount',array('@service' => 'USPS Priority Mail', '@amount' => '$' . $amount));
+      }
+
+    }
+
+
+  }
+
+}

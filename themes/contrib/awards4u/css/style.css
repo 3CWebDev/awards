@@ -8602,6 +8602,21 @@ h1.page-header {
   font-weight: 700;
 }
 
+.mm-panels,
+.mm-panel {
+  background: #009fc3;
+  max-width: 300px;
+}
+
+.mm-panels .nav .open > a,
+.mm-panel .nav .open > a {
+  background-color: #009fc3;
+}
+
+.responsive-menu-toggle-wrapper.responsive-menu-toggle {
+  display: block;
+}
+
 @media only screen and (min-width: 768px) {
   .responsive-menu-toggle-wrapper.responsive-menu-toggle {
     display: block;
@@ -8728,6 +8743,11 @@ h1.page-header {
   font-weight: 600;
   font-size: 28px;
   letter-spacing: 1px;
+  background-color: #009fc3;
+}
+
+.mm-navbar__title > span {
+  overflow: visible;
 }
 
 .mm-panel .caret {
@@ -8757,6 +8777,40 @@ h1.page-header {
 
 .mm-menu_theme-dark .mm-listview .mm-btn_next:after {
   border-color: #fff;
+}
+
+.mm-menu.mm-menu_theme-dark .mm-listview > li a.mm-btn.mm-btn_next.mm-listitem__btn {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  border: 0;
+}
+
+.mm-menu.mm-menu_theme-dark .mm-listview > li a.mm-btn.mm-btn_next.mm-listitem__btn:before {
+  border: 0;
+}
+
+.mm-menu.mm-menu_theme-dark .mm-navbar.mm-navbar_sticky {
+  padding: 0;
+  border-bottom: 1px solid #0C6E87;
+}
+
+.mm-menu.mm-menu_theme-dark #mm-1 .mm-listview > li a.mm-btn.mm-btn_next.mm-listitem__btn {
+  width: 30px;
+  height: 50px;
+  padding: 10px;
+  right: 15px;
+  top: 0;
+}
+
+.mm-menu.mm-menu_theme-dark #mm-1 .mm-listview > li a.mm-btn.mm-btn_next.mm-listitem__btn:after {
+  width: 12px;
+  height: 12px;
+  right: 12px;
+}
+
+.mm-menu.mm-menu_theme-dark .mm-listview, .mm-menu.mm-menu_offcanvas .mm-listview {
+  margin-top: 0 !important;
 }
 
 .webform-submission-form .form-required:after {
@@ -9202,11 +9256,10 @@ header.navbar .block-superfish ul li ul li:hover {
 
 header.navbar .block-superfish ul li ul li a {
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   padding-left: 10px;
   text-transform: none;
   font-weight: 400;
-  padding: 0.7em 1em;
 }
 
 header.navbar .block-superfish ul li ul li a:hover {
@@ -9639,7 +9692,7 @@ header.navbar #block-cart a:hover {
 
 @media only screen and (min-width: 768px) {
   #tertiary-content {
-    margin: 30px 30px 0 30px;
+    margin: 0 30px;
   }
 }
 
@@ -11983,13 +12036,8 @@ footer #block-webform-2 .form-actions button {
 
 .view-product-search-search-api .view-content .views-row .views-field-title {
   font-size: 15px;
+  margin-top: 30px;
   margin-bottom: 20px;
-}
-
-@media only screen and (min-width: 768px) {
-  .view-product-search-search-api .view-content .views-row .views-field-title {
-    margin-top: 30px;
-  }
 }
 
 .view-product-search-search-api .view-content .views-row .views-field-title a {
@@ -12414,7 +12462,6 @@ button#edit-checkout {
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  letter-spacing: 0;
 }
 
 .view-commerce-cart-form #edit-submit,
@@ -12431,7 +12478,7 @@ button#edit-checkout {
 }
 
 .view-commerce-cart-form .table-responsive {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .view-commerce-cart-form .table-responsive .views-field-purchased-entity {
@@ -12448,147 +12495,31 @@ button#edit-checkout {
   text-align: center;
 }
 
-.view-commerce-cart-form .order-total-line {
-  font-size: 18px;
-}
-
 @media only screen and (max-width: 767px) {
-  .view-commerce-cart-form .order-total-line__total {
-    margin-bottom: 20px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .view-commerce-cart-form .table-responsive > table thead {
+  .view-commerc-ecart-form .table-responsive > table thead {
     display: none;
   }
-  .view-commerce-cart-form .table-responsive > table > tbody {
+  .view-commerc-ecart-form .table-responsive > table > tbody {
     font-size: 14px;
   }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr {
+  .view-commerc-ecart-form .table-responsive > table > tbody > tr {
     display: flex;
     flex-flow: row wrap;
   }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td {
-    font-size: 13px;
-    white-space: normal;
-    text-align: left !important;
-    width: 100%;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-purchased-entity {
-    font-weight: normal;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-purchased-entity a {
-    font-size: 15px;
-    font-weight: bold;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-purchased-entity .desc {
-    font-size: 13px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-unit-price__number:before {
-    font-weight: bold;
+  .view-commerc-ecart-form .table-responsive > table > tbody > tr > td.views-field-unit-price__number:before {
     content: "PRICE: ";
     float: left;
     margin-right: 15px;
-    width: 120px;
   }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-quantity:before {
-    font-weight: bold;
+  .view-commerc-ecart-form .table-responsive > table > tbody > tr > td.views-field-quantity:before {
     content: "QUANTITY: ";
     float: left;
     margin-right: 15px;
-    width: 120px;
   }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-custom-item-logo:before {
-    font-weight: bold;
+  .view-commerc-ecart-form .table-responsive > table > tbody > tr > td.views-field-custom-item-logo:before {
     content: "LOGO? ";
     float: left;
     margin-right: 15px;
-    width: 120px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-total-price__number:before {
-    font-weight: bold;
-    content: "TOTAL: ";
-    float: left;
-    margin-right: 15px;
-    width: 120px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-custom-text-1 .btn {
-    font-size: 14px;
-    letter-spacing: 0;
-    padding: 3px 6px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-remove-button .btn {
-    font-size: 14px;
-    letter-spacing: 0;
-    padding: 3px 6px;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .view-commerce-cart-form .table-responsive > table thead {
-    display: none;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody {
-    font-size: 14px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td {
-    font-size: 13px;
-    white-space: normal;
-    text-align: left !important;
-    width: 100%;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-purchased-entity {
-    font-weight: normal;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-purchased-entity a {
-    font-size: 15px;
-    font-weight: bold;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-purchased-entity .desc {
-    font-size: 13px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-unit-price__number:before {
-    font-weight: bold;
-    content: "PRICE: ";
-    float: left;
-    margin-right: 15px;
-    width: 120px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-quantity:before {
-    font-weight: bold;
-    content: "QUANTITY: ";
-    float: left;
-    margin-right: 15px;
-    width: 120px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-custom-item-logo:before {
-    font-weight: bold;
-    content: "LOGO? ";
-    float: left;
-    margin-right: 15px;
-    width: 120px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-total-price__number:before {
-    font-weight: bold;
-    content: "TOTAL: ";
-    float: left;
-    margin-right: 15px;
-    width: 120px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-custom-text-1 .btn {
-    font-size: 14px;
-    letter-spacing: 0;
-    padding: 3px 6px;
-  }
-  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-remove-button .btn {
-    font-size: 14px;
-    letter-spacing: 0;
-    padding: 3px 6px;
   }
 }
 
@@ -12689,12 +12620,6 @@ body#custom-text #edit-order-type--wrapper #edit-order-type:before {
   font-weight: bold;
   color: #fff;
   float: left;
-}
-
-@media only screen and (max-width: 767px) {
-  body#custom-text #edit-order-type--wrapper #edit-order-type:before {
-    margin-bottom: 60px;
-  }
 }
 
 body#custom-text #edit-text-type:before {
@@ -12980,19 +12905,17 @@ body#custom-text #edit-submit {
   border-radius: 0;
   letter-spacing: 1px;
   font-weight: 600;
-  font-size: 16px;
 }
 
 @media only screen and (min-width: 768px) {
   body#custom-text #edit-submit {
     margin-left: 20px;
-    font-size: 22px;
   }
 }
 
 body#custom-text #edit-cancel {
   font-size: 16px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -13014,33 +12937,19 @@ body#custom-text #edit-cancel {
   color: #fff;
   border-color: #009fc3;
   border-radius: 0;
-  padding: 8px;
-}
-
-.checkout-pane .panel-heading .panel-title {
-  font-size: 22px;
-}
-
-.checkout-pane .btn {
-  font-size: 16px;
-}
-
-.checkout-pane .form-item label {
-  font-size: 16px;
 }
 
 .checkout-pane .panel-body .form-item {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 
 .checkout-pane .panel-body .form-item label {
   text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 0px;
+  font-weight: 400;
+  letter-spacing: 1px;
   font-family: BebasNeueRegular, arial, sans-serif;
-  font-size: 18px;
+  font-size: 24px;
   margin-right: 10px;
-  margin-bottom: 0;
 }
 
 .checkout-pane .panel-body .form-item .form-control {
@@ -13049,18 +12958,6 @@ body#custom-text #edit-cancel {
   height: 35px;
   border-radius: 0;
   box-shadow: 0 0 0 transparent;
-}
-
-.checkout-pane .panel-body .form-item .select-wrapper select {
-  height: 40px;
-}
-
-.checkout-pane .panel-body .form-item .select-wrapper:after {
-  font-size: 14px;
-}
-
-.checkout-pane .panel-body legend {
-  font-size: 26px;
 }
 
 .checkout-pane .panel-body legend .fieldset-legend {
@@ -13092,10 +12989,6 @@ body#custom-text #edit-cancel {
   display: none;
 }
 
-.checkout-pane-shipping-information #edit-shipping-information-shipping-profile {
-  font-size: 16px;
-}
-
 #edit-actions-next {
   background-color: #d5e14e;
   border-color: #d5e14e;
@@ -13115,17 +13008,8 @@ body#custom-text #edit-cancel {
   }
 }
 
-.layout-region-checkout-footer {
-  font-size: 16px;
-}
-
-.layout-region-checkout-footer .btn {
-  font-size: 16px;
-}
-
 .layout-region-checkout-footer a {
   display: block;
-  font-size: 16px;
   text-align: center;
 }
 
@@ -13288,7 +13172,6 @@ body#custom-text #edit-cancel {
   padding-bottom: 5px;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 26px;
   color: #283444;
   font-family: BebasNeueRegular, arial, sans-serif;
 }
@@ -13326,7 +13209,6 @@ body#custom-text #edit-cancel {
   background-color: #e65385;
   border-color: #e65385;
   color: #fff;
-  margin-bottom: 40px;
 }
 
 .path-cart .view-commerce-cart-form #edit-submit, .path-cart .view-commerce-cart-form [data-drupal-selector="edit-submit"] {

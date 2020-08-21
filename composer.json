@@ -20,7 +20,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/redirect": "^1.0",
         "drupal/metatag": "^1.4",
-        "drupal/responsive_menu": "^4.2",
+        "drupal/responsive_menu": "^4.3",
         "drupal/webform": "^5.0@RC",
         "drupal/token": "^1.1",
         "drupal/toolbar_menu": "^2.1",
@@ -37,7 +37,7 @@
         "gabrielbull/ups-api": "~0.7",
         "drupal/commerce_avatax": "1.x-dev",
         "drupal/imce": "^1.6",
-        "drupal/bootstrap": "3.19",
+        "drupal/bootstrap": "^3.23",
         "drupal/domain_theme_switch": "^1.2",
         "drupal/commerce_shipping": "^2.0@beta",
         "drupal/commerce_purchase_order": "1.x-dev",
@@ -51,7 +51,7 @@
         "drupal/blazy": "^1.0@RC",
         "drupal/colorbox_load": "^1.0@RC",
         "drupal/colorbox_inline": "^1.0",
-        "drupal/conditional_fields": "1.x-dev",
+        "drupal/conditional_fields": "^1.0",
         "drupal/migrate_tools": "4.0-beta2",
         "drupal/masonry": "1.x-dev",
         "drupal/masonry_views": "1.x-dev",
@@ -66,6 +66,7 @@
         "drupal/console": "~1.0",
         "drupal/path_redirect_import": "1.x-dev",
         "drupal/entity_reference_views_select": "^1.2",
+        "drupal/anchor_link": "^1.6",
         "drupal/ckeditor_font": "^1.0",
         "drupal/colorbutton": "^1.1",
         "drupal/image_effects": "~2.0",
@@ -102,7 +103,9 @@
         "drupal/migrate_file": "^1.1",
         "drupal/module_missing_message_fixer": "^1.1",
         "drupal/adminimal_theme": "^1.5",
-        "drupal/devel_entity_updates": "^3.0"
+        "drupal/devel_entity_updates": "^3.0",
+        "drupal/commerce_usps": "1.x-dev",
+        "drupal/mailcontrol": "^1.2"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -130,23 +133,22 @@
 		"patches": {						
             "drupal/core": {
                "#states not affecting visibility/requirement of managed_file" : "https://www.drupal.org/files/issues/states_not_affecting-2847425-24.patch",
-							  "Error when a process plugin gives a multiple value for a subproperty destination" : "https://www.drupal.org/files/issues/2789125-19.patch"
+							  "Error when a process plugin gives a multiple value for a subproperty destination" : "https://www.drupal.org/files/issues/2789125-19.patch",
+								"Uncaught TypeError: Cannot read property 'replace' of undefined" : "https://www.drupal.org/files/issues/2018-06-27/drupal-uninitialized_variable_url-2922677-8.patch"
             },
 	        "drupal/disqus": {
 	            "Disqus migrate support is broken" : "https://www.drupal.org/files/issues/disqus-migrate-support-2879592-14.patch"
-            },
-					"drupal/commerce": {
-						"Failed CC charge attempts save payment method of invalid card info" :				"https://awards4u.com/modules/patches/commerce_payment_fix_failed_attempts.patch"
-					},
-						"drupal/commerce_ups": {
-						"Update for Shipping 2.0-rc1" :				"https://www.drupal.org/files/issues/2020-03-05/3109829-8.patch"
-					},
+            },						
 						"drupal/commerce_shipping": {
 						"Auto-recalculate shipping when the address changes" :				"https://www.drupal.org/files/issues/2020-03-12/2849756-148.patch"
 					}
         }
     },
- 
+    "autoload": {
+        "psr-4": {
+            "Drupal\\Core\\Composer\\": "core/lib/Drupal/Core/Composer"
+        }
+    },
     "scripts": {
         "pre-autoload-dump": "Drupal\\Core\\Composer\\Composer::preAutoloadDump",
         "post-autoload-dump": [

@@ -36,8 +36,8 @@ class CustomCartEventSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events = [
-        CartEvents::CART_ENTITY_ADD => 'checkIfCustomizable',
-        KernelEvents::RESPONSE => ['checkRedirectIssued', -10],
+        CartEvents::CART_ENTITY_ADD => ['checkIfCustomizable', -10],
+        KernelEvents::RESPONSE => ['checkRedirectIssued', 100],
     ];
     return $events;
   }

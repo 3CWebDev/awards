@@ -470,15 +470,27 @@ class CustomTextForm extends FormBase {
     $order_item->save();
     $order = \Drupal\commerce_order\Entity\Order::load($values['order_id']);
     $order->save();
-    //$form['#cache'] = ['max-age' => 0];
-    $response = new RedirectResponse('/cart', 302);
-    $url = Url::fromRoute('commerce_cart.page');
-    $form_state->setRedirectUrl($url);
-    $response->send();
+
+    $form['#cache'] = ['max-age' => 0];
+
+    //$url = Url::fromRoute('commerce_cart.page');
+    //$form_state->setRedirectUrl($url);
+
+    _awards_custom_redirect_to_cart();
   }
+
   public function callback(array &$form, FormStateInterface $form_state) : array {
     return $form['template'];
   }
+}
+
+function _awards_custom_redirect_to_cart(){
+  $response = new RedirectResponse('/cart');
+  $response->send();
+  return;
+
+  $response = new RedirectResponse('/cart', 302);
+  $response->send();
 }
 function awards_custom_text_get_template_categories($categories, $num_lines){
   $options = array();
