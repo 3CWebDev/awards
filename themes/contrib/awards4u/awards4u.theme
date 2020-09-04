@@ -5,3 +5,19 @@
  *
  * Place your custom PHP code in this file.
  */
+//use Symfony\Component\HttpFoundation\RedirectResponse;
+
+function awards4u_preprocess_commerce_cart_empty_page(&$variables) {
+
+
+}
+
+function awards4u_preprocess_html(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if($node){
+    $variables['node_id'] = 'node-id-' . $node->id();
+  }
+}
+
+
+

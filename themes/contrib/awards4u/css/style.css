@@ -8605,7 +8605,7 @@ h1.page-header {
 .mm-panels,
 .mm-panel {
   background: #009fc3;
-  max-width: 300px;
+  max-width: 330px;
 }
 
 .mm-panels .nav .open > a,
@@ -9127,8 +9127,7 @@ header.navbar .mobile-logo img {
 }
 
 header.navbar .logo {
-  z-index: 4000;
-  display: none;
+  z-index: 1000;
 }
 
 @media only screen and (min-width: 768px) {
@@ -9256,10 +9255,11 @@ header.navbar .block-superfish ul li ul li:hover {
 
 header.navbar .block-superfish ul li ul li a {
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 10px;
   text-transform: none;
   font-weight: 400;
+  padding: 0.7em 0.85em;
 }
 
 header.navbar .block-superfish ul li ul li a:hover {
@@ -10435,8 +10435,15 @@ footer #block-webform-2 .form-actions button {
 .path-frontpage #block-views-block-slideshow-block-2 .slick .media img,
 .node-id-3859 #block-views-block-slideshow-block-2 .slick .media img {
   width: 100%;
-  min-height: 200px;
-  max-height: 450px;
+  height: auto;
+}
+
+@media only screen and (min-width: 992px) {
+  .path-frontpage #block-views-block-slideshow-block-2 .slick .media img,
+  .node-id-3859 #block-views-block-slideshow-block-2 .slick .media img {
+    min-height: 200px;
+    max-height: 450px;
+  }
 }
 
 .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption,
@@ -12496,28 +12503,57 @@ button#edit-checkout {
 }
 
 @media only screen and (max-width: 767px) {
-  .view-commerc-ecart-form .table-responsive > table thead {
+  .view-commerce-cart-form .table-responsive > .table > thead > tr > th,
+  .view-commerce-cart-form .table-responsive > .table > thead > tr > td,
+  .view-commerce-cart-form .table-responsive > .table > tbody > tr > th,
+  .view-commerce-cart-form .table-responsive > .table > tbody > tr > td,
+  .view-commerce-cart-form .table-responsive > .table > tfoot > tr > th,
+  .view-commerce-cart-form .table-responsive > .table > tfoot > tr > td {
+    white-space: normal;
+    width: 100%;
+  }
+  .view-commerce-cart-form .table-responsive > table thead {
     display: none;
   }
-  .view-commerc-ecart-form .table-responsive > table > tbody {
+  .view-commerce-cart-form .table-responsive > table > tbody {
     font-size: 14px;
   }
-  .view-commerc-ecart-form .table-responsive > table > tbody > tr {
+  .view-commerce-cart-form .table-responsive > table > tbody > tr {
     display: flex;
     flex-flow: row wrap;
   }
-  .view-commerc-ecart-form .table-responsive > table > tbody > tr > td.views-field-unit-price__number:before {
+  .view-commerce-cart-form .table-responsive > table > tbody > tr > td .btn {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-unit-price__number:before {
+    width: 70%;
     content: "PRICE: ";
     float: left;
     margin-right: 15px;
   }
-  .view-commerc-ecart-form .table-responsive > table > tbody > tr > td.views-field-quantity:before {
+  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-quantity:before {
+    width: 70%;
     content: "QUANTITY: ";
+    float: left;
+    text-align: left;
+    margin-right: 15px;
+  }
+  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-total-price__number:before {
+    width: 70%;
+    content: "TOTAL PRICE ";
     float: left;
     margin-right: 15px;
   }
-  .view-commerc-ecart-form .table-responsive > table > tbody > tr > td.views-field-custom-item-logo:before {
+  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-custom-item-logo:before {
+    width: 70%;
     content: "LOGO? ";
+    float: left;
+    margin-right: 15px;
+  }
+  .view-commerce-cart-form .table-responsive > table > tbody > tr > td.views-field-custom-text-1:before {
+    width: 70%;
+    content: "CUSTOM TEXT: ";
     float: left;
     margin-right: 15px;
   }
@@ -12905,6 +12941,7 @@ body#custom-text #edit-submit {
   border-radius: 0;
   letter-spacing: 1px;
   font-weight: 600;
+  margin-bottom: 3em;
 }
 
 @media only screen and (min-width: 768px) {
@@ -12920,7 +12957,7 @@ body#custom-text #edit-cancel {
 
 @media only screen and (min-width: 768px) {
   body#custom-text #edit-cancel {
-    margin-bottom: 0;
+    margin-bottom: 3em;
     font-size: 22px;
   }
 }
@@ -13209,6 +13246,7 @@ body#custom-text #edit-cancel {
   background-color: #e65385;
   border-color: #e65385;
   color: #fff;
+  margin-bottom: 3em;
 }
 
 .path-cart .view-commerce-cart-form #edit-submit, .path-cart .view-commerce-cart-form [data-drupal-selector="edit-submit"] {

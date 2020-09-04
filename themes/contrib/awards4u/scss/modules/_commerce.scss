@@ -731,7 +731,17 @@ button#edit-checkout {
 // Mobile only cart tweaks
 @include size(mb){
 
-  .view-commerc-ecart-form {
+  .view-commerce-cart-form {
+
+    .table-responsive > .table > thead > tr > th, 
+    .table-responsive > .table > thead > tr > td, 
+    .table-responsive > .table > tbody > tr > th, 
+    .table-responsive > .table > tbody > tr > td, 
+    .table-responsive > .table > tfoot > tr > th, 
+    .table-responsive > .table > tfoot > tr > td {
+      white-space: normal;
+      width: 100%;
+    }
 
     .table-responsive {
 
@@ -749,8 +759,14 @@ button#edit-checkout {
             flex-flow: row wrap;
             > td {
 
+              .btn {
+                font-size: 12px;
+                letter-spacing: 0;
+              }
+
               &.views-field-unit-price__number {
                 &:before {
+                  width: 70%;
                   content: "PRICE: ";
                   float: left;
                   margin-right: 15px;
@@ -759,14 +775,33 @@ button#edit-checkout {
 
               &.views-field-quantity {
                 &:before {
+                  width: 70%;
                   content: "QUANTITY: ";
+                  float: left;
+                  text-align: left;
+                  margin-right: 15px;
+                }
+              }
+              &.views-field-total-price__number {
+                &:before {
+                  width: 70%;
+                  content: "TOTAL PRICE ";
                   float: left;
                   margin-right: 15px;
                 }
               }
               &.views-field-custom-item-logo {
                 &:before {
+                  width: 70%;
                   content: "LOGO? ";
+                  float: left;
+                  margin-right: 15px;
+                }
+              }
+              &.views-field-custom-text-1 {
+                &:before {
+                  width: 70%;
+                  content: "CUSTOM TEXT: ";
                   float: left;
                   margin-right: 15px;
                 }
@@ -1174,6 +1209,7 @@ body#custom-text {
     border-radius: 0;
     letter-spacing: 1px;
     font-weight: 600;
+    margin-bottom: 3em;
     @include size(mdu) {
       margin-left: 20px;
     }
@@ -1183,7 +1219,7 @@ body#custom-text {
     font-size: 16px;
     margin-bottom: 20px;
     @include size(mdu) {
-      margin-bottom: 0;
+      margin-bottom: 3em;
       font-size: 22px;
     }
   }
@@ -1491,6 +1527,7 @@ body#custom-text {
       background-color: #e65385;
       border-color: #e65385;
       color: #fff;
+      margin-bottom: 3em;
     }
   }
 }

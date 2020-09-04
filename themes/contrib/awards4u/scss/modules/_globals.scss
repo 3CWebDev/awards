@@ -58,9 +58,18 @@ h1.page-header {
 
 // MOBILE MENU
 
+.mm-panels,
+.mm-panel {
+  background: $brand-primary;
+  max-width: 330px;
+
+  .nav .open >a {
+    background-color: $brand-primary;
+  }
+}
 
   .responsive-menu-toggle-wrapper.responsive-menu-toggle {
-
+    display: block;
     @include size(mdu) {
       display: block;
     }
@@ -182,6 +191,15 @@ h1.page-header {
   font-weight: 600;
   font-size: 28px;
   letter-spacing: 1px;
+  background-color: $brand-primary;
+}
+
+.mm-btn_next {
+  
+}
+
+.mm-navbar__title>span {
+  overflow: visible;
 }
 
 
@@ -216,6 +234,45 @@ h1.page-header {
 }
 .mm-menu_theme-dark .mm-listview .mm-btn_next:after {
   border-color: #fff;
+}
+
+// Updated fixes for responsive menu since going to v4 of module
+.mm-menu.mm-menu_theme-dark .mm-listview>li a.mm-btn.mm-btn_next.mm-listitem__btn {
+	position: absolute;
+    top: 4px;
+    right: 0;
+    border:0;
+    &:before {
+      border: 0;
+    }
+}
+.mm-menu.mm-menu_theme-dark .mm-navbar.mm-navbar_sticky {
+  padding: 0;
+  border-bottom: 1px solid #0C6E87;
+}
+.mm-menu.mm-menu_theme-dark #mm-1 .mm-listview>li a.mm-btn.mm-btn_next.mm-listitem__btn {
+  width: 30px;
+  height: 50px;
+  padding: 10px;
+  right: 15px;
+  top: 0;
+  &:after {
+    width: 12px;
+    height: 12px;
+    right: 12px;
+  }
+  
+}
+
+.mm-menu.mm-menu_theme-dark #mm-1 .mm-navbar.mm-navbar_sticky {
+    
+}
+
+.mm-menu.mm-menu_theme-dark .mm-listview, .mm-menu.mm-menu_offcanvas .mm-listview {
+	margin-top: 0 !important;
+}
+.mm-panels>.mm-panel {
+	
 }
 
 // WEBFORM

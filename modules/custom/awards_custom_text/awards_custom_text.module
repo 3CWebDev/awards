@@ -72,7 +72,7 @@ function awards_custom_text_create_paragraph($order_item, $values, $is_new) {
  */
 function awards_custom_text_preprocess_views_view(&$vars) {
   $vars['#cache']['contexts'][] = 'route';
-  if ($vars['view_array']['#name'] == 'commerce_order_item_table') {
+  if (isset($vars['view_array']['#name']) && $vars['view_array']['#name'] == 'commerce_order_item_table') {
     $vars['#attached']['library'][] = 'awards_custom_text/awards_custom_text_views_admin';
   }
 }

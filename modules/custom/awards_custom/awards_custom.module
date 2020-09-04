@@ -169,6 +169,11 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
         ),
       );
 
+      if ($material == 'Acrylic'){
+        unset($form['field_nametag_size']);
+        $form['field_nametag_size']['#prefix'] = '<br />';
+      }
+
       $form['field_logo_placement']['widget']['#states'] =  array(
         'invisible' => array(
           ':input[name="field_order_item_logo"]' => array(
@@ -299,8 +304,13 @@ function awards_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
   }
 }
-
+//     $material = $product->field_name_tag_material->getValue();
+//      $material = $material[0]['value'];
 function _awards_custom_validate(array &$form, FormStateInterface $form_state){
+
+  $storage = $form_state->getStorage();
+  $product_id = $storage['product']->id();
+  $product = \Drupal\commerce_product\Entity\Product::load($product_id);
 
   $values = $form_state->getValues();
   $logo = $values['field_order_item_logo'][0]['value'];
@@ -316,7 +326,13 @@ function _awards_custom_validate(array &$form, FormStateInterface $form_state){
 
     $size = $values['field_nametag_size'];
     if (!isset($size['0']['value'])){
-      $form_state->setErrorByName('field_nametag_size', t('Size is required.'));
+
+      if (method_exists($product->field_name_tag_material, 'getString') && $product->field_name_tag_material->getString() == "Acrylic"){
+
+      }else{
+        $form_state->setErrorByName('field_nametag_size', t('Size is required.'));
+      }
+
     }
 
     $corners = $values['field_corners'];
@@ -345,7 +361,32 @@ function awards_custom_validate_registration(array &$form, FormStateInterface $f
   $form_state->setValue('name', array($values['mail']));
 }
 
+function awards_custom_order_contains_only_ships_today_items(){
+  $store_id = 1;
+  $order_type = 'default';
+  $cart_manager = \Drupal::service('commerce_cart.cart_manager');
+  $cart_provider = \Drupal::service('commerce_cart.cart_provider');
+  $entity_manager = \Drupal::entityManager();
+  $store = $entity_manager->getStorage('commerce_store')->load($store_id);
+  $cart = $cart_provider->getCart($order_type, $store);
+
+  foreach ($cart->getItems() as $order_item) {
+    $product_variation = $order_item->getPurchasedEntity();
+    $product_id = $product_variation->product_id->getString();
+
+    $product = \Drupal\commerce_product\Entity\Product::load((int)$product_id);
+    $ships_today = $product->field_ships_today->getString();
+    if ($ships_today != TRUE){
+     return FALSE;
+    }
+  }
+  return TRUE;
+}
+
 function awards_custom_validate_need_by_date(array &$form, FormStateInterface $form_state){
+
+  $contains_only_ships_today = awards_custom_order_contains_only_ships_today_items();
+
 
   $values = $form_state->getValues();
 
@@ -362,6 +403,10 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
 
   if (!is_numeric($production_days)){
     $production_days = 5;
+  }
+
+  if ($contains_only_ships_today){
+    $production_days = 1;
   }
 
   $day_limit = 1; // DEFAULT
@@ -408,7 +453,7 @@ function awards_custom_validate_need_by_date(array &$form, FormStateInterface $f
 
   $number_of_working_days = awards_custom_calc_number_of_working_days(date('Y-m-d'), $need_by_date);
 
-  if ($number_of_working_days < $day_limit){
+  if ($number_of_working_days <= $day_limit){
     $form_state->setErrorByName('order_date_needed', t('Date Needed must be at least ' . $day_limit . ' business days from today. If needed sooner, please select "Expedited Service" below and we will contact you with options and charges.'));
   }
 

@@ -106,15 +106,22 @@
   {% endblock %}
 {% endif %}
 
+
+
 {# Header #}
 {% if page.header %}
   {% block header %}
     <div class="header-wrapper">
       <div class="header-content">
+        
         {{ page.header }}
+
+        
       </div>
     </div>
   {% endblock %}
+
+  
 {% endif %}
 
 {# Main #}

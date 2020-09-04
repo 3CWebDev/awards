@@ -256,8 +256,8 @@ header.navbar {
   // LOGO
 
   .logo {
-    z-index: 4000;
-    display: none;
+    z-index: 1000;
+    
     @include size(mdu) {
       position: relative;
       top: 10px;
@@ -351,10 +351,11 @@ header.navbar {
 
             a {
               color: #fff;
-              font-size: 16px;
+              font-size: 14px;
               padding-left: 10px;
               text-transform: none;
               font-weight: 400;
+              padding: 0.7em 0.85em;
               &:hover {
                 color: #41555C;
                 text-decoration: none;

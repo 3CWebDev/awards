@@ -12,6 +12,7 @@ regions:
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
   banner: 'Banner'
+  front_banner: 'Front Banner'
   header: 'Top Bar'
   highlighted: 'Highlighted'
   help: 'Help'

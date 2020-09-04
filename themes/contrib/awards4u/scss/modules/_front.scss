@@ -19,8 +19,11 @@
       .media {
         img {
           width: 100%;
-          min-height: 200px;
-          max-height: 450px;
+          height: auto;
+          @include size(lgu){
+            min-height: 200px;
+            max-height: 450px;
+          }
         }
       }
       .slide__caption {
