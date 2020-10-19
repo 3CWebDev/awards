@@ -27,6 +27,8 @@ regions:
   page_top: 'Page top'
   page_bottom: 'Page bottom'
 
+libraries-extend:
+  bootstrap/framework:
+    - 'awards4u/bootstrap-scripts'
 libraries:
   - 'awards4u/global-styling'
-  - 'awards4u/bootstrap-scripts'

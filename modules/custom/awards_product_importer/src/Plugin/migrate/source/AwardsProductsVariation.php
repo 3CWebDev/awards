@@ -94,9 +94,11 @@ class AwardsProductsVariation extends CSV{
         }
 
         if ($productSpecificAttribute[0] == 'Size'){
-          $attributes =  $productSpecificAttribute[1] . ' ' . $title;
+          //$attributes =  $productSpecificAttribute[1] . ' ' . $title;
+          $attributes =  $productSpecificAttribute[1];
         }else{
-          $attributes =  $productSpecificAttribute[0] . ': ' . $productSpecificAttribute[1] . ' ' . $title;
+          //$attributes =  $productSpecificAttribute[0] . ': ' . $productSpecificAttribute[1] . ' ' . $title;
+          $attributes =  $productSpecificAttribute[0] . ': ' . $productSpecificAttribute[1];
         }
 
 

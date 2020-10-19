@@ -373,16 +373,16 @@
       }
 
       [data-drupal-selector="edit-quantity-wrapper"] {
-        margin-top: -15px;
+        margin-top: 0px;
+        margin-bottom: -15px;
 
         .form-item {
           background: #f6f6f6;
           color: #283444;
           font-size: 20px;
-          padding: 30px 20px;
-          padding-top: 0;
+          padding: 20px 20px 30px 20px;
           @include size(mdu){
-            padding: 0px 60px 30px 20px;
+            padding: 20px 60px 20px 20px;
           }
 
           .form-control {
@@ -392,7 +392,11 @@
             border: 1px solid $brand-primary;
             background: transparent;
             text-align: center;
+            margin-top: -8px;
             -moz-appearance:textfield;
+            @include size(mdu){
+              
+            }
           }
         }
       }
