@@ -59,6 +59,7 @@ class CustomCartEventSubscriber implements EventSubscriberInterface {
     if (isset($product->field_number_of_lines)){
 
       $number_of_lines = $product->field_number_of_lines->getString();
+
       if (is_numeric($number_of_lines)){
         $order_item = $event->getOrderItem();
         $custom_text_entered = $order_item->field_custom_text_entered->getString();
@@ -73,6 +74,14 @@ class CustomCartEventSubscriber implements EventSubscriberInterface {
           $this->requestStack->getCurrentRequest()->attributes->set('awards_custom_jump_to_checkout_url', $url);
 
         }
+      }else{
+        //$checkout_url = Url::fromRoute('commerce_checkout.form', ['commerce_order' => $event->getCart()->id(),])->toString();
+        $checkout_url = Url::fromRoute('commerce_cart.page', [
+            'commerce_order' => $event->getCart()->id(),
+        ])->toString();
+        $this->requestStack->getCurrentRequest()->attributes
+            ->set('awards_custom_jump_to_checkout_url', $checkout_url);
+
       }
     }
   }
