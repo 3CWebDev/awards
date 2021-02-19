@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c37fc200da2af74b71eca937d5c83ef6",
+    "content-hash": "fc92009392c2b40368ebddb2f9c81f96",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3659,17 +3659,17 @@
         },
         {
             "name": "drupal/commerce",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce.git",
-                "reference": "8.x-2.23"
+                "reference": "8.x-2.24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce-8.x-2.23.zip",
-                "reference": "8.x-2.23",
-                "shasum": "1de8d60396de822520fdbf84422f48792d2c6ba1"
+                "url": "https://ftp.drupal.org/files/projects/commerce-8.x-2.24.zip",
+                "reference": "8.x-2.24",
+                "shasum": "ebe1b58bc87446ad1edbfd62ed8fffb8583b68fb"
             },
             "require": {
                 "commerceguys/intl": "^1.0.0",
@@ -3701,8 +3701,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3743,13 +3743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce_abandoned_carts.git",
-                "reference": "35d3a8463152ab831cdd768186e237c733a0d389"
+                "reference": "676e3d91be8df64ce55b64c7288831c28170ef67"
             },
             "require": {
                 "drupal/commerce": "~2.0",
                 "drupal/commerce_checkout": "*",
-                "drupal/core": "^8 || ^9",
-                "drupal/mimemail": "1.x-dev"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
@@ -3792,7 +3791,7 @@
                 "source": "http://cgit.drupalcode.org/commerce_abandoned_carts",
                 "issues": "https://www.drupal.org/project/issues/commerce_abandoned_carts"
             },
-            "time": "2020-06-17T11:42:33+00:00"
+            "time": "2021-01-27T11:31:56+00:00"
         },
         {
             "name": "drupal/commerce_authnet",
@@ -3931,7 +3930,7 @@
         },
         {
             "name": "drupal/commerce_cart",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_order": "*",
@@ -3941,8 +3940,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3979,7 +3978,7 @@
         },
         {
             "name": "drupal/commerce_checkout",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_cart": "*",
@@ -3989,8 +3988,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4027,7 +4026,7 @@
         },
         {
             "name": "drupal/commerce_number_pattern",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_store": "*",
@@ -4036,8 +4035,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4074,7 +4073,7 @@
         },
         {
             "name": "drupal/commerce_order",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_number_pattern": "*",
@@ -4088,8 +4087,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4126,7 +4125,7 @@
         },
         {
             "name": "drupal/commerce_payment",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_order": "*",
@@ -4136,8 +4135,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4233,7 +4232,7 @@
         },
         {
             "name": "drupal/commerce_price",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/core": "^8.8 || ^9"
@@ -4241,8 +4240,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4279,7 +4278,7 @@
         },
         {
             "name": "drupal/commerce_product",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_price": "*",
@@ -4289,8 +4288,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4452,7 +4451,7 @@
         },
         {
             "name": "drupal/commerce_store",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_price": "*",
@@ -4461,8 +4460,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4499,7 +4498,7 @@
         },
         {
             "name": "drupal/commerce_tax",
-            "version": "2.23.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_order": "*",
@@ -4509,8 +4508,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.23",
-                    "datestamp": "1610219286",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7747,26 +7746,26 @@
         },
         {
             "name": "drupal/mailcontrol",
-            "version": "1.2.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/mailcontrol.git",
-                "reference": "8.x-1.2"
+                "reference": "8.x-1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/mailcontrol-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "a118885ed9a58ba9eff666b9d8963f28ee33dbb9"
+                "url": "https://ftp.drupal.org/files/projects/mailcontrol-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "b2b2f05e6ee8eddabf3fe3a607acad0d15418aab"
             },
             "require": {
-                "drupal/core": "^8"
+                "drupal/core": "^8.8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1549258684",
+                    "version": "8.x-1.5",
+                    "datestamp": "1611999176",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -9021,29 +9020,26 @@
         },
         {
             "name": "drupal/readmehelp",
-            "version": "1.0.0-beta4",
+            "version": "1.0.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/readmehelp.git",
-                "reference": "8.x-1.0-beta4"
+                "reference": "8.x-1.0-beta5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/readmehelp-8.x-1.0-beta4.zip",
-                "reference": "8.x-1.0-beta4",
-                "shasum": "eb41b936db945b827e7fc15759df6182ff0b4086"
+                "url": "https://ftp.drupal.org/files/projects/readmehelp-8.x-1.0-beta5.zip",
+                "reference": "8.x-1.0-beta5",
+                "shasum": "c58f7c433fd19b9311ef6d318a528a33abfb09ed"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8.8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-1.0-beta4",
-                    "datestamp": "1545500580",
+                    "version": "8.x-1.0-beta5",
+                    "datestamp": "1611478090",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -9360,17 +9356,17 @@
         },
         {
             "name": "drupal/search_api",
-            "version": "1.18.0",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api.git",
-                "reference": "8.x-1.18"
+                "reference": "8.x-1.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.18.zip",
-                "reference": "8.x-1.18",
-                "shasum": "6cf1d6820ba55891e204bac40b6031ed15db482a"
+                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.19.zip",
+                "reference": "8.x-1.19",
+                "shasum": "5654e9d02117e28c585d89a25ea3cc40d20c5019"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -9391,8 +9387,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.18",
-                    "datestamp": "1605204423",
+                    "version": "8.x-1.19",
+                    "datestamp": "1612192040",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10450,17 +10446,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "6.0.0"
+                "reference": "6.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-6.0.0.zip",
-                "reference": "6.0.0",
-                "shasum": "2528636c9e90fe1623544eee433f102faa0f1b57"
+                "url": "https://ftp.drupal.org/files/projects/webform-6.0.1.zip",
+                "reference": "6.0.1",
+                "shasum": "3ddc95895dcd446325432eae286910cd8e056da7"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -10508,8 +10504,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.0.0",
-                    "datestamp": "1608855845",
+                    "version": "6.0.1",
+                    "datestamp": "1612453373",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10662,30 +10658,27 @@
         },
         {
             "name": "drupal/xnumber",
-            "version": "1.0.0-alpha4",
+            "version": "1.0.0-alpha5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/xnumber.git",
-                "reference": "8.x-1.0-alpha4"
+                "reference": "8.x-1.0-alpha5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/xnumber-8.x-1.0-alpha4.zip",
-                "reference": "8.x-1.0-alpha4",
-                "shasum": "b8a75a510ede0e24e06190314979beb1ff786091"
+                "url": "https://ftp.drupal.org/files/projects/xnumber-8.x-1.0-alpha5.zip",
+                "reference": "8.x-1.0-alpha5",
+                "shasum": "92a55394a7387212dc6f8acb05aafa59132177fe"
             },
             "require": {
-                "drupal/core": "*",
+                "drupal/core": "^8.8 || ^9",
                 "drupal/readmehelp": "~1.0.0"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-1.0-alpha4",
-                    "datestamp": "1580663543",
+                    "version": "8.x-1.0-alpha5",
+                    "datestamp": "1612710336",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -11026,33 +11019,29 @@
         },
         {
             "name": "fastglass/sendgrid",
-            "version": "2.0.1",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/taz77/sendgrid-php-ng.git",
-                "reference": "321efe536b6452b7ab6d138b157ed58fb8f5ae97"
+                "reference": "2f118ad67787899a84a95a870fb90a67949c3b82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/taz77/sendgrid-php-ng/zipball/321efe536b6452b7ab6d138b157ed58fb8f5ae97",
-                "reference": "321efe536b6452b7ab6d138b157ed58fb8f5ae97",
+                "url": "https://api.github.com/repos/taz77/sendgrid-php-ng/zipball/2f118ad67787899a84a95a870fb90a67949c3b82",
+                "reference": "2f118ad67787899a84a95a870fb90a67949c3b82",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "guzzlehttp/guzzle": "^6.3",
-                "php": ">=7.1",
-                "starkbank/ecdsa": "^0.0.4"
+                "guzzlehttp/guzzle": ">=6.2.1",
+                "php": ">=5.5.0",
+                "sendgrid/smtpapi": "~0.5"
             },
             "replace": {
                 "sendgrid/sendgrid-php": "*"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "^8",
-                "squizlabs/php_codesniffer": "3.*",
-                "swaggest/json-diff": "^3.4",
+                "phpunit/phpunit": "~7.3",
                 "vlucas/phpdotenv": "~1.0"
             },
             "type": "library",
@@ -11078,23 +11067,22 @@
                 "email",
                 "grid",
                 "send",
-                "sendgrid",
-                "twilio sendgrid"
+                "sendgrid"
             ],
-            "time": "2020-11-20T14:44:36+00:00"
+            "time": "2020-11-18T14:59:05+00:00"
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v5.2.0",
+            "version": "v5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb"
+                "reference": "f42c9110abe98dd6cfe9053c49bc86acc70b2d23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/feb0e820b8436873675fd3aca04f3728eb2185cb",
-                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/f42c9110abe98dd6cfe9053c49bc86acc70b2d23",
+                "reference": "f42c9110abe98dd6cfe9053c49bc86acc70b2d23",
                 "shasum": ""
             },
             "require": {
@@ -11131,7 +11119,7 @@
                 "jwt",
                 "php"
             ],
-            "time": "2020-03-25T18:49:23+00:00"
+            "time": "2021-02-12T00:02:00+00:00"
         },
         {
             "name": "gabrielbull/ups-api",
@@ -11954,16 +11942,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.4.2",
+            "version": "3.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483"
+                "reference": "511629a54465e89a31d3d7e4cf0935feab8b14c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/17cb82dd625ccb17c74bf8f38563d3b260306483",
-                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/511629a54465e89a31d3d7e4cf0935feab8b14c1",
+                "reference": "511629a54465e89a31d3d7e4cf0935feab8b14c1",
                 "shasum": ""
             },
             "require": {
@@ -12023,7 +12011,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-12-03T13:43:45+00:00"
+            "time": "2021-02-16T09:40:01+00:00"
         },
         {
             "name": "league/container",
@@ -14429,6 +14417,59 @@
             "time": "2015-06-21T13:59:46+00:00"
         },
         {
+            "name": "sendgrid/smtpapi",
+            "version": "0.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sendgrid/smtpapi-php.git",
+                "reference": "cf63bd353c25f775a1fb2654a0a3fff22f573a37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sendgrid/smtpapi-php/zipball/cf63bd353c25f775a1fb2654a0a3fff22f573a37",
+                "reference": "cf63bd353c25f775a1fb2654a0a3fff22f573a37",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "replace": {
+                "sendgrid/smtpapi-php": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.* || 6.5.*",
+                "squizlabs/php_codesniffer": "2.9.* || 3.3.*"
+            },
+            "suggest": {
+                "swiftmailer/swiftmailer": "^5.4 - Needed to run the example scripts"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Smtpapi": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Build SendGrid X-SMTPAPI headers in PHP.",
+            "homepage": "http://github.com/sendgrid/smtpapi-php",
+            "keywords": [
+                "X-SMTP",
+                "api",
+                "email",
+                "grid",
+                "send",
+                "sendgrid",
+                "smtp",
+                "smtpapi",
+                "twilio",
+                "xsmtp"
+            ],
+            "time": "2020-10-14T18:37:39+00:00"
+        },
+        {
             "name": "stack/builder",
             "version": "v1.0.6",
             "source": {
@@ -15848,16 +15889,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.22.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "0eb8293dbbcd6ef6bf81404c9ce7d95bcdf34f44"
+                "reference": "2d63434d922daf7da8dd863e7907e67ee3031483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/0eb8293dbbcd6ef6bf81404c9ce7d95bcdf34f44",
-                "reference": "0eb8293dbbcd6ef6bf81404c9ce7d95bcdf34f44",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/2d63434d922daf7da8dd863e7907e67ee3031483",
+                "reference": "2d63434d922daf7da8dd863e7907e67ee3031483",
                 "shasum": ""
             },
             "require": {
@@ -15928,20 +15969,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T16:49:33+00:00"
+            "time": "2021-01-22T09:19:47+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.22.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-                "reference": "6e971c891537eb617a00bb07a43d182a6915faba"
+                "reference": "43a0283138253ed1d48d352ab6d0bdb3f809f248"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/6e971c891537eb617a00bb07a43d182a6915faba",
-                "reference": "6e971c891537eb617a00bb07a43d182a6915faba",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/43a0283138253ed1d48d352ab6d0bdb3f809f248",
+                "reference": "43a0283138253ed1d48d352ab6d0bdb3f809f248",
                 "shasum": ""
             },
             "require": {
@@ -16009,7 +16050,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T17:09:11+00:00"
+            "time": "2021-01-22T09:19:47+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -16220,7 +16261,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.22.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",

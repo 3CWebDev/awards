@@ -106,7 +106,8 @@
         "drupal/devel_entity_updates": "^3.0",
         "drupal/commerce_usps": "1.x-dev",
         "drupal/mailcontrol": "^1.2",
-        "drupal/stage_file_proxy": "^1.1"
+        "drupal/stage_file_proxy": "^1.1",
+        "fastglass/sendgrid": "1.0.12"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

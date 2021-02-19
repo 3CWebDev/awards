@@ -240,6 +240,28 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
       '#description' => $this->t('Provide a password for the new account in both fields.'),
       '#required' => FALSE,
     ];
+
+
+    //Get the EntityFormDisplay (i.e. the default Form Display) of this content type
+    //https://www.drupal.org/forum/support/module-development-and-code-questions/2015-09-05/drupal-8-equivalent-to-field_attach
+    $user = \Drupal::service('entity_type.manager')->getStorage('user')->create(array('type' => 'user'));
+    $entity_form_display = \Drupal::service('entity_type.manager')->getStorage('entity_form_display')->load('user.user.register');
+
+    $widget = $entity_form_display->getRenderer('field_tax_exempt');
+    $items = $user->get('field_tax_exempt');
+    $items->filterEmptyItems();
+
+    $pane_form['register']['tax_exempt'] = $widget->form($items, $pane_form, $form_state);
+
+    $widget = $entity_form_display->getRenderer('field_tax_document');
+    $items = $user->get('field_tax_document');
+    $items->filterEmptyItems();
+    $pane_form['register']['tax_document'] = $widget->form($items, $pane_form, $form_state);
+    $pane_form['register']['tax_document']['#states'] = array(
+        'visible' => array(
+            ':input[name="CheckoutAccountsPane[field_tax_exempt][value]"]' => array('checked' => TRUE),
+        ),
+    );
     $pane_form['register']['register'] = [
       '#type' => 'submit',
       '#value' => $this->t('Create account and continue'),
@@ -347,6 +369,7 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
       case 'register':
         $email = $values['register']['mail'];
         $password = trim($values['register']['password']);
+
         if (empty($email)) {
           $form_state->setError($pane_form['register']['mail'], $this->t('Email field is required.'));
           return;
@@ -365,6 +388,16 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
           'status' => TRUE,
         ]);
 
+        $tax_exempt = $values['field_tax_exempt']['value'];
+        $account->set('field_tax_exempt' , $tax_exempt);
+        if ($tax_exempt === 1){
+          $fid = $values['field_tax_document'][0]['fids'][0];
+          if (!is_numeric($fid)){
+            $form_state->setError($pane_form['register']['tax_document'], $this->t('Tax document is required for tax exempt status.'));
+            return;
+          }
+          $account->set('field_tax_document' , ['target_id' => $fid]);
+        }
         // Validate the entity. This will ensure that the username and email
         // are in the right format and not already taken.
         $violations = $account->validate();

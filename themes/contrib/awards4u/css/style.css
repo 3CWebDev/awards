@@ -10450,7 +10450,6 @@ footer #block-webform-2 .form-actions button {
 .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption {
   position: absolute;
   top: 20%;
-  left: 5%;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0px;
@@ -10458,20 +10457,20 @@ footer #block-webform-2 .form-actions button {
   line-height: 1;
   font-size: 12px;
   text-align: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
   .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption,
   .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption {
     font-size: 18px;
-    left: 2%;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption,
   .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption {
-    left: 10%;
     letter-spacing: 2px;
   }
 }
@@ -10487,7 +10486,6 @@ footer #block-webform-2 .form-actions button {
   .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption,
   .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption {
     top: 35%;
-    left: 18%;
     font-size: 20px;
   }
 }
@@ -10503,7 +10501,7 @@ footer #block-webform-2 .form-actions button {
 @media only screen and (min-width: 768px) {
   .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption h3,
   .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption h3 {
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 10px;
   }
 }
@@ -10511,7 +10509,7 @@ footer #block-webform-2 .form-actions button {
 @media only screen and (min-width: 992px) {
   .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption h3,
   .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption h3 {
-    font-size: 48px;
+    font-size: 38px;
     margin-bottom: 10px;
   }
 }
@@ -10519,7 +10517,7 @@ footer #block-webform-2 .form-actions button {
 @media only screen and (min-width: 1200px) {
   .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption h3,
   .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption h3 {
-    font-size: 70px;
+    font-size: 60px;
     margin-bottom: 5px;
   }
 }
@@ -10527,7 +10525,7 @@ footer #block-webform-2 .form-actions button {
 @media only screen and (min-width: 1600px) {
   .path-frontpage #block-views-block-slideshow-block-2 .slick .slide__caption h3,
   .node-id-3859 #block-views-block-slideshow-block-2 .slick .slide__caption h3 {
-    font-size: 80px;
+    font-size: 60px;
   }
 }
 
@@ -13318,6 +13316,19 @@ body#custom-text #edit-cancel {
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .page-node-type-blog .main-container > .row {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  .page-node-type-blog .main-container > .row > .col-sm-3 {
+    order: 2;
+  }
+  .page-node-type-blog .main-container > .row .col-sm-9 {
+    order: 1;
+  }
+}
+
 .page-node-type-page .field--name-body h3 {
   font-size: 30px;
   font-weight: 400;
@@ -13803,6 +13814,7 @@ body#custom-text #edit-cancel {
 
 .path-product #product-display .column-right #edit-field-order-item-stock-image--wrapper,
 .path-product #product-display .column-right [data-drupal-selector="edit-field-order-item-stock-image-wrapper"] {
+  display: none;
   margin-top: -41px;
 }
 
