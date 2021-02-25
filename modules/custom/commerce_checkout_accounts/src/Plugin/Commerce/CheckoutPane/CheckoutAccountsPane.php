@@ -253,6 +253,16 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
 
     $pane_form['register']['tax_exempt'] = $widget->form($items, $pane_form, $form_state);
 
+    $widget = $entity_form_display->getRenderer('field_tax_id_number');
+    $items = $user->get('field_tax_id_number');
+    $items->filterEmptyItems();
+    $pane_form['register']['tax_id_number'] = $widget->form($items, $pane_form, $form_state);
+    $pane_form['register']['tax_id_number']['#states'] = array(
+        'visible' => array(
+            ':input[name="CheckoutAccountsPane[field_tax_exempt][value]"]' => array('checked' => TRUE),
+        ),
+    );
+
     $widget = $entity_form_display->getRenderer('field_tax_document');
     $items = $user->get('field_tax_document');
     $items->filterEmptyItems();
@@ -262,6 +272,7 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
             ':input[name="CheckoutAccountsPane[field_tax_exempt][value]"]' => array('checked' => TRUE),
         ),
     );
+
     $pane_form['register']['register'] = [
       '#type' => 'submit',
       '#value' => $this->t('Create account and continue'),
@@ -396,7 +407,15 @@ class CheckoutAccountsPane extends CheckoutPaneBase implements CheckoutPaneInter
             $form_state->setError($pane_form['register']['tax_document'], $this->t('Tax document is required for tax exempt status.'));
             return;
           }
-          $account->set('field_tax_document' , ['target_id' => $fid]);
+          $account->set('field_tax_document', ['target_id' => $fid]);
+
+          $tax_id_number = $values['field_tax_id_number'][0]['value'];
+          if (empty(trim($tax_id_number))){
+            $form_state->setError($pane_form['register']['tax_id_number'], $this->t('Tax ID number is required for tax exempt status.'));
+            return;
+          }
+          $account->set('field_tax_id_number', $tax_id_number);
+
         }
         // Validate the entity. This will ensure that the username and email
         // are in the right format and not already taken.
